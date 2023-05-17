@@ -16,6 +16,8 @@
 		D98DC31C2A148C30006660FA /* book_information_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC31B2A148C30006660FA /* book_information_appTests.swift */; };
 		D98DC3262A148C31006660FA /* book_information_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC3252A148C31006660FA /* book_information_appUITests.swift */; };
 		D98DC3282A148C31006660FA /* book_information_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC3272A148C31006660FA /* book_information_appUITestsLaunchTests.swift */; };
+		D98DC3492A14CCAC006660FA /* BestSeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC3482A14CCAC006660FA /* BestSeller.swift */; };
+		D98DC34B2A14CCBB006660FA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC34A2A14CCBB006660FA /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		D98DC3212A148C31006660FA /* book-information-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "book-information-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D98DC3252A148C31006660FA /* book_information_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = book_information_appUITests.swift; sourceTree = "<group>"; };
 		D98DC3272A148C31006660FA /* book_information_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = book_information_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D98DC3482A14CCAC006660FA /* BestSeller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSeller.swift; sourceTree = "<group>"; };
+		D98DC34A2A14CCBB006660FA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 				D98DC3362A148E01006660FA /* App */,
 				D98DC3352A148DEC006660FA /* UI */,
 				D98DC3342A148DCC006660FA /* Presentation */,
+				D98DC3422A14CC69006660FA /* Data */,
 				D98DC3372A148E49006660FA /* Configuration */,
 			);
 			path = "book-information-app";
@@ -157,6 +162,47 @@
 				D98DC3122A148C30006660FA /* Info.plist */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		D98DC3422A14CC69006660FA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D98DC3432A14CC72006660FA /* BookInformationDTO */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D98DC3432A14CC72006660FA /* BookInformationDTO */ = {
+			isa = PBXGroup;
+			children = (
+				D98DC3442A14CC7A006660FA /* Request */,
+				D98DC3462A14CC82006660FA /* Response */,
+			);
+			path = BookInformationDTO;
+			sourceTree = "<group>";
+		};
+		D98DC3442A14CC7A006660FA /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		D98DC3462A14CC82006660FA /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				D98DC3472A14CCA4006660FA /* BestSeller */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		D98DC3472A14CCA4006660FA /* BestSeller */ = {
+			isa = PBXGroup;
+			children = (
+				D98DC3482A14CCAC006660FA /* BestSeller.swift */,
+				D98DC34A2A14CCBB006660FA /* Item.swift */,
+			);
+			path = BestSeller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +336,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D98DC34B2A14CCBB006660FA /* Item.swift in Sources */,
+				D98DC3492A14CCAC006660FA /* BestSeller.swift in Sources */,
 				D98DC3092A148C30006660FA /* ViewController.swift in Sources */,
 				D98DC3052A148C30006660FA /* AppDelegate.swift in Sources */,
 				D98DC3072A148C30006660FA /* SceneDelegate.swift in Sources */,
