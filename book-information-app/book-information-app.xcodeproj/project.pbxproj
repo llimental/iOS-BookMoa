@@ -99,13 +99,10 @@
 		D98DC3032A148C30006660FA /* book-information-app */ = {
 			isa = PBXGroup;
 			children = (
-				D98DC3042A148C30006660FA /* AppDelegate.swift */,
-				D98DC3062A148C30006660FA /* SceneDelegate.swift */,
-				D98DC3082A148C30006660FA /* ViewController.swift */,
-				D98DC30A2A148C30006660FA /* Main.storyboard */,
-				D98DC30D2A148C30006660FA /* Assets.xcassets */,
-				D98DC30F2A148C30006660FA /* LaunchScreen.storyboard */,
-				D98DC3122A148C30006660FA /* Info.plist */,
+				D98DC3362A148E01006660FA /* App */,
+				D98DC3352A148DEC006660FA /* UI */,
+				D98DC3342A148DCC006660FA /* Presentation */,
+				D98DC3372A148E49006660FA /* Configuration */,
 			);
 			path = "book-information-app";
 			sourceTree = "<group>";
@@ -125,6 +122,41 @@
 				D98DC3272A148C31006660FA /* book_information_appUITestsLaunchTests.swift */,
 			);
 			path = "book-information-appUITests";
+			sourceTree = "<group>";
+		};
+		D98DC3342A148DCC006660FA /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				D98DC3082A148C30006660FA /* ViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		D98DC3352A148DEC006660FA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D98DC30A2A148C30006660FA /* Main.storyboard */,
+				D98DC30F2A148C30006660FA /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		D98DC3362A148E01006660FA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D98DC3042A148C30006660FA /* AppDelegate.swift */,
+				D98DC3062A148C30006660FA /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D98DC3372A148E49006660FA /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				D98DC30D2A148C30006660FA /* Assets.xcassets */,
+				D98DC3122A148C30006660FA /* Info.plist */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
