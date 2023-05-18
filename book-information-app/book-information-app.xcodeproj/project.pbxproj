@@ -19,6 +19,7 @@
 		D98DC3492A14CCAC006660FA /* BestSeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC3482A14CCAC006660FA /* BestSeller.swift */; };
 		D98DC34B2A14CCBB006660FA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC34A2A14CCBB006660FA /* Item.swift */; };
 		D98DC34D2A15BFEB006660FA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC34C2A15BFEB006660FA /* Category.swift */; };
+		D98DC3502A15C8E5006660FA /* BestSeller.json in Resources */ = {isa = PBXBuildFile; fileRef = D98DC34F2A15C8E5006660FA /* BestSeller.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		D98DC3482A14CCAC006660FA /* BestSeller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSeller.swift; sourceTree = "<group>"; };
 		D98DC34A2A14CCBB006660FA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D98DC34C2A15BFEB006660FA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		D98DC34F2A15C8E5006660FA /* BestSeller.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BestSeller.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		D98DC31A2A148C30006660FA /* book-information-appTests */ = {
 			isa = PBXGroup;
 			children = (
+				D98DC34E2A15C833006660FA /* MockData */,
 				D98DC31B2A148C30006660FA /* book_information_appTests.swift */,
 			);
 			path = "book-information-appTests";
@@ -206,6 +209,14 @@
 				D98DC34A2A14CCBB006660FA /* Item.swift */,
 			);
 			path = BestSeller;
+			sourceTree = "<group>";
+		};
+		D98DC34E2A15C833006660FA /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				D98DC34F2A15C8E5006660FA /* BestSeller.json */,
+			);
+			path = MockData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D98DC3502A15C8E5006660FA /* BestSeller.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
