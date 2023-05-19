@@ -10,6 +10,7 @@
 		D91120F52A170C69004E5C45 /* CommonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91120F42A170C69004E5C45 /* CommonParameters.swift */; };
 		D91120F72A1716DD004E5C45 /* HTTPMethodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91120F62A1716DD004E5C45 /* HTTPMethodType.swift */; };
 		D91120FA2A17338C004E5C45 /* URLComponentsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91120F92A17338C004E5C45 /* URLComponentsError.swift */; };
+		D91120FC2A173E4C004E5C45 /* APIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91120FB2A173E4C004E5C45 /* APIEndPoint.swift */; };
 		D98DC3052A148C30006660FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC3042A148C30006660FA /* AppDelegate.swift */; };
 		D98DC3072A148C30006660FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC3062A148C30006660FA /* SceneDelegate.swift */; };
 		D98DC3092A148C30006660FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC3082A148C30006660FA /* ViewController.swift */; };
@@ -52,6 +53,7 @@
 		D91120F42A170C69004E5C45 /* CommonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonParameters.swift; sourceTree = "<group>"; };
 		D91120F62A1716DD004E5C45 /* HTTPMethodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethodType.swift; sourceTree = "<group>"; };
 		D91120F92A17338C004E5C45 /* URLComponentsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponentsError.swift; sourceTree = "<group>"; };
+		D91120FB2A173E4C004E5C45 /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
 		D98DC3012A148C30006660FA /* book-information-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "book-information-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D98DC3042A148C30006660FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D98DC3062A148C30006660FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				D91120F82A173380004E5C45 /* Error */,
 				D9D98D312A161A1D00A6CFE6 /* Query */,
 				D9D98D382A161A8E00A6CFE6 /* EndPoint */,
+				D91120FB2A173E4C004E5C45 /* APIEndPoint.swift */,
 				D9D98D2D2A1613A700A6CFE6 /* NetworkService.swift */,
 			);
 			path = Network;
@@ -417,6 +420,7 @@
 				D98DC3492A14CCAC006660FA /* BestSeller.swift in Sources */,
 				D9D98D302A1613E700A6CFE6 /* EndPoint.swift in Sources */,
 				D98DC3092A148C30006660FA /* ViewController.swift in Sources */,
+				D91120FC2A173E4C004E5C45 /* APIEndPoint.swift in Sources */,
 				D9D98D3C2A161AA500A6CFE6 /* Responsable.swift in Sources */,
 				D98DC3052A148C30006660FA /* AppDelegate.swift in Sources */,
 				D9D98D332A161A2300A6CFE6 /* Basic.swift in Sources */,
