@@ -8,5 +8,7 @@
 import Foundation
 
 enum ItemList {
-    
+    static let requestType: String = "ItemList.aspx?"
+    static let queryType: String = "QueryType="
+    static let bestSeller: String = "bestseller"
 }
