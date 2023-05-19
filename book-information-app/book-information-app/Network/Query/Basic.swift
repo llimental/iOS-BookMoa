@@ -9,8 +9,16 @@ import Foundation
 
 enum Basic {
     static let baseURL: String = "http://www.aladin.co.kr/ttb/api/"
-    static let keyParameter: String = "ttbkey="
+    static let keyParameter: String = "ttbkey"
     static let key: String = ""
-    static let output: String = "output=js"
-    static let apiVersion: String = "Version=20131101"
+    static let output: String = "output"
+    static let apiVersion: String = "Version"
+}
+
+enum OutputType: String {
+    case json = "js"
+}
+
+enum APIVersion: String {
+    case versionNumber = "20131101"
 }

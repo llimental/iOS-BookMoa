@@ -8,6 +8,6 @@
 import Foundation
 
 enum CommonParameters {
-    static let maxResults: String = "MaxResults=10"
-    static let searchTarget: String = "SearchTarget=book"
+    static let maxResults: String = "MaxResults"
+    static let searchTarget: String = "SearchTarget"
 }
