@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D91120F52A170C69004E5C45 /* CommonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91120F42A170C69004E5C45 /* CommonParameters.swift */; };
 		D98DC3052A148C30006660FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC3042A148C30006660FA /* AppDelegate.swift */; };
 		D98DC3072A148C30006660FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC3062A148C30006660FA /* SceneDelegate.swift */; };
 		D98DC3092A148C30006660FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC3082A148C30006660FA /* ViewController.swift */; };
@@ -24,7 +25,6 @@
 		D9D98D302A1613E700A6CFE6 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D98D2F2A1613E700A6CFE6 /* EndPoint.swift */; };
 		D9D98D332A161A2300A6CFE6 /* Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D98D322A161A2300A6CFE6 /* Basic.swift */; };
 		D9D98D352A161A3D00A6CFE6 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D98D342A161A3D00A6CFE6 /* ItemList.swift */; };
-		D9D98D372A161A5F00A6CFE6 /* APIMagicLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D98D362A161A5F00A6CFE6 /* APIMagicLiteral.swift */; };
 		D9D98D3A2A161A9F00A6CFE6 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D98D392A161A9F00A6CFE6 /* Requestable.swift */; };
 		D9D98D3C2A161AA500A6CFE6 /* Responsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D98D3B2A161AA500A6CFE6 /* Responsable.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D91120F42A170C69004E5C45 /* CommonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonParameters.swift; sourceTree = "<group>"; };
 		D98DC3012A148C30006660FA /* book-information-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "book-information-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D98DC3042A148C30006660FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D98DC3062A148C30006660FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		D9D98D2F2A1613E700A6CFE6 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		D9D98D322A161A2300A6CFE6 /* Basic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basic.swift; sourceTree = "<group>"; };
 		D9D98D342A161A3D00A6CFE6 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
-		D9D98D362A161A5F00A6CFE6 /* APIMagicLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMagicLiteral.swift; sourceTree = "<group>"; };
 		D9D98D392A161A9F00A6CFE6 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		D9D98D3B2A161AA500A6CFE6 /* Responsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responsable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -249,7 +249,7 @@
 			children = (
 				D9D98D322A161A2300A6CFE6 /* Basic.swift */,
 				D9D98D342A161A3D00A6CFE6 /* ItemList.swift */,
-				D9D98D362A161A5F00A6CFE6 /* APIMagicLiteral.swift */,
+				D91120F42A170C69004E5C45 /* CommonParameters.swift */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -396,7 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9D98D372A161A5F00A6CFE6 /* APIMagicLiteral.swift in Sources */,
+				D91120F52A170C69004E5C45 /* CommonParameters.swift in Sources */,
 				D98DC34B2A14CCBB006660FA /* Item.swift in Sources */,
 				D98DC3492A14CCAC006660FA /* BestSeller.swift in Sources */,
 				D9D98D302A1613E700A6CFE6 /* EndPoint.swift in Sources */,
