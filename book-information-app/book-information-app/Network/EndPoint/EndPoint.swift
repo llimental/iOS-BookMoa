@@ -7,7 +7,9 @@
 
 import Foundation
 
-final class EndPoint<R>: Requestable, Responsable {
+protocol RequestableAndResponsable: Requestable, Responsable { }
+
+final class EndPoint<R>: RequestableAndResponsable {
     typealias Response = R
 
     var methodType: HTTPMethodType

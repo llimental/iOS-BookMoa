@@ -18,6 +18,7 @@ protocol Requestable {
 }
 
 extension Requestable {
+
     // MARK: - Public Functions
 
     func receiveURLRequest() throws -> URLRequest {
