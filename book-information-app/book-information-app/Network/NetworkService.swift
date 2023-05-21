@@ -19,7 +19,7 @@ final class NetworkService {
 
     func receiveBestSellerData() {
         Task {
-            let networkResult = try await requestData(with: APIEndPoint.receiveBestSeller())
+            let networkResult = try await requestData(with: BestSellerEndPoint())
             print(networkResult)
         }
     }
@@ -27,7 +27,7 @@ final class NetworkService {
     // MARK: - Private Functions
     
     private func requestData<D: Decodable, R: RequestableAndResponsable>(with endPoint: R) async throws -> D where R.Response == D {
-        let urlRequest = try endPoint.receiveURLRequest()
+        let urlRequest = try endPoint.makeURLRequest()
 
         let (data, response) = try await session.data(for: urlRequest)
 
