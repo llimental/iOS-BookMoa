@@ -54,6 +54,7 @@
 		D91120FD2A17442F004E5C45 /* HTTPErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPErrorType.swift; sourceTree = "<group>"; };
 		D91120FF2A1A0795004E5C45 /* BookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAPI.swift; sourceTree = "<group>"; };
 		D91121022A1A1349004E5C45 /* RequestableAndResponsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestableAndResponsable.swift; sourceTree = "<group>"; };
+		D91121042A1A490F004E5C45 /* SettingValue.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SettingValue.xcconfig; sourceTree = "<group>"; };
 		D98DC3012A148C30006660FA /* book-information-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "book-information-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D98DC3042A148C30006660FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D98DC3062A148C30006660FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +204,7 @@
 			children = (
 				D98DC30D2A148C30006660FA /* Assets.xcassets */,
 				D98DC3122A148C30006660FA /* Info.plist */,
+				D91121042A1A490F004E5C45 /* SettingValue.xcconfig */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -604,6 +606,7 @@
 		};
 		D98DC32C2A148C31006660FA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D91121042A1A490F004E5C45 /* SettingValue.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -634,6 +637,7 @@
 		};
 		D98DC32D2A148C31006660FA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D91121042A1A490F004E5C45 /* SettingValue.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

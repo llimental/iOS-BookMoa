@@ -27,7 +27,7 @@ enum BookAPI {
 
     var query: [URLQueryItem] {
         var queryItems = [URLQueryItem]()
-        let keyParameter = URLQueryItem(name: "ttbkey", value: "")
+        let keyParameter = URLQueryItem(name: "ttbkey", value: getAPIKey())
         let outputParameter = URLQueryItem(name: "output", value: "js")
         let apiVersionParameter = URLQueryItem(name: "Version", value: "20131101")
 
@@ -39,5 +39,11 @@ enum BookAPI {
         }
 
         return queryItems
+    }
+
+    private func getAPIKey() -> String {
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "BookAPIKey") as? String else { return "" }
+
+        return apiKey
     }
 }

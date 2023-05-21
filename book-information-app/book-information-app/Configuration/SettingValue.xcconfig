@@ -1,0 +1,11 @@
+//
+//  SettingValue.xcconfig
+//  book-information-app
+//
+//  Created by 이상윤 on 2023/05/21.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+BOOK_API_KEY = 
