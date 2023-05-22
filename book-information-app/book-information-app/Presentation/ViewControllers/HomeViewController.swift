@@ -27,7 +27,6 @@ final class HomeViewController: UIViewController {
 
     func applySnapshot(with data: [HomeController.Book]) {
         DispatchQueue.main.async {
-            self.snapshot.appendSections([HomeController.BestSeller(title: "지금 인기있는 책들", books: data)])
             self.snapshot.appendItems(data)
             self.dataSource.apply(self.snapshot)
         }
@@ -58,6 +57,14 @@ extension HomeViewController {
             section.orthogonalScrollingBehavior = .groupPaging
             section.interGroupSpacing = 20
             section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+
+            let titleSupplementarySize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                   heightDimension: .estimated(44))
+            let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSupplementarySize,
+                                                                                 elementKind: HomeViewController.titleElementKind,
+                                                                                 alignment: .top)
+
+            section.boundarySupplementaryItems = [titleSupplementary]
 
             return section
         }
@@ -99,9 +106,20 @@ extension HomeViewController {
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: book)
         }
 
+        let supplementaryViewRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: HomeViewController.titleElementKind) { (supplementaryView, _, indexPath) in
+            if let snapshot = self.snapshot {
+                let bookSection = snapshot.sectionIdentifiers[indexPath.section]
+                supplementaryView.titleLabel.text = bookSection.section
+            }
+        }
+
+        dataSource.supplementaryViewProvider = { (_, _, index) in
+            return self.collectionView.dequeueConfiguredReusableSupplementary(using: supplementaryViewRegistration, for: index)
+        }
+
         snapshot = NSDiffableDataSourceSnapshot<HomeController.BestSeller, HomeController.Book>()
 
-        snapshot.appendSections([HomeController.BestSeller(title: "지금 인기있는 책들", books: nil)])
+        snapshot.appendSections([HomeController.BestSeller(section: "지금 인기있는 책들", books: nil)])
         snapshot.appendItems([])
         dataSource.apply(snapshot, animatingDifferences: true)
     }

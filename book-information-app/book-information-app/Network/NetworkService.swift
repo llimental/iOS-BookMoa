@@ -17,10 +17,10 @@ final class NetworkService {
 
     // MARK: - Public Functions
 
-    func receiveBestSellerData() {
+    func receiveBestSellerData(completion: @escaping ([Item]) -> Void) {
         Task {
-            let networkResult = try await requestData(with: BestSellerEndPoint())
-            print(networkResult)
+            let networkResult = try await requestData(with: BestSellerEndPoint()).item
+            completion(networkResult)
         }
     }
     

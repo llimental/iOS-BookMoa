@@ -19,7 +19,7 @@ final class HomeController {
     }
 
     struct BestSeller: Hashable {
-        let title: String
+        let section: String
         let books: [Book]?
         let identifier = UUID()
 
