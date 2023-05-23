@@ -28,19 +28,18 @@ final class HomeViewController: UIViewController {
 
             let bookImages = try await networkService.requestImage(with: networkResults)
 
-            var bestSellerList: [HomeController.Book] = []
-
             for (networkResult, bookImage) in zip(networkResults, bookImages) {
-                bestSellerList.append(HomeController.Book(title: networkResult.title, author: networkResult.author, cover: bookImage))
+                let book = HomeController.Book(title: networkResult.title, author: networkResult.author, cover: bookImage)
+                if !snapshot.itemIdentifiers.contains(book) {
+                    snapshot.appendItems([book])
+                }
             }
-
-            applySnapshot(with: bestSellerList)
+            applySnapshot()
         }
     }
 
-    private func applySnapshot(with data: [HomeController.Book]) {
+    private func applySnapshot() {
         DispatchQueue.main.async {
-            self.snapshot.appendItems(data)
             self.dataSource.apply(self.snapshot)
         }
     }
@@ -75,7 +74,7 @@ extension HomeViewController {
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0 / 2.5),
-                                                   heightDimension: .fractionalHeight(1.0 / 2.5))
+                                                   heightDimension: .fractionalHeight(0.8 / 2.5))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
             let section = NSCollectionLayoutSection(group: group)
@@ -147,7 +146,7 @@ extension HomeViewController {
 
         snapshot.appendSections([HomeController.BestSeller(section: MagicLiteral.bestSellerSection, books: nil)])
         snapshot.appendItems([])
-        dataSource.apply(snapshot, animatingDifferences: true)
+        applySnapshot()
     }
 
     private func configureRefreshControl() {
@@ -157,6 +156,8 @@ extension HomeViewController {
     }
 
     @objc private func handleRefreshControl() {
+        loadData()
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.collectionView.refreshControl?.endRefreshing()
         }
