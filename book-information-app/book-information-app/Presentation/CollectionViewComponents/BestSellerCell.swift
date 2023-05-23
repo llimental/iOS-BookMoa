@@ -45,11 +45,12 @@ extension BestSellerCell {
 
         booktitleLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         booktitleLabel.adjustsFontForContentSizeCategory = true
+        booktitleLabel.textColor = .white
         booktitleLabel.textAlignment = .center
 
         bookAuthorLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         bookAuthorLabel.adjustsFontForContentSizeCategory = true
-        bookAuthorLabel.textColor = .gray
+        bookAuthorLabel.textColor = .darkGray
         bookAuthorLabel.textAlignment = .center
 
         NSLayoutConstraint.activate([
