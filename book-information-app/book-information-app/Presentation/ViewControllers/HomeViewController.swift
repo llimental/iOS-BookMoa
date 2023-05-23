@@ -28,20 +28,21 @@ final class HomeViewController: UIViewController {
 
             let bookImages = try await networkService.requestImage(with: networkResults)
 
+            var bookList: [HomeController.Book] = []
+
             for (networkResult, bookImage) in zip(networkResults, bookImages) {
                 let book = HomeController.Book(title: networkResult.title, author: networkResult.author, cover: bookImage)
-                if !snapshot.itemIdentifiers.contains(book) {
-                    snapshot.appendItems([book])
-                }
+                bookList.append(book)
             }
-            applySnapshot()
+            applySnapshot(with: bookList)
         }
     }
 
-    private func applySnapshot() {
-        DispatchQueue.main.async {
-            self.dataSource.apply(self.snapshot)
-        }
+    private func applySnapshot(with bookList: [HomeController.Book]) {
+        var snapshot = NSDiffableDataSourceSnapshot<HomeController.BestSeller, HomeController.Book>()
+        snapshot.appendSections([HomeController.BestSeller(section: MagicLiteral.bestSellerSection, books: nil)])
+        snapshot.appendItems(bookList)
+        self.dataSource.apply(snapshot, animatingDifferences: true)
     }
 
     private func configureGradientLayer() {
@@ -146,7 +147,7 @@ extension HomeViewController {
 
         snapshot.appendSections([HomeController.BestSeller(section: MagicLiteral.bestSellerSection, books: nil)])
         snapshot.appendItems([])
-        applySnapshot()
+        dataSource.apply(snapshot)
     }
 
     private func configureRefreshControl() {
