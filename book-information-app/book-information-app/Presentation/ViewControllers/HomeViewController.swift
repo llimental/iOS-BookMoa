@@ -25,7 +25,9 @@ final class HomeViewController: UIViewController {
         }
     }
 
-    func applySnapshot(with data: [HomeController.Book]) {
+    // MARK: - Private Functions
+
+    private func applySnapshot(with data: [HomeController.Book]) {
         DispatchQueue.main.async {
             self.snapshot.appendItems(data)
             self.dataSource.apply(self.snapshot)
@@ -59,7 +61,7 @@ extension HomeViewController {
             section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
 
             let titleSupplementarySize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                   heightDimension: .estimated(44))
+                                                                heightDimension: .estimated(44))
             let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSupplementarySize,
                                                                                  elementKind: HomeViewController.titleElementKind,
                                                                                  alignment: .top)
@@ -119,7 +121,7 @@ extension HomeViewController {
 
         snapshot = NSDiffableDataSourceSnapshot<HomeController.BestSeller, HomeController.Book>()
 
-        snapshot.appendSections([HomeController.BestSeller(section: "지금 인기있는 책들", books: nil)])
+        snapshot.appendSections([HomeController.BestSeller(section: "지금 가장 인기있는 도서", books: nil)])
         snapshot.appendItems([])
         dataSource.apply(snapshot, animatingDifferences: true)
     }
