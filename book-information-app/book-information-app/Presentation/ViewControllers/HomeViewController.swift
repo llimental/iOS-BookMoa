@@ -15,13 +15,22 @@ final class HomeViewController: UIViewController {
 
         configureHierarchy()
         configureDataSource()
+        loadData()
+    }
 
-        let networkService = NetworkService()
-        networkService.receiveBestSellerData() { bestSellers in
-            let bestSellerList = bestSellers.map { bestSeller in
-                HomeController.Book(title: bestSeller.title, author: bestSeller.author)
+    private func loadData() {
+        Task {
+            let networkResults = try await networkService.requestData(with: BestSellerEndPoint()).item
+
+            let bookImages = try await networkService.requestImage(with: networkResults)
+
+            var bestSellerList: [HomeController.Book] = []
+
+            for (networkResult, bookImage) in zip(networkResults, bookImages) {
+                bestSellerList.append(HomeController.Book(title: networkResult.title, author: networkResult.author, cover: bookImage))
             }
-            self.applySnapshot(with: bestSellerList)
+
+            applySnapshot(with: bestSellerList)
         }
     }
 
@@ -39,6 +48,7 @@ final class HomeViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<HomeController.BestSeller, HomeController.Book>!
     private var snapshot: NSDiffableDataSourceSnapshot<HomeController.BestSeller, HomeController.Book>!
+    private let networkService = NetworkService()
 }
 
 // MARK: - CollectionView Layout
@@ -101,6 +111,7 @@ extension HomeViewController {
         let cellRegistration = UICollectionView.CellRegistration<BestSellerCell, HomeController.Book> { (cell, _, book) in
             cell.booktitleLabel.text = book.title
             cell.bookAuthorLabel.text = book.author
+            cell.bookImageView.image = book.cover
         }
 
         dataSource = UICollectionViewDiffableDataSource<HomeController.BestSeller, HomeController.Book>(collectionView: collectionView) {
