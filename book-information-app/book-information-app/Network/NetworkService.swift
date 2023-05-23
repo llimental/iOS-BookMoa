@@ -5,7 +5,7 @@
 //  Created by 이상윤 on 2023/05/18.
 //
 
-import Foundation
+import UIKit
 
 final class NetworkService {
 
@@ -14,19 +14,10 @@ final class NetworkService {
     init() {
         session = URLSession(configuration: .default)
     }
-
-    // MARK: - Public Functions
-
-    func receiveBestSellerData(completion: @escaping ([Item]) -> Void) {
-        Task {
-            let networkResult = try await requestData(with: BestSellerEndPoint()).item
-            completion(networkResult)
-        }
-    }
     
     // MARK: - Private Functions
     
-    private func requestData<D: Decodable, R: RequestableAndResponsable>(with endPoint: R) async throws -> D where R.Response == D {
+    func requestData<D: Decodable, R: RequestableAndResponsable>(with endPoint: R) async throws -> D where R.Response == D {
         let urlRequest = try endPoint.makeURLRequest()
 
         let (data, response) = try await session.data(for: urlRequest)
@@ -38,6 +29,28 @@ final class NetworkService {
         let decodedData: D = try decodeData(with: data)
 
         return decodedData
+    }
+
+    func requestImage(with items: [Item]) async throws -> [UIImage] {
+        var imageSet: [UIImage] = []
+
+        for item in items{
+            guard let url = URL(string: item.cover) else {
+                throw URLComponentsError.invalidComponent
+            }
+
+            let urlRequest = URLRequest(url: url)
+
+            let (data, response) = try await session.data(for: urlRequest)
+
+            if let httpResponse = response as? HTTPURLResponse, !(200...299).contains(httpResponse.statusCode) {
+                try verifyResponse(with: httpResponse)
+            }
+
+            imageSet.append(UIImage(data: data) ?? UIImage())
+        }
+
+        return imageSet
     }
 
     private func verifyResponse(with httpResponse: HTTPURLResponse) throws {
