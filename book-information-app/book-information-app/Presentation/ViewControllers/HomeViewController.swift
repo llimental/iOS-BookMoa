@@ -13,10 +13,13 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureGradientLayer()
         configureHierarchy()
         configureDataSource()
         loadData()
     }
+
+    // MARK: - Private Functions
 
     private func loadData() {
         Task {
@@ -34,8 +37,6 @@ final class HomeViewController: UIViewController {
         }
     }
 
-    // MARK: - Private Functions
-
     private func applySnapshot(with data: [HomeController.Book]) {
         DispatchQueue.main.async {
             self.snapshot.appendItems(data)
@@ -43,11 +44,22 @@ final class HomeViewController: UIViewController {
         }
     }
 
+    private func configureGradientLayer() {
+        gradientLayer.frame = view.frame
+        gradientLayer.colors = [UIColor.systemPurple.cgColor, UIColor.white.cgColor]
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.type = .axial
+
+        view.layer.addSublayer(gradientLayer)
+    }
+
     // MARK: - Private Properties
 
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<HomeController.BestSeller, HomeController.Book>!
     private var snapshot: NSDiffableDataSourceSnapshot<HomeController.BestSeller, HomeController.Book>!
+    private var gradientLayer = CAGradientLayer()
     private let networkService = NetworkService()
 }
 
@@ -96,7 +108,7 @@ extension HomeViewController {
     private func configureHierarchy() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .clear
 
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
@@ -132,7 +144,7 @@ extension HomeViewController {
 
         snapshot = NSDiffableDataSourceSnapshot<HomeController.BestSeller, HomeController.Book>()
 
-        snapshot.appendSections([HomeController.BestSeller(section: "지금 가장 인기있는 도서", books: nil)])
+        snapshot.appendSections([HomeController.BestSeller(section: "지금 가장 인기있는 도서 ✨", books: nil)])
         snapshot.appendItems([])
         dataSource.apply(snapshot, animatingDifferences: true)
     }
