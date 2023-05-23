@@ -9,7 +9,7 @@ import UIKit
 
 final class BestSellerCell: UICollectionViewCell {
 
-    static let reuseIdentifier = "bestseller-reuse-identifier"
+    static let reuseIdentifier = MagicLiteral.cellReuseIdentifier
 
     let bookStackView = UIStackView()
     let bookImageView = UIImageView()

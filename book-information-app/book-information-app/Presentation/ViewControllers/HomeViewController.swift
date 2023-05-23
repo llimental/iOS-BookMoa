@@ -8,7 +8,7 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
-    static let titleElementKind: String = "title-element-kind"
+    static let titleElementKind: String = MagicLiteral.titleElementKind
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,7 +145,7 @@ extension HomeViewController {
 
         snapshot = NSDiffableDataSourceSnapshot<HomeController.BestSeller, HomeController.Book>()
 
-        snapshot.appendSections([HomeController.BestSeller(section: "지금 가장 인기있는 도서 ✨", books: nil)])
+        snapshot.appendSections([HomeController.BestSeller(section: MagicLiteral.bestSellerSection, books: nil)])
         snapshot.appendItems([])
         dataSource.apply(snapshot, animatingDifferences: true)
     }

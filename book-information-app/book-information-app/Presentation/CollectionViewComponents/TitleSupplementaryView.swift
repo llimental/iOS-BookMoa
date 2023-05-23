@@ -9,7 +9,7 @@ import UIKit
 
 final class TitleSupplementaryView: UICollectionReusableView {
     let titleLabel = UILabel()
-    static let reuseIdentifier = "title-supplementary-reuse-identifier"
+    static let reuseIdentifier = MagicLiteral.supplementaryReuseIdentifier
 
     override init(frame: CGRect) {
         super.init(frame: frame)
