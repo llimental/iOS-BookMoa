@@ -16,6 +16,7 @@ final class HomeViewController: UIViewController {
         configureGradientLayer()
         configureHierarchy()
         configureDataSource()
+        configureRefreshControl()
         loadData()
     }
 
@@ -102,7 +103,7 @@ extension HomeViewController {
     }
 }
 
-// MARK: - Configure Hierarchy & DataSource
+// MARK: - Configure CollectionView (Hierarchy & DataSource & RefreshControl)
 
 extension HomeViewController {
     private func configureHierarchy() {
@@ -147,5 +148,17 @@ extension HomeViewController {
         snapshot.appendSections([HomeController.BestSeller(section: "지금 가장 인기있는 도서 ✨", books: nil)])
         snapshot.appendItems([])
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+
+    private func configureRefreshControl() {
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.attributedTitle = NSAttributedString(string: MagicLiteral.refreshControlTitle)
+        collectionView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+
+    @objc private func handleRefreshControl() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.collectionView.refreshControl?.endRefreshing()
+        }
     }
 }
