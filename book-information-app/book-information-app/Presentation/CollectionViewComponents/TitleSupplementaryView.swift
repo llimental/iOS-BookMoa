@@ -8,7 +8,10 @@
 import UIKit
 
 final class TitleSupplementaryView: UICollectionReusableView {
+    let titleStackView = UIStackView()
     let titleLabel = UILabel()
+    let disclosureImageView = UIImageView()
+
     static let reuseIdentifier = MagicLiteral.supplementaryReuseIdentifier
 
     override init(frame: CGRect) {
@@ -23,18 +26,25 @@ final class TitleSupplementaryView: UICollectionReusableView {
 
 extension TitleSupplementaryView {
     private func configure() {
-        addSubview(titleLabel)
+        addSubview(titleStackView)
+        titleStackView.addArrangedSubview(titleLabel)
+        titleStackView.addArrangedSubview(disclosureImageView)
 
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleStackView.translatesAutoresizingMaskIntoConstraints = false
+        titleStackView.axis = .horizontal
+
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.textColor = .white
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
 
+        disclosureImageView.image = UIImage(systemName: "chevron.right")
+        disclosureImageView.tintColor = .yellow
+
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
+            titleStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            titleStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            titleStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            titleStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
         ])
     }
 }
