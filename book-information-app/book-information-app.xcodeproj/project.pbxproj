@@ -257,17 +257,9 @@
 			isa = PBXGroup;
 			children = (
 				D98DC34C2A15BFEB006660FA /* Category.swift */,
-				D98DC3442A14CC7A006660FA /* Request */,
 				D98DC3462A14CC82006660FA /* Response */,
 			);
 			path = BookInformationDTO;
-			sourceTree = "<group>";
-		};
-		D98DC3442A14CC7A006660FA /* Request */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Request;
 			sourceTree = "<group>";
 		};
 		D98DC3462A14CC82006660FA /* Response */ = {
