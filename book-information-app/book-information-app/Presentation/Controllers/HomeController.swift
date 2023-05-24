@@ -9,30 +9,31 @@ import UIKit
 
 final class HomeController {
     struct Book: Hashable {
+        let identifier = UUID()
         let title: String
         let author: String
         let cover: UIImage
 
         func hash(into hasher: inout Hasher) {
-            hasher.combine(title)
-            hasher.combine(author)
+            hasher.combine(identifier)
         }
 
         static func == (lhs: HomeController.Book, rhs: HomeController.Book) -> Bool {
-            return lhs.title == rhs.title && lhs.author == rhs.author
+            return lhs.identifier == rhs.identifier
         }
     }
 
     struct BestSeller: Hashable {
+        let identifier = UUID()
         let section: String
         let books: [Book]?
 
         func hash(into hasher: inout Hasher) {
-            hasher.combine(section)
+            hasher.combine(identifier)
         }
 
         static func == (lhs: HomeController.BestSeller, rhs: HomeController.BestSeller) -> Bool {
-            return lhs.section == rhs.section
+            return lhs.identifier == rhs.identifier
         }
     }
 }
