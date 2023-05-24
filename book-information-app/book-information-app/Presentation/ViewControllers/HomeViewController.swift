@@ -39,8 +39,8 @@ final class HomeViewController: UIViewController {
     }
 
     private func applySnapshot(with bookList: [HomeController.Book]) {
-        var snapshot = NSDiffableDataSourceSnapshot<HomeController.BestSeller, HomeController.Book>()
-        snapshot.appendSections([HomeController.BestSeller(section: MagicLiteral.bestSellerSection, books: nil)])
+        var snapshot = NSDiffableDataSourceSnapshot<HomeController.Section, HomeController.Book>()
+        snapshot.appendSections([HomeController.Section.bestSeller])
         snapshot.appendItems(bookList)
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
@@ -58,8 +58,8 @@ final class HomeViewController: UIViewController {
     // MARK: - Private Properties
 
     private var collectionView: UICollectionView!
-    private var dataSource: UICollectionViewDiffableDataSource<HomeController.BestSeller, HomeController.Book>!
-    private var snapshot: NSDiffableDataSourceSnapshot<HomeController.BestSeller, HomeController.Book>!
+    private var dataSource: UICollectionViewDiffableDataSource<HomeController.Section, HomeController.Book>!
+    private var snapshot: NSDiffableDataSourceSnapshot<HomeController.Section, HomeController.Book>!
     private var gradientLayer = CAGradientLayer()
     private let networkService = NetworkService()
 }
@@ -127,7 +127,7 @@ extension HomeViewController {
             cell.bookImageView.image = book.cover
         }
 
-        dataSource = UICollectionViewDiffableDataSource<HomeController.BestSeller, HomeController.Book>(collectionView: collectionView) {
+        dataSource = UICollectionViewDiffableDataSource<HomeController.Section, HomeController.Book>(collectionView: collectionView) {
             (collectionView: UICollectionView, indexPath: IndexPath, book: HomeController.Book) -> BestSellerCell? in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: book)
         }
@@ -135,7 +135,7 @@ extension HomeViewController {
         let supplementaryViewRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: HomeViewController.titleElementKind) { (supplementaryView, _, indexPath) in
             if let snapshot = self.snapshot {
                 let bookSection = snapshot.sectionIdentifiers[indexPath.section]
-                supplementaryView.titleLabel.text = bookSection.section
+                supplementaryView.titleLabel.text = bookSection.rawValue
             }
         }
 
@@ -143,9 +143,9 @@ extension HomeViewController {
             return self.collectionView.dequeueConfiguredReusableSupplementary(using: supplementaryViewRegistration, for: index)
         }
 
-        snapshot = NSDiffableDataSourceSnapshot<HomeController.BestSeller, HomeController.Book>()
+        snapshot = NSDiffableDataSourceSnapshot<HomeController.Section, HomeController.Book>()
 
-        snapshot.appendSections([HomeController.BestSeller(section: MagicLiteral.bestSellerSection, books: nil)])
+        snapshot.appendSections([HomeController.Section.bestSeller, HomeController.Section.category])
         snapshot.appendItems([])
         dataSource.apply(snapshot)
     }
