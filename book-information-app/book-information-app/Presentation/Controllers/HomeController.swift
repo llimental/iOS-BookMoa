@@ -8,6 +8,11 @@
 import UIKit
 
 final class HomeController {
+    enum Section: String, CaseIterable {
+        case bestSeller = "지금 가장 인기있는 도서 ✨"
+        case category = "장르별 찾기 🔍"
+    }
+
     struct Book: Hashable {
         let identifier = UUID()
         let title: String
@@ -19,20 +24,6 @@ final class HomeController {
         }
 
         static func == (lhs: HomeController.Book, rhs: HomeController.Book) -> Bool {
-            return lhs.identifier == rhs.identifier
-        }
-    }
-
-    struct BestSeller: Hashable {
-        let identifier = UUID()
-        let section: String
-        let books: [Book]?
-
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(identifier)
-        }
-
-        static func == (lhs: HomeController.BestSeller, rhs: HomeController.BestSeller) -> Bool {
             return lhs.identifier == rhs.identifier
         }
     }
