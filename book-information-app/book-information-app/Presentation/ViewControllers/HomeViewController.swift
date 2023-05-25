@@ -49,9 +49,11 @@ final class HomeViewController: UIViewController {
     }
 
     private func applySnapshot(with bookList: [HomeController.Book]) {
-        var snapshot = NSDiffableDataSourceSnapshot<HomeController.Section, HomeController.Book>()
-        snapshot.appendSections([HomeController.Section.bestSeller])
-        snapshot.appendItems(bookList)
+        var snapshot = NSDiffableDataSourceSnapshot<HomeController.Section, AnyHashable>()
+        snapshot.appendSections([HomeController.Section.bestSeller, HomeController.Section.category])
+        snapshot.appendItems(bookList, toSection: .bestSeller)
+        snapshot.appendItems(categoryList, toSection: .category)
+
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
 
