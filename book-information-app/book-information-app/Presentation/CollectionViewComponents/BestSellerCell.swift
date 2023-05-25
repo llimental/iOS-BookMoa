@@ -8,13 +8,13 @@
 import UIKit
 
 final class BestSellerCell: UICollectionViewCell {
+    static let reuseIdentifier = MagicLiteral.bestSellerReuseIdentifier
 
-    static let reuseIdentifier = MagicLiteral.cellReuseIdentifier
-
-    let bookStackView = UIStackView()
     let bookImageView = UIImageView()
     let booktitleLabel = UILabel()
     let bookAuthorLabel = UILabel()
+    
+    private let bookStackView = UIStackView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,7 +22,7 @@ final class BestSellerCell: UICollectionViewCell {
     }
 
     required init?(coder: NSCoder) {
-        fatalError()
+        super.init(coder: coder)
     }
 }
 
@@ -50,7 +50,7 @@ extension BestSellerCell {
 
         bookAuthorLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         bookAuthorLabel.adjustsFontForContentSizeCategory = true
-        bookAuthorLabel.textColor = .darkGray
+        bookAuthorLabel.textColor = .systemGray4
         bookAuthorLabel.textAlignment = .center
 
         NSLayoutConstraint.activate([
