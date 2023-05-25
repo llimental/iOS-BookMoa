@@ -8,7 +8,6 @@
 import Foundation
 
 enum MagicLiteral {
-    static let titleElementKind = "title-element-kind"
     static let refreshControlTitle = "데이터를 로딩중입니다. 잠시만 기다려 주세요."
     static let bestSellerReuseIdentifier = "bestseller-reuse-identifier"
     static let categoryReuseIdentifier = "category-reuse-identifier"

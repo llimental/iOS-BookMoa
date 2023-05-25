@@ -8,7 +8,6 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
-    static let titleElementKind: String = MagicLiteral.titleElementKind
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +115,7 @@ extension HomeViewController {
         let titleSupplementarySize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                             heightDimension: .estimated(44))
         let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSupplementarySize,
-                                                                             elementKind: HomeViewController.titleElementKind,
+                                                                             elementKind: UICollectionView.elementKindSectionHeader,
                                                                              alignment: .top)
 
         let section = NSCollectionLayoutSection(group: group)
@@ -142,7 +141,7 @@ extension HomeViewController {
         let titleSupplementarySize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                             heightDimension: .estimated(44))
         let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSupplementarySize,
-                                                                             elementKind: HomeViewController.titleElementKind,
+                                                                             elementKind: UICollectionView.elementKindSectionHeader,
                                                                              alignment: .top)
 
         let section = NSCollectionLayoutSection(group: group)
@@ -168,7 +167,7 @@ extension HomeViewController {
         collectionView.layer.cornerRadius = 15
         collectionView.register(BestSellerCell.self, forCellWithReuseIdentifier: BestSellerCell.reuseIdentifier)
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIdentifier)
-        collectionView.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: HomeViewController.titleElementKind, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier)
+        collectionView.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier)
 
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 135),
