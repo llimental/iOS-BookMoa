@@ -36,17 +36,17 @@ extension TitleSupplementaryView {
         titleStackView.axis = .horizontal
         
         titleLabel.adjustsFontForContentSizeCategory = true
-        titleLabel.textColor = .white
+        titleLabel.textColor = .black
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
 
         disclosureImageView.image = UIImage(systemName: "chevron.right")
-        disclosureImageView.tintColor = .yellow
+        disclosureImageView.tintColor = .black
 
         NSLayoutConstraint.activate([
-            titleStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            titleStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            titleStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            titleStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
+            titleStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            titleStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
+            titleStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
+            titleStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20)
         ])
     }
 }
