@@ -11,9 +11,9 @@ final class TitleSupplementaryView: UICollectionReusableView {
     static let reuseIdentifier = MagicLiteral.supplementaryReuseIdentifier
 
     let titleLabel = UILabel()
+    let disclosureImageView = UIImageView()
 
     private let titleStackView = UIStackView()
-    private let disclosureImageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,9 +38,6 @@ extension TitleSupplementaryView {
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.textColor = .black
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
-
-        disclosureImageView.image = UIImage(systemName: "chevron.right")
-        disclosureImageView.tintColor = .black
 
         NSLayoutConstraint.activate([
             titleStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),

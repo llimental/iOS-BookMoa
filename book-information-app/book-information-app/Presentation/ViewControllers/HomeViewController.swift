@@ -64,7 +64,7 @@ final class HomeViewController: UIViewController {
 
         backgroundTopView.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
         backgroundTopView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             backgroundTopView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundTopView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -218,6 +218,11 @@ extension HomeViewController {
             }
 
             supplementaryView.titleLabel.text = HomeController.Section.allCases[indexPath.section].rawValue
+
+            if indexPath.section == 0 {
+                supplementaryView.disclosureImageView.image = UIImage(systemName: "chevron.right")
+                supplementaryView.disclosureImageView.tintColor = .black
+            }
 
             return supplementaryView
         }
