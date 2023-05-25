@@ -149,10 +149,14 @@ extension HomeViewController {
 extension HomeViewController {
     private func configureHierarchy() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .clear
 
         view.addSubview(collectionView)
+
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .clear
+        collectionView.register(BestSellerCell.self, forCellWithReuseIdentifier: BestSellerCell.reuseIdentifier)
+        collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIdentifier)
+
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -162,16 +166,36 @@ extension HomeViewController {
     }
 
     private func configureDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration<BestSellerCell, HomeController.Book> { (cell, _, book) in
-            cell.booktitleLabel.text = book.title
-            cell.bookAuthorLabel.text = book.author
-            cell.bookImageView.image = book.cover
+        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) {
+            (collectionView, indexPath, item) -> UICollectionViewCell? in
+
+            let sectionType = HomeController.Section.allCases[indexPath.section]
+            switch sectionType {
+            case .bestSeller:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BestSellerCell.reuseIdentifier, for: indexPath) as? BestSellerCell else {
+                    return UICollectionViewCell()
+                }
+
+                if let bookItem = item as? HomeController.Book {
+                    cell.booktitleLabel.text = bookItem.title
+                    cell.bookAuthorLabel.text = bookItem.author
+                    cell.bookImageView.image = bookItem.cover
+                }
+
+                return cell
+            case .category:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reuseIdentifier, for: indexPath) as? CategoryCell else {
+                    return UICollectionViewCell()
+                }
+
+                if let categoryItem = item as? HomeController.Category {
+                    cell.categoryButton.setTitle(categoryItem.title, for: .normal)
+                }
+
+                return cell
+            }
         }
 
-        dataSource = UICollectionViewDiffableDataSource<HomeController.Section, HomeController.Book>(collectionView: collectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, book: HomeController.Book) -> BestSellerCell? in
-            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: book)
-        }
 
         let supplementaryViewRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: HomeViewController.titleElementKind) { (supplementaryView, _, indexPath) in
             if let snapshot = self.snapshot {
