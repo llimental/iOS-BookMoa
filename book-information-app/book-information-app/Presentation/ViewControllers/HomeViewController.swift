@@ -57,7 +57,7 @@ final class HomeViewController: UIViewController {
 
     private func configureGradientLayer() {
         gradientLayer.frame = view.frame
-        gradientLayer.colors = [UIColor.systemPurple.cgColor, UIColor.white.cgColor]
+        gradientLayer.colors = [UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00).cgColor, UIColor.white.cgColor]
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.type = .axial
