@@ -13,7 +13,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureGradientLayer()
+        configureBackgroundTopView()
         configureHierarchy()
         configureDataSource()
         configureRefreshControl()
@@ -57,14 +57,20 @@ final class HomeViewController: UIViewController {
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
 
-    private func configureGradientLayer() {
-        gradientLayer.frame = view.frame
-        gradientLayer.colors = [UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00).cgColor, UIColor.white.cgColor]
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        gradientLayer.type = .axial
+    private func configureBackgroundTopView() {
+        let backgroundTopView = UIView()
 
-        view.layer.addSublayer(gradientLayer)
+        view.addSubview(backgroundTopView)
+
+        backgroundTopView.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+        backgroundTopView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            backgroundTopView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundTopView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundTopView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundTopView.heightAnchor.constraint(equalToConstant: 300)
+        ])
     }
 
     // MARK: - Private Properties
@@ -72,7 +78,6 @@ final class HomeViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<HomeController.Section, AnyHashable>!
     private var snapshot: NSDiffableDataSourceSnapshot<HomeController.Section, AnyHashable>!
-    private var gradientLayer = CAGradientLayer()
     private var categoryList: [HomeController.Category] = []
     private let networkService = NetworkService()
 }
