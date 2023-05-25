@@ -17,10 +17,20 @@ final class HomeViewController: UIViewController {
         configureHierarchy()
         configureDataSource()
         configureRefreshControl()
+        setCategory()
         loadData()
     }
 
     // MARK: - Private Functions
+
+    private func setCategory() {
+        let sortedCategory = Category.categoryList.sorted { $0.key < $1.key }
+
+        for (_, categoryId) in sortedCategory {
+            let category = HomeController.Category(title: categoryId)
+            categoryList.append(category)
+        }
+    }
 
     private func loadData() {
         Task {
@@ -61,6 +71,7 @@ final class HomeViewController: UIViewController {
     private var dataSource: UICollectionViewDiffableDataSource<HomeController.Section, HomeController.Book>!
     private var snapshot: NSDiffableDataSourceSnapshot<HomeController.Section, HomeController.Book>!
     private var gradientLayer = CAGradientLayer()
+    private var categoryList: [HomeController.Category] = []
     private let networkService = NetworkService()
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 struct Category {
-    static let category: [Int: String] = [
+    static let categoryList: [Int: String] = [
         351: "컴퓨터/모바일",
         336: "자기계발",
         55889: "에세이",
