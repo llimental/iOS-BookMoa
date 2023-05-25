@@ -109,7 +109,7 @@ extension HomeViewController {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(128),
-                                               heightDimension: .absolute(206))
+                                               heightDimension: .estimated(215))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
         let titleSupplementarySize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -122,7 +122,7 @@ extension HomeViewController {
         section.orthogonalScrollingBehavior = .paging
         section.boundarySupplementaryItems = [titleSupplementary]
         section.interGroupSpacing = 16
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
 
         return section
     }
@@ -136,7 +136,6 @@ extension HomeViewController {
                                                heightDimension: .absolute(60))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         group.interItemSpacing = NSCollectionLayoutSpacing.fixed(9.5)
-        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
 
         let titleSupplementarySize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                             heightDimension: .estimated(44))
@@ -147,7 +146,7 @@ extension HomeViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.boundarySupplementaryItems = [titleSupplementary]
         section.interGroupSpacing = 10
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
 
         return section
     }

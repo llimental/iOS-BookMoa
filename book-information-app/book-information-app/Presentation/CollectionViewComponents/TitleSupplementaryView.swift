@@ -43,8 +43,8 @@ extension TitleSupplementaryView {
 
         NSLayoutConstraint.activate([
             titleStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            titleStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
-            titleStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
+            titleStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            titleStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             titleStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20)
         ])
     }
