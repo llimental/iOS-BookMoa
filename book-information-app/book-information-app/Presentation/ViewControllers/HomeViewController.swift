@@ -79,38 +79,68 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController {
     private func createLayout() -> UICollectionViewLayout {
-        let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+        let layout = UICollectionViewCompositionalLayout{ (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
 
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                  heightDimension: .fractionalHeight(1.0))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0 / 2.5),
-                                                   heightDimension: .fractionalHeight(0.8 / 2.5))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-
-            let section = NSCollectionLayoutSection(group: group)
-            section.orthogonalScrollingBehavior = .groupPaging
-            section.interGroupSpacing = 20
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
-
-            let titleSupplementarySize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                                heightDimension: .estimated(44))
-            let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSupplementarySize,
-                                                                                 elementKind: HomeViewController.titleElementKind,
-                                                                                 alignment: .top)
-
-            section.boundarySupplementaryItems = [titleSupplementary]
-
-            return section
+            let sectionLayoutKind = HomeController.Section.allCases[sectionIndex]
+            switch sectionLayoutKind {
+            case .bestSeller: return self.createBestSellerLayout()
+            case .category: return self.createCategoryLayout()
+            }
         }
 
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
-        configuration.interSectionSpacing = 20
-
-        let layout = UICollectionViewCompositionalLayout(sectionProvider: sectionProvider, configuration: configuration)
+        configuration.interSectionSpacing = 10
+        layout.configuration = configuration
 
         return layout
+    }
+
+    private func createBestSellerLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(128),
+                                               heightDimension: .absolute(180))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
+        let titleSupplementarySize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                            heightDimension: .estimated(44))
+        let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSupplementarySize,
+                                                                             elementKind: HomeViewController.titleElementKind,
+                                                                             alignment: .top)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPaging
+        section.boundarySupplementaryItems = [titleSupplementary]
+        section.interGroupSpacing = 20
+        section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 30, bottom: 20, trailing: 30)
+
+        return section
+    }
+
+    private func createCategoryLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .absolute(60))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(9.5)
+
+        let titleSupplementarySize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                            heightDimension: .estimated(44))
+        let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSupplementarySize,
+                                                                             elementKind: HomeViewController.titleElementKind,
+                                                                             alignment: .top)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [titleSupplementary]
+        section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 30, bottom: 20, trailing: 30)
+        section.interGroupSpacing = 10
+
+        return section
     }
 }
 
