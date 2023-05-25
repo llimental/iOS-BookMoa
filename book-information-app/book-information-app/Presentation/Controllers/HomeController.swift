@@ -14,7 +14,6 @@ final class HomeController {
     }
 
     struct Book: Hashable {
-        let identifier = UUID()
         let title: String
         let author: String
         let cover: UIImage
@@ -26,5 +25,21 @@ final class HomeController {
         static func == (lhs: HomeController.Book, rhs: HomeController.Book) -> Bool {
             return lhs.identifier == rhs.identifier
         }
+
+        private let identifier = UUID()
+    }
+
+    struct Category: Hashable {
+        let title: String
+
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(identifier)
+        }
+
+        static func == (lhs: Category, rhs: Category) -> Bool {
+            return lhs.identifier == rhs.identifier
+        }
+
+        private let identifier = UUID()
     }
 }
