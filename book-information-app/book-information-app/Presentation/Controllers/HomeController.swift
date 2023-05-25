@@ -9,8 +9,8 @@ import UIKit
 
 final class HomeController {
     enum Section: String, CaseIterable {
-        case bestSeller = "지금 가장 인기있는 도서 ✨"
-        case category = "장르별 찾기 🔍"
+        case bestSeller = "지금 가장 인기있는 도서"
+        case category = "장르별 찾기"
     }
 
     struct Book: Hashable {

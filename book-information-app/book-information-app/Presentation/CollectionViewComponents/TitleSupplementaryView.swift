@@ -11,10 +11,11 @@ final class TitleSupplementaryView: UICollectionReusableView {
     static let reuseIdentifier = MagicLiteral.supplementaryReuseIdentifier
 
     let titleLabel = UILabel()
+    let titleDecorateImageView = UIImageView()
     let disclosureImageView = UIImageView()
 
     private let titleStackView = UIStackView()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -31,10 +32,11 @@ extension TitleSupplementaryView {
 
         addSubview(titleStackView)
         titleStackView.addArrangedSubview(titleLabel)
+        titleStackView.addArrangedSubview(titleDecorateImageView)
         titleStackView.addArrangedSubview(disclosureImageView)
 
         titleStackView.axis = .horizontal
-        
+
         titleLabel.adjustsFontForContentSizeCategory = true
         titleLabel.textColor = .black
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)

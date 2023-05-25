@@ -222,9 +222,13 @@ extension HomeViewController {
 
             supplementaryView.titleLabel.text = HomeController.Section.allCases[indexPath.section].rawValue
 
-            if indexPath.section == 0 {
+            switch indexPath.section {
+            case 0:
+                supplementaryView.titleDecorateImageView.image = UIImage(named: "StarIcon")
                 supplementaryView.disclosureImageView.image = UIImage(systemName: "chevron.right")
                 supplementaryView.disclosureImageView.tintColor = .black
+            default:
+                supplementaryView.titleDecorateImageView.image = UIImage(named: "SearchRefractionIcon")
             }
 
             return supplementaryView
