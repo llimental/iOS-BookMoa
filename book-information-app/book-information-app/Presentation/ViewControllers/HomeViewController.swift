@@ -160,6 +160,7 @@ extension HomeViewController {
 
         view.addSubview(collectionView)
 
+        collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .white
         collectionView.layer.cornerRadius = 15
@@ -244,6 +245,23 @@ extension HomeViewController {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.collectionView.refreshControl?.endRefreshing()
+        }
+    }
+}
+
+// MARK: - CollectionView Delegate
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCell {
+            cell.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+            cell.categoryLabel.textColor = .white
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCell {
+            cell.backgroundColor = UIColor(red: 0.87, green: 0.89, blue: 0.90, alpha: 1.00)
+            cell.categoryLabel.textColor = .black
         }
     }
 }
