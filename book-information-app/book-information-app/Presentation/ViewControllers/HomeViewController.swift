@@ -199,7 +199,7 @@ extension HomeViewController {
                 }
 
                 if let categoryItem = item as? HomeController.Category {
-                    cell.categoryButton.setTitle(categoryItem.title, for: .normal)
+                    cell.categoryLabel.text = categoryItem.title
                 }
 
                 return cell

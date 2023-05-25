@@ -10,7 +10,7 @@ import UIKit
 final class CategoryCell: UICollectionViewCell {
     static let reuseIdentifier = MagicLiteral.categoryReuseIdentifier
 
-    let categoryButton = UIButton()
+    let categoryLabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,19 +24,20 @@ final class CategoryCell: UICollectionViewCell {
 
 extension CategoryCell {
     private func configure() {
-        categoryButton.translatesAutoresizingMaskIntoConstraints = false
+        categoryLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        contentView.addSubview(categoryButton)
+        contentView.addSubview(categoryLabel)
 
-        categoryButton.layer.cornerRadius = 15
-        categoryButton.setTitleColor(.black, for: .normal)
-        categoryButton.backgroundColor = UIColor(red: 0.87, green: 0.89, blue: 0.90, alpha: 1.00)
+        categoryLabel.textAlignment = .center
+
+        self.backgroundColor = UIColor(red: 0.87, green: 0.89, blue: 0.90, alpha: 1.00)
+        self.layer.cornerRadius = 15
 
         NSLayoutConstraint.activate([
-            categoryButton.topAnchor.constraint(equalTo: contentView.topAnchor),
-            categoryButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            categoryButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            categoryButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            categoryLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            categoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            categoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            categoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 }
