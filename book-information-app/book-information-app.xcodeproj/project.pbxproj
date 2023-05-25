@@ -30,6 +30,7 @@
 		D98DC3502A15C8E5006660FA /* BestSeller.json in Resources */ = {isa = PBXBuildFile; fileRef = D98DC34F2A15C8E5006660FA /* BestSeller.json */; };
 		D9C483572A1C87B0008F3F3B /* MagicLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C483562A1C87B0008F3F3B /* MagicLiteral.swift */; };
 		D9C483592A1E280D008F3F3B /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C483582A1E280D008F3F3B /* CategoryCell.swift */; };
+		D9C4835F2A1F8C75008F3F3B /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C4835E2A1F8C75008F3F3B /* FavoriteViewController.swift */; };
 		D9D98D2E2A1613A700A6CFE6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D98D2D2A1613A700A6CFE6 /* NetworkService.swift */; };
 		D9D98D302A1613E700A6CFE6 /* BestSellerEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D98D2F2A1613E700A6CFE6 /* BestSellerEndPoint.swift */; };
 		D9D98D3A2A161A9F00A6CFE6 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D98D392A161A9F00A6CFE6 /* Requestable.swift */; };
@@ -82,6 +83,7 @@
 		D98DC34F2A15C8E5006660FA /* BestSeller.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BestSeller.json; sourceTree = "<group>"; };
 		D9C483562A1C87B0008F3F3B /* MagicLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicLiteral.swift; sourceTree = "<group>"; };
 		D9C483582A1E280D008F3F3B /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		D9C4835E2A1F8C75008F3F3B /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		D9D98D2D2A1613A700A6CFE6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D9D98D2F2A1613E700A6CFE6 /* BestSellerEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellerEndPoint.swift; sourceTree = "<group>"; };
 		D9D98D392A161A9F00A6CFE6 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				D98DC3082A148C30006660FA /* HomeViewController.swift */,
+				D9C4835E2A1F8C75008F3F3B /* FavoriteViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 			files = (
 				D91120FA2A17338C004E5C45 /* URLComponentsError.swift in Sources */,
 				D91121002A1A0795004E5C45 /* BookAPI.swift in Sources */,
+				D9C4835F2A1F8C75008F3F3B /* FavoriteViewController.swift in Sources */,
 				D91120F72A1716DD004E5C45 /* HTTPMethodType.swift in Sources */,
 				D911210D2A1BA331004E5C45 /* TitleSupplementaryView.swift in Sources */,
 				D98DC34B2A14CCBB006660FA /* Item.swift in Sources */,
@@ -576,7 +580,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -630,7 +634,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
