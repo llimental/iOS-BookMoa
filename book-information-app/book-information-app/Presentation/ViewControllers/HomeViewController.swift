@@ -68,8 +68,8 @@ final class HomeViewController: UIViewController {
     // MARK: - Private Properties
 
     private var collectionView: UICollectionView!
-    private var dataSource: UICollectionViewDiffableDataSource<HomeController.Section, HomeController.Book>!
-    private var snapshot: NSDiffableDataSourceSnapshot<HomeController.Section, HomeController.Book>!
+    private var dataSource: UICollectionViewDiffableDataSource<HomeController.Section, AnyHashable>!
+    private var snapshot: NSDiffableDataSourceSnapshot<HomeController.Section, AnyHashable>!
     private var gradientLayer = CAGradientLayer()
     private var categoryList: [HomeController.Category] = []
     private let networkService = NetworkService()
@@ -156,6 +156,7 @@ extension HomeViewController {
 
         snapshot = NSDiffableDataSourceSnapshot<HomeController.Section, HomeController.Book>()
 
+        snapshot = NSDiffableDataSourceSnapshot<HomeController.Section, AnyHashable>()
         snapshot.appendSections([HomeController.Section.bestSeller, HomeController.Section.category])
         snapshot.appendItems([])
         dataSource.apply(snapshot)
