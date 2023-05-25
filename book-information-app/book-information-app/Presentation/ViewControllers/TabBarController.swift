@@ -17,6 +17,10 @@ final class TabBarController: UITabBarController {
         homeTap.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "HomeIcon"), selectedImage: UIImage(named: "HomeIcon"))
         favoriteTap.tabBarItem = UITabBarItem(title: "즐겨찾기", image: UIImage(named: "FavoriteIcon"), selectedImage: UIImage(named: "FavoriteIcon"))
         self.viewControllers = [homeTap, favoriteTap]
+
+        tabBar.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+        tabBar.tintColor = .white
+        tabBar.unselectedItemTintColor = .systemGray2
     }
 }
 
