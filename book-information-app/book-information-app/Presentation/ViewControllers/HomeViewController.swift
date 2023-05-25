@@ -14,6 +14,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
+        
         configureBackgroundTopView()
         configureHierarchy()
         configureDataSource()
@@ -173,7 +174,7 @@ extension HomeViewController {
             collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 135),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
     }
 
