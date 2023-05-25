@@ -156,6 +156,7 @@ extension HomeViewController {
         collectionView.backgroundColor = .clear
         collectionView.register(BestSellerCell.self, forCellWithReuseIdentifier: BestSellerCell.reuseIdentifier)
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIdentifier)
+        collectionView.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: HomeViewController.titleElementKind, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier)
 
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -196,19 +197,21 @@ extension HomeViewController {
             }
         }
 
+        dataSource.supplementaryViewProvider = { (
+            collectionView: UICollectionView,
+            kind: String,
+            indexPath: IndexPath) -> UICollectionReusableView? in
 
-        let supplementaryViewRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: HomeViewController.titleElementKind) { (supplementaryView, _, indexPath) in
-            if let snapshot = self.snapshot {
-                let bookSection = snapshot.sectionIdentifiers[indexPath.section]
-                supplementaryView.titleLabel.text = bookSection.rawValue
+            guard let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                          withReuseIdentifier: TitleSupplementaryView.reuseIdentifier,
+                                                                                          for: indexPath) as? TitleSupplementaryView else {
+                return UICollectionReusableView()
             }
-        }
 
-        dataSource.supplementaryViewProvider = { (_, _, index) in
-            return self.collectionView.dequeueConfiguredReusableSupplementary(using: supplementaryViewRegistration, for: index)
-        }
+            supplementaryView.titleLabel.text = HomeController.Section.allCases[indexPath.section].rawValue
 
-        snapshot = NSDiffableDataSourceSnapshot<HomeController.Section, HomeController.Book>()
+            return supplementaryView
+        }
 
         snapshot = NSDiffableDataSourceSnapshot<HomeController.Section, AnyHashable>()
         snapshot.appendSections([HomeController.Section.bestSeller, HomeController.Section.category])
