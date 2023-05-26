@@ -94,11 +94,18 @@ final class HomeViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<HomeController.Section, AnyHashable>!
-    private var snapshot: NSDiffableDataSourceSnapshot<HomeController.Section, AnyHashable>!
+    private var snapshot = NSDiffableDataSourceSnapshot<HomeController.Section, AnyHashable>()
     private var categoryList: [HomeController.Category] = []
     private let networkService = NetworkService()
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+
+        collectionView.backgroundColor = .white
+        collectionView.layer.cornerRadius = 15
+
+        return collectionView
+    }()
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
 
@@ -197,15 +204,12 @@ extension HomeViewController {
 
 extension HomeViewController {
     private func configureHierarchy() {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-
         view.addSubview(collectionView)
         view.addSubview(activityIndicator)
 
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .white
-        collectionView.layer.cornerRadius = 15
+
         collectionView.register(BestSellerCell.self, forCellWithReuseIdentifier: BestSellerCell.reuseIdentifier)
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIdentifier)
         collectionView.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier)
@@ -274,7 +278,6 @@ extension HomeViewController {
             return supplementaryView
         }
 
-        snapshot = NSDiffableDataSourceSnapshot<HomeController.Section, AnyHashable>()
         snapshot.appendSections([HomeController.Section.bestSeller, HomeController.Section.category])
         snapshot.appendItems([])
         dataSource.apply(snapshot)
