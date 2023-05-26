@@ -13,7 +13,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        
+
         configureBackgroundTopView()
         configureHierarchy()
         configureDataSource()
@@ -34,6 +34,8 @@ final class HomeViewController: UIViewController {
     }
 
     private func loadData() {
+        activityIndicator.startAnimating()
+
         Task {
             let networkResults = try await networkService.requestData(with: BestSellerEndPoint()).item
 
@@ -54,6 +56,8 @@ final class HomeViewController: UIViewController {
         snapshot.appendSections([HomeController.Section.bestSeller, HomeController.Section.category])
         snapshot.appendItems(bookList, toSection: .bestSeller)
         snapshot.appendItems(categoryList, toSection: .category)
+        
+        activityIndicator.stopAnimating()
 
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
@@ -81,6 +85,19 @@ final class HomeViewController: UIViewController {
     private var snapshot: NSDiffableDataSourceSnapshot<HomeController.Section, AnyHashable>!
     private var categoryList: [HomeController.Category] = []
     private let networkService = NetworkService()
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        activityIndicator.center = self.view.center
+        activityIndicator.color = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .medium
+
+        activityIndicator.stopAnimating()
+
+        return activityIndicator
+    }()
 }
 
 // MARK: - CollectionView Layout
@@ -159,6 +176,7 @@ extension HomeViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
 
         view.addSubview(collectionView)
+        view.addSubview(activityIndicator)
 
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
