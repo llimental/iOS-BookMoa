@@ -223,10 +223,10 @@ extension HomeViewController {
             switch indexPath.section {
             case 0:
                 supplementaryView.titleDecorateImageView.image = UIImage(named: "StarIcon")
-                supplementaryView.disclosureImageView.image = UIImage(systemName: "chevron.right")
                 supplementaryView.disclosureImageView.tintColor = .black
             default:
                 supplementaryView.titleDecorateImageView.image = UIImage(named: "SearchRefractionIcon")
+                supplementaryView.disclosureImageView.tintColor = .white
             }
 
             return supplementaryView
