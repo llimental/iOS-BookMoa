@@ -126,6 +126,7 @@ final class HomeViewController: UIViewController {
         searchBar.backgroundImage = UIImage()
         searchBar.barTintColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
         searchBar.searchTextField.backgroundColor = .white
+        searchBar.searchTextField.leftView = UIImageView(image: UIImage(named: "SearchBarIcon"))
 
         return searchBar
     }()
