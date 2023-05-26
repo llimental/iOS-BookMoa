@@ -12,9 +12,10 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
 
         configureBackgroundTopView()
+        configureSearchBar()
         configureHierarchy()
         configureDataSource()
         configureRefreshControl()
@@ -67,14 +68,27 @@ final class HomeViewController: UIViewController {
 
         view.addSubview(backgroundTopView)
 
-        backgroundTopView.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+        backgroundTopView.backgroundColor = .white
         backgroundTopView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            backgroundTopView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundTopView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundTopView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundTopView.heightAnchor.constraint(equalToConstant: 300)
+            backgroundTopView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backgroundTopView.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.65)
+        ])
+    }
+
+    private func configureSearchBar() {
+        view.addSubview(searchBar)
+
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
+            searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
+            searchBar.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 
@@ -97,6 +111,16 @@ final class HomeViewController: UIViewController {
         activityIndicator.stopAnimating()
 
         return activityIndicator
+    }()
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 50))
+
+        searchBar.layer.cornerRadius = 20
+        searchBar.backgroundImage = UIImage()
+        searchBar.barTintColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+        searchBar.searchTextField.backgroundColor = .white
+
+        return searchBar
     }()
 }
 
@@ -187,7 +211,7 @@ extension HomeViewController {
         collectionView.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier)
 
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 135),
+            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 20),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
