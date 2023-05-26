@@ -29,6 +29,7 @@ extension CategoryCell {
         contentView.addSubview(categoryLabel)
 
         categoryLabel.textAlignment = .center
+        categoryLabel.textColor = .black
 
         self.backgroundColor = UIColor(red: 0.87, green: 0.89, blue: 0.90, alpha: 1.00)
         self.layer.cornerRadius = 15
