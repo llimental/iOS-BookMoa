@@ -22,7 +22,7 @@ final class TabBarController: UITabBarController {
 
         setViewControllers([navigationHome, navigationFavorite], animated: false)
 
-        tabBar.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+        tabBar.barTintColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
         tabBar.tintColor = .white
         tabBar.unselectedItemTintColor = .systemGray2
     }
