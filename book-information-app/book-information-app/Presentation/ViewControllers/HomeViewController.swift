@@ -13,8 +13,8 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
+        navigationItem.searchController = searchController
 
-        configureSearchBar()
         configureHierarchy()
         configureDataSource()
         configureRefreshControl()
@@ -62,20 +62,6 @@ final class HomeViewController: UIViewController {
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
 
-
-    private func configureSearchBar() {
-        view.addSubview(searchBar)
-
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
-            searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
-            searchBar.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-
     // MARK: - Private Properties
 
     private var dataSource: UICollectionViewDiffableDataSource<HomeController.Section, AnyHashable>!
@@ -103,16 +89,16 @@ final class HomeViewController: UIViewController {
 
         return activityIndicator
     }()
-    private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 50))
+    private var searchController: UISearchController = {
+        let searchBarController = UISearchController()
 
-        searchBar.layer.cornerRadius = 20
-        searchBar.backgroundImage = UIImage()
-        searchBar.barTintColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
-        searchBar.searchTextField.backgroundColor = .white
-        searchBar.searchTextField.leftView = UIImageView(image: UIImage(named: "SearchBarIcon"))
+        searchBarController.searchBar.layer.cornerRadius = 20
+        searchBarController.searchBar.placeholder = ""
+        searchBarController.searchBar.searchTextField.backgroundColor = .white
 
-        return searchBar
+        searchBarController.obscuresBackgroundDuringPresentation = true
+
+        return searchBarController
     }()
 }
 
@@ -200,7 +186,7 @@ extension HomeViewController {
         collectionView.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier)
 
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 20),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
