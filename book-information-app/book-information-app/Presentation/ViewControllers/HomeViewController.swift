@@ -12,9 +12,8 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+        view.backgroundColor = .white
 
-        configureBackgroundTopView()
         configureSearchBar()
         configureHierarchy()
         configureDataSource()
@@ -63,21 +62,6 @@ final class HomeViewController: UIViewController {
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
 
-    private func configureBackgroundTopView() {
-        let backgroundTopView = UIView()
-
-        view.addSubview(backgroundTopView)
-
-        backgroundTopView.backgroundColor = .white
-        backgroundTopView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            backgroundTopView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundTopView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundTopView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            backgroundTopView.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.65)
-        ])
-    }
 
     private func configureSearchBar() {
         view.addSubview(searchBar)
