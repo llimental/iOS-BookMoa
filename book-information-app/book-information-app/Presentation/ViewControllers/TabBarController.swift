@@ -14,11 +14,31 @@ final class TabBarController: UITabBarController {
 
         let homeViewController = HomeViewController()
         let favoriteViewController = FavoriteViewController()
+
         homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "HomeIcon"), selectedImage: UIImage(named: "HomeIcon"))
         favoriteViewController.tabBarItem = UITabBarItem(title: "즐겨찾기", image: UIImage(named: "FavoriteIcon"), selectedImage: UIImage(named: "FavoriteIcon"))
 
-        let navigationHome = UINavigationController(rootViewController: homeViewController)
-        let navigationFavorite = UINavigationController(rootViewController: favoriteViewController)
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+
+        let navigationHome: UINavigationController = {
+            let navigationHome = UINavigationController(rootViewController: homeViewController)
+
+            navigationHome.navigationBar.topItem?.backButtonTitle = ""
+            navigationHome.navigationBar.tintColor = .white
+            navigationHome.navigationBar.standardAppearance = navigationBarAppearance
+            navigationHome.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+
+            return navigationHome
+        }()
+
+        let navigationFavorite: UINavigationController = {
+            let navigationFavorite = UINavigationController(rootViewController: favoriteViewController)
+
+            navigationFavorite.navigationBar.topItem?.backButtonTitle = ""
+
+            return navigationFavorite
+        }()
 
         setViewControllers([navigationHome, navigationFavorite], animated: false)
 
