@@ -141,7 +141,6 @@
 		D91121052A1A5F47004E5C45 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D9C4835C2A1F8544008F3F3B /* TabBarController.swift */,
 				D98DC3082A148C30006660FA /* HomeViewController.swift */,
 				D9C4835E2A1F8C75008F3F3B /* FavoriteViewController.swift */,
 				D9A497E32A2109C50005C2B2 /* BookDetailViewController.swift */,
@@ -152,6 +151,7 @@
 		D91121062A1A5F54004E5C45 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D9C4835C2A1F8544008F3F3B /* TabBarController.swift */,
 				D91121072A1A5F97004E5C45 /* HomeController.swift */,
 			);
 			path = Controllers;
