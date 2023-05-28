@@ -38,6 +38,7 @@
 		D9D98D3A2A161A9F00A6CFE6 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D98D392A161A9F00A6CFE6 /* Requestable.swift */; };
 		D9D98D3C2A161AA500A6CFE6 /* Responsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D98D3B2A161AA500A6CFE6 /* Responsable.swift */; };
 		D9E3FA8C2A232F47005D0A35 /* IndividualBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA8B2A232F47005D0A35 /* IndividualBook.swift */; };
+		D9E3FA8E2A23313A005D0A35 /* IndividualBookEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA8D2A23313A005D0A35 /* IndividualBookEndPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		D9D98D392A161A9F00A6CFE6 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		D9D98D3B2A161AA500A6CFE6 /* Responsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responsable.swift; sourceTree = "<group>"; };
 		D9E3FA8B2A232F47005D0A35 /* IndividualBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualBook.swift; sourceTree = "<group>"; };
+		D9E3FA8D2A23313A005D0A35 /* IndividualBookEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualBookEndPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +328,7 @@
 			children = (
 				D91121012A1A1320004E5C45 /* Protocols */,
 				D9D98D2F2A1613E700A6CFE6 /* BestSellerEndPoint.swift */,
+				D9E3FA8D2A23313A005D0A35 /* IndividualBookEndPoint.swift */,
 				D91120F62A1716DD004E5C45 /* HTTPMethodType.swift */,
 			);
 			path = EndPoint;
@@ -471,6 +474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9E3FA8E2A23313A005D0A35 /* IndividualBookEndPoint.swift in Sources */,
 				D91120FA2A17338C004E5C45 /* URLComponentsError.swift in Sources */,
 				D91121002A1A0795004E5C45 /* BookAPI.swift in Sources */,
 				D9C4835F2A1F8C75008F3F3B /* FavoriteViewController.swift in Sources */,
