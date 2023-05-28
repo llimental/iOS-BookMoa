@@ -44,6 +44,8 @@ final class BookDetailViewController: UIViewController {
 
     private let authorDescriptionHeadLabel = UILabel()
     private let authorDescriptionBodyLabel = UILabel()
+
+    private let memoTextView = UITextView()
 }
 
 // MARK: - Private Functions
@@ -100,6 +102,8 @@ extension BookDetailViewController {
         authorDescriptionHeadLabel.translatesAutoresizingMaskIntoConstraints = false
         authorDescriptionBodyLabel.translatesAutoresizingMaskIntoConstraints = false
 
+        memoTextView.translatesAutoresizingMaskIntoConstraints = false
+
         // MARK: - addSubview
 
         view.addSubview(scrollView)
@@ -122,6 +126,8 @@ extension BookDetailViewController {
 
         entireInformationStack.addSubview(authorDescriptionHeadLabel)
         entireInformationStack.addSubview(authorDescriptionBodyLabel)
+
+        entireInformationStack.addSubview(memoTextView)
 
         // MARK: - Configure UI Components
 
@@ -159,6 +165,12 @@ extension BookDetailViewController {
         authorDescriptionBodyLabel.font = UIFont.systemFont(ofSize: 12)
         authorDescriptionBodyLabel.numberOfLines = 0
         authorDescriptionBodyLabel.textAlignment = .left
+
+        memoTextView.text = MagicLiteral.memoViewPlaceholder
+        memoTextView.font = UIFont.systemFont(ofSize: 12)
+        memoTextView.textColor = UIColor(red: 0.29, green: 0.31, blue: 0.34, alpha: 1.00)
+        memoTextView.backgroundColor = UIColor(red: 0.91, green: 0.91, blue: 0.99, alpha: 1.00)
+        memoTextView.delegate = self
 
         // MARK: - Custom Constraints
 
@@ -231,7 +243,28 @@ extension BookDetailViewController {
             thirdDivider.topAnchor.constraint(equalTo: authorDescriptionBodyLabel.bottomAnchor, constant: 10),
             thirdDivider.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor, constant: 20),
             thirdDivider.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor, constant: -20),
-            thirdDivider.heightAnchor.constraint(equalToConstant: 1)
+            thirdDivider.heightAnchor.constraint(equalToConstant: 1),
+
+            memoTextView.topAnchor.constraint(equalTo: thirdDivider.bottomAnchor, constant: 10),
+            memoTextView.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor, constant: 20),
+            memoTextView.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor, constant: -20),
+            memoTextView.heightAnchor.constraint(equalToConstant: 116)
         ])
+    }
+}
+
+extension BookDetailViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == MagicLiteral.memoViewPlaceholder {
+            textView.text = nil
+            textView.textColor = .black
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            textView.text = MagicLiteral.memoViewPlaceholder
+            textView.textColor = UIColor(red: 0.29, green: 0.31, blue: 0.34, alpha: 1.00)
+        }
     }
 }
