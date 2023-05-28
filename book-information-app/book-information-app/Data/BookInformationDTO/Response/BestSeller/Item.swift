@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Item
-struct Item: Codable {
+struct Item: Decodable {
     let title: String
     let link: String
     let author: String

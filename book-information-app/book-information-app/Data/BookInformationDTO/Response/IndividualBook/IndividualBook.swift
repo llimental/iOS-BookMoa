@@ -37,7 +37,7 @@ struct IndividualBook: Decodable {
     }
 
     // MARK: - SubInfo
-    struct SubInfo: Codable {
+    struct SubInfo: Decodable {
         let subTitle, originalTitle: String
         let itemPage: Int
     }

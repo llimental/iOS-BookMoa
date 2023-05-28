@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - BestSeller
-struct BestSeller: Codable {
+struct BestSeller: Decodable {
     let publishDate: String
     let item: [Item]
 
