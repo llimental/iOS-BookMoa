@@ -17,6 +17,7 @@ final class HomeController {
         let title: String
         let author: String
         let cover: UIImage
+        let isbn: String
 
         func hash(into hasher: inout Hasher) {
             hasher.combine(identifier)

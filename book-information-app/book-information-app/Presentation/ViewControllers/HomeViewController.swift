@@ -44,7 +44,7 @@ final class HomeViewController: UIViewController {
             var bookList: [HomeController.Book] = []
 
             for (networkResult, bookImage) in zip(networkResults, bookImages) {
-                let book = HomeController.Book(title: networkResult.title, author: networkResult.author, cover: bookImage)
+                let book = HomeController.Book(title: networkResult.title, author: networkResult.author, cover: bookImage, isbn: networkResult.isbn13)
                 bookList.append(book)
             }
             applySnapshot(with: bookList)
@@ -209,6 +209,7 @@ extension HomeViewController {
                     cell.booktitleLabel.text = bookItem.title
                     cell.bookAuthorLabel.text = bookItem.author
                     cell.bookImageView.image = bookItem.cover
+                    cell.bookISBN = bookItem.isbn
                 }
 
                 return cell
@@ -288,7 +289,7 @@ extension HomeViewController: UICollectionViewDelegate {
         if let cell = collectionView.cellForItem(at: indexPath) as? BestSellerCell {
             let bookDetailViewController = BookDetailViewController()
 
-            bookDetailViewController.selectedItem = cell
+            bookDetailViewController.selectedItem = cell.bookISBN
 
             navigationController?.pushViewController(bookDetailViewController, animated: true)
         }
