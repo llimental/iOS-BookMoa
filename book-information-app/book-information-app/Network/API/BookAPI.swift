@@ -9,6 +9,7 @@ import Foundation
 
 enum BookAPI {
     case bestSeller
+    case individualBook(isbn: String)
 
     static var scheme: String {
         return "https"
@@ -22,6 +23,9 @@ enum BookAPI {
         switch self {
         case .bestSeller:
             return "/ttb/api/ItemList.aspx"
+
+        case .individualBook:
+            return "/ttb/api/ItemLookUp.aspx"
         }
     }
 
@@ -36,6 +40,13 @@ enum BookAPI {
             let queryTypeParameter = URLQueryItem(name: "QueryType", value: "bestseller")
             let searchTargetParameter = URLQueryItem(name: "SearchTarget", value: "book")
             queryItems = [keyParameter, outputParameter, apiVersionParameter, queryTypeParameter, searchTargetParameter]
+
+        case .individualBook(let isbn):
+            let itemIdTypeParameter = URLQueryItem(name: "itemIdType", value: "ISBN")
+            let itemIdParameter = URLQueryItem(name: "ItemId", value: isbn)
+            let optionResultParameter = URLQueryItem(name: "OptResult", value: "authors,fulldescription,Toc,Story")
+            let coverParameter = URLQueryItem(name: "cover", value: "big")
+            queryItems = [keyParameter, outputParameter, apiVersionParameter, itemIdTypeParameter, itemIdParameter, optionResultParameter, coverParameter]
         }
 
         return queryItems
