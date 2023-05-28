@@ -90,15 +90,16 @@ final class HomeViewController: UIViewController {
         return activityIndicator
     }()
     private var searchController: UISearchController = {
-        let searchBarController = UISearchController()
+        let searchController = UISearchController()
 
-        searchBarController.searchBar.layer.cornerRadius = 20
-        searchBarController.searchBar.placeholder = ""
-        searchBarController.searchBar.searchTextField.backgroundColor = .white
+        searchController.searchBar.layer.cornerRadius = 20
+        searchController.searchBar.placeholder = ""
+        searchController.searchBar.searchTextField.backgroundColor = .white
+        searchController.searchBar.setImage(UIImage(named: "SearchBarIcon"), for: .search, state: .normal)
 
-        searchBarController.obscuresBackgroundDuringPresentation = true
+        searchController.obscuresBackgroundDuringPresentation = true
 
-        return searchBarController
+        return searchController
     }()
 }
 
