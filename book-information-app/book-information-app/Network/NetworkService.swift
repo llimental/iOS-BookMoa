@@ -31,7 +31,7 @@ final class NetworkService {
         return decodedData
     }
 
-    func requestImage(with items: [Item]) async throws -> [UIImage] {
+    func requestMultipleImage(with items: [Item]) async throws -> [UIImage] {
         var imageSet: [UIImage] = []
 
         for item in items{
@@ -51,6 +51,26 @@ final class NetworkService {
         }
 
         return imageSet
+    }
+
+    func requestSingleImage(with item: IndividualBook.Item) async throws -> UIImage {
+        guard let url = URL(string: item.cover) else {
+            throw URLComponentsError.invalidComponent
+        }
+
+        let urlRequest = URLRequest(url: url)
+
+        let (data, response) = try await session.data(for: urlRequest)
+
+        if let httpResponse = response as? HTTPURLResponse, !(200...299).contains(httpResponse.statusCode) {
+            try verifyResponse(with: httpResponse)
+        }
+
+        guard let image = UIImage(data: data) else {
+            return UIImage()
+        }
+
+        return image
     }
 
     private func verifyResponse(with httpResponse: HTTPURLResponse) throws {

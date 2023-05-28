@@ -39,7 +39,7 @@ final class HomeViewController: UIViewController {
         Task {
             let networkResults = try await networkService.requestData(with: BestSellerEndPoint()).item
 
-            let bookImages = try await networkService.requestImage(with: networkResults)
+            let bookImages = try await networkService.requestMultipleImage(with: networkResults)
 
             var bookList: [HomeController.Book] = []
 
