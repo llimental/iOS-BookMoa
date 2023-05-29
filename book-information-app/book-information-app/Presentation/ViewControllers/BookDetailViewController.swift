@@ -31,6 +31,7 @@ final class BookDetailViewController: UIViewController {
     private let scrollView = UIScrollView()
     private let entireInformationStack = UIStackView()
     private let backgroundView = UIView()
+    private let backgroundImageView = UIImageView()
 
     private let bookTitleLabel = UILabel()
     private let bookAuthorLabel = UILabel()
@@ -88,6 +89,7 @@ extension BookDetailViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         entireInformationStack.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
 
         bookTitleLabel.translatesAutoresizingMaskIntoConstraints = false
 
@@ -113,6 +115,7 @@ extension BookDetailViewController {
         view.addSubview(scrollView)
         view.addGestureRecognizer(tapGestureRecognizer)
         scrollView.addSubview(backgroundView)
+        backgroundView.addSubview(backgroundImageView)
         scrollView.addSubview(entireInformationStack)
 
         entireInformationStack.addSubview(bookTitleLabel)
@@ -140,6 +143,8 @@ extension BookDetailViewController {
         scrollView.showsVerticalScrollIndicator = false
 
         backgroundView.backgroundColor = .white
+
+        backgroundImageView.image = UIImage(named: "EclipseIcon")
 
         entireInformationStack.axis = .vertical
         entireInformationStack.alignment = .center
@@ -196,6 +201,12 @@ extension BookDetailViewController {
             backgroundView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             backgroundView.heightAnchor.constraint(equalTo: entireInformationStack.heightAnchor, multiplier: 0.7),
+
+            backgroundImageView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
+            backgroundImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: -157),
+            backgroundImageView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 70),
+            backgroundImageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -70),
+
             entireInformationStack.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             entireInformationStack.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             entireInformationStack.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
