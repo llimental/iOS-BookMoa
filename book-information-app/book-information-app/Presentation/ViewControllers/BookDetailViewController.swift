@@ -51,6 +51,7 @@ final class BookDetailViewController: UIViewController {
 
     private let descriptionHeadLabel = UILabel()
     private let descriptionBodyLabel = UILabel()
+    private let moreDescriptionButton = UIButton()
 
     private let authorDescriptionHeadLabel = UILabel()
     private let authorDescriptionBodyLabel = UILabel()
@@ -106,6 +107,7 @@ extension BookDetailViewController {
 
         descriptionHeadLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionBodyLabel.translatesAutoresizingMaskIntoConstraints = false
+        moreDescriptionButton.translatesAutoresizingMaskIntoConstraints = false
 
         authorDescriptionHeadLabel.translatesAutoresizingMaskIntoConstraints = false
         authorDescriptionBodyLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -137,6 +139,7 @@ extension BookDetailViewController {
 
         entireInformationView.addSubview(authorDescriptionHeadLabel)
         entireInformationView.addSubview(authorDescriptionBodyLabel)
+        entireInformationView.addSubview(moreDescriptionButton)
 
         entireInformationView.addSubview(memoTextView)
 
@@ -179,7 +182,12 @@ extension BookDetailViewController {
 
         descriptionBodyLabel.textAlignment = .left
         descriptionBodyLabel.font = UIFont.systemFont(ofSize: 12)
-        descriptionBodyLabel.numberOfLines = 0
+        descriptionBodyLabel.numberOfLines = 3
+
+        moreDescriptionButton.setTitle(MagicLiteral.moreDescriptionButtonTitle, for: .normal)
+        moreDescriptionButton.setTitleColor(UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00), for: .normal)
+        moreDescriptionButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        moreDescriptionButton.addTarget(self, action: #selector(touchUpButton), for: .touchUpInside)
 
         authorDescriptionHeadLabel.text = MagicLiteral.authorDescriptionHeadLabelText
         authorDescriptionHeadLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
@@ -257,7 +265,11 @@ extension BookDetailViewController {
             descriptionBodyLabel.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
             descriptionBodyLabel.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
 
-            secondDivider.topAnchor.constraint(equalTo: descriptionBodyLabel.bottomAnchor, constant: 10),
+            moreDescriptionButton.topAnchor.constraint(equalTo: descriptionBodyLabel.bottomAnchor),
+            moreDescriptionButton.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
+            moreDescriptionButton.heightAnchor.constraint(equalToConstant: 15),
+
+            secondDivider.topAnchor.constraint(equalTo: moreDescriptionButton.bottomAnchor, constant: 10),
             secondDivider.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
             secondDivider.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
             secondDivider.heightAnchor.constraint(equalToConstant: 1),
@@ -286,6 +298,11 @@ extension BookDetailViewController {
 
     @objc private func dismissKeyboard() {
         view.endEditing(true)
+    }
+
+    @objc private func touchUpButton() {
+        descriptionBodyLabel.numberOfLines = 0
+        moreDescriptionButton.isHidden = true
     }
 }
 

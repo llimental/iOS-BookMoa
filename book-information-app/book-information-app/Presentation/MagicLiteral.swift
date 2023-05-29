@@ -16,4 +16,5 @@ enum MagicLiteral {
     static let previewButtonTitle = "미리보기"
     static let descriptionHeadLabelText = "줄거리"
     static let authorDescriptionHeadLabelText = "저자소개"
+    static let moreDescriptionButtonTitle = "더보기"
 }
