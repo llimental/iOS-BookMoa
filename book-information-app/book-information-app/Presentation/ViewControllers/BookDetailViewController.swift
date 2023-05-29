@@ -139,6 +139,7 @@ extension BookDetailViewController {
 
         bookTitleLabel.textAlignment = .center
         bookTitleLabel.font = UIFont.systemFont(ofSize: 28, weight: .medium)
+        bookTitleLabel.numberOfLines = 0
 
         bookAuthorLabel.textAlignment = .center
         bookAuthorLabel.font = UIFont.systemFont(ofSize: 17)
@@ -159,15 +160,15 @@ extension BookDetailViewController {
 
         descriptionHeadLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
 
+        descriptionBodyLabel.textAlignment = .left
         descriptionBodyLabel.font = UIFont.systemFont(ofSize: 12)
         descriptionBodyLabel.numberOfLines = 0
-        descriptionBodyLabel.textAlignment = .left
 
         authorDescriptionHeadLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
 
+        authorDescriptionBodyLabel.textAlignment = .left
         authorDescriptionBodyLabel.font = UIFont.systemFont(ofSize: 12)
         authorDescriptionBodyLabel.numberOfLines = 0
-        authorDescriptionBodyLabel.textAlignment = .left
 
         memoTextView.text = MagicLiteral.memoViewPlaceholder
         memoTextView.font = UIFont.systemFont(ofSize: 12)
@@ -193,9 +194,9 @@ extension BookDetailViewController {
             bookTitleLabel.topAnchor.constraint(equalTo: entireInformationStack.topAnchor),
             bookTitleLabel.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor),
             bookTitleLabel.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor),
-            bookTitleLabel.heightAnchor.constraint(equalToConstant: 66),
+            bookTitleLabel.heightAnchor.constraint(equalToConstant: 120),
 
-            bookAuthorLabel.topAnchor.constraint(equalTo: bookTitleLabel.bottomAnchor, constant: 37),
+            bookAuthorLabel.topAnchor.constraint(equalTo: bookTitleLabel.bottomAnchor),
             bookAuthorLabel.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor),
             bookAuthorLabel.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor),
             bookAuthorLabel.heightAnchor.constraint(equalToConstant: 21),
