@@ -16,7 +16,7 @@ final class BookDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        scrollView.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
 
         configure()
         loadData()
@@ -140,10 +140,11 @@ extension BookDetailViewController {
         bookTitleLabel.textAlignment = .center
         bookTitleLabel.font = UIFont.systemFont(ofSize: 28, weight: .medium)
         bookTitleLabel.numberOfLines = 0
+        bookTitleLabel.textColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00)
 
         bookAuthorLabel.textAlignment = .center
         bookAuthorLabel.font = UIFont.systemFont(ofSize: 17)
-        bookAuthorLabel.textColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00)
+        bookAuthorLabel.textColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 0.60)
 
         bookPublishLabel.textAlignment = .center
         bookPublishLabel.font = UIFont.systemFont(ofSize: 14)
@@ -200,12 +201,12 @@ extension BookDetailViewController {
             bookAuthorLabel.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor),
             bookAuthorLabel.heightAnchor.constraint(equalToConstant: 21),
 
-            bookCoverImageView.topAnchor.constraint(equalTo: bookAuthorLabel.bottomAnchor),
+            bookCoverImageView.topAnchor.constraint(equalTo: bookAuthorLabel.bottomAnchor, constant: 4),
             bookCoverImageView.centerXAnchor.constraint(equalTo: entireInformationStack.centerXAnchor),
             bookCoverImageView.widthAnchor.constraint(equalToConstant: 160),
             bookCoverImageView.heightAnchor.constraint(equalToConstant: 220),
 
-            bookPublishLabel.topAnchor.constraint(equalTo: bookCoverImageView.bottomAnchor),
+            bookPublishLabel.topAnchor.constraint(equalTo: bookCoverImageView.bottomAnchor, constant: 4),
             bookPublishLabel.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor),
             bookPublishLabel.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor),
             bookPublishLabel.heightAnchor.constraint(equalToConstant: 36),
