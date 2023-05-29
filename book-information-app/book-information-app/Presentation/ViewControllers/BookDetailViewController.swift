@@ -30,6 +30,7 @@ final class BookDetailViewController: UIViewController {
 
     private let scrollView = UIScrollView()
     private let entireInformationStack = UIStackView()
+    private let backgroundView = UIView()
 
     private let bookTitleLabel = UILabel()
     private let bookAuthorLabel = UILabel()
@@ -86,6 +87,7 @@ extension BookDetailViewController {
 
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         entireInformationStack.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
 
         bookTitleLabel.translatesAutoresizingMaskIntoConstraints = false
 
@@ -110,6 +112,7 @@ extension BookDetailViewController {
 
         view.addSubview(scrollView)
         view.addGestureRecognizer(tapGestureRecognizer)
+        scrollView.addSubview(backgroundView)
         scrollView.addSubview(entireInformationStack)
 
         entireInformationStack.addSubview(bookTitleLabel)
@@ -133,6 +136,10 @@ extension BookDetailViewController {
         entireInformationStack.addSubview(memoTextView)
 
         // MARK: - Configure UI Components
+
+        scrollView.showsVerticalScrollIndicator = false
+
+        backgroundView.backgroundColor = .white
 
         entireInformationStack.axis = .vertical
         entireInformationStack.alignment = .center
@@ -185,6 +192,10 @@ extension BookDetailViewController {
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 
+            backgroundView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            backgroundView.heightAnchor.constraint(equalTo: entireInformationStack.heightAnchor, multiplier: 0.7),
             entireInformationStack.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             entireInformationStack.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             entireInformationStack.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
