@@ -35,7 +35,7 @@ final class BookDetailViewController: UIViewController {
     private let networkService = NetworkService()
 
     private let scrollView = UIScrollView()
-    private let entireInformationStack = UIStackView()
+    private let entireInformationView = UIView()
     private let backgroundView = UIView()
     private let backgroundImageView = UIImageView()
 
@@ -89,7 +89,7 @@ extension BookDetailViewController {
         // MARK: - AutoLayout 해제
 
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        entireInformationStack.translatesAutoresizingMaskIntoConstraints = false
+        entireInformationView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -118,27 +118,27 @@ extension BookDetailViewController {
         view.addGestureRecognizer(tapGestureRecognizer)
         scrollView.addSubview(backgroundView)
         backgroundView.addSubview(backgroundImageView)
-        scrollView.addSubview(entireInformationStack)
+        scrollView.addSubview(entireInformationView)
 
-        entireInformationStack.addSubview(bookTitleLabel)
+        entireInformationView.addSubview(bookTitleLabel)
 
-        entireInformationStack.addSubview(bookAuthorLabel)
-        entireInformationStack.addSubview(bookCoverImageView)
-        entireInformationStack.addSubview(bookPublishLabel)
+        entireInformationView.addSubview(bookAuthorLabel)
+        entireInformationView.addSubview(bookCoverImageView)
+        entireInformationView.addSubview(bookPublishLabel)
 
-        entireInformationStack.addSubview(previewButton)
+        entireInformationView.addSubview(previewButton)
 
-        entireInformationStack.addSubview(firstDivider)
-        entireInformationStack.addSubview(secondDivider)
-        entireInformationStack.addSubview(thirdDivider)
+        entireInformationView.addSubview(firstDivider)
+        entireInformationView.addSubview(secondDivider)
+        entireInformationView.addSubview(thirdDivider)
 
-        entireInformationStack.addSubview(descriptionHeadLabel)
-        entireInformationStack.addSubview(descriptionBodyLabel)
+        entireInformationView.addSubview(descriptionHeadLabel)
+        entireInformationView.addSubview(descriptionBodyLabel)
 
-        entireInformationStack.addSubview(authorDescriptionHeadLabel)
-        entireInformationStack.addSubview(authorDescriptionBodyLabel)
+        entireInformationView.addSubview(authorDescriptionHeadLabel)
+        entireInformationView.addSubview(authorDescriptionBodyLabel)
 
-        entireInformationStack.addSubview(memoTextView)
+        entireInformationView.addSubview(memoTextView)
 
         // MARK: - Configure UI Components
 
@@ -148,9 +148,6 @@ extension BookDetailViewController {
 
         backgroundImageView.image = UIImage(named: "EclipseIcon")
         backgroundImageView.contentMode = .scaleAspectFit
-
-        entireInformationStack.axis = .vertical
-        entireInformationStack.alignment = .center
 
         bookTitleLabel.textAlignment = .center
         bookTitleLabel.font = UIFont.systemFont(ofSize: 28, weight: .medium)
@@ -208,81 +205,81 @@ extension BookDetailViewController {
             backgroundView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            backgroundView.heightAnchor.constraint(equalTo: entireInformationStack.heightAnchor, multiplier: 0.7),
+            backgroundView.heightAnchor.constraint(equalTo: entireInformationView.heightAnchor, multiplier: 0.7),
 
             backgroundImageView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
             backgroundImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: -157),
             backgroundImageView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 70),
             backgroundImageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -70),
 
-            entireInformationStack.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            entireInformationStack.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            entireInformationStack.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            entireInformationStack.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            entireInformationStack.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
+            entireInformationView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            entireInformationView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            entireInformationView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            entireInformationView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            entireInformationView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
 
-            bookTitleLabel.topAnchor.constraint(equalTo: entireInformationStack.topAnchor),
-            bookTitleLabel.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor),
-            bookTitleLabel.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor),
+            bookTitleLabel.topAnchor.constraint(equalTo: entireInformationView.topAnchor),
+            bookTitleLabel.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor),
+            bookTitleLabel.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor),
             bookTitleLabel.heightAnchor.constraint(equalToConstant: 120),
 
             bookAuthorLabel.topAnchor.constraint(equalTo: bookTitleLabel.bottomAnchor),
-            bookAuthorLabel.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor),
-            bookAuthorLabel.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor),
+            bookAuthorLabel.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor),
+            bookAuthorLabel.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor),
             bookAuthorLabel.heightAnchor.constraint(equalToConstant: 21),
 
             bookCoverImageView.topAnchor.constraint(equalTo: bookAuthorLabel.bottomAnchor, constant: 4),
-            bookCoverImageView.centerXAnchor.constraint(equalTo: entireInformationStack.centerXAnchor),
+            bookCoverImageView.centerXAnchor.constraint(equalTo: entireInformationView.centerXAnchor),
             bookCoverImageView.widthAnchor.constraint(equalToConstant: 160),
             bookCoverImageView.heightAnchor.constraint(equalToConstant: 220),
 
             bookPublishLabel.topAnchor.constraint(equalTo: bookCoverImageView.bottomAnchor, constant: 4),
-            bookPublishLabel.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor),
-            bookPublishLabel.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor),
+            bookPublishLabel.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor),
+            bookPublishLabel.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor),
             bookPublishLabel.heightAnchor.constraint(equalToConstant: 36),
 
             previewButton.topAnchor.constraint(equalTo: bookPublishLabel.bottomAnchor, constant: 20),
-            previewButton.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor, constant: 20),
-            previewButton.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor, constant: -20),
+            previewButton.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
+            previewButton.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
             previewButton.heightAnchor.constraint(equalToConstant: 50),
 
             firstDivider.topAnchor.constraint(equalTo: previewButton.bottomAnchor, constant: 24),
-            firstDivider.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor, constant: 20),
-            firstDivider.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor, constant: -20),
+            firstDivider.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
+            firstDivider.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
             firstDivider.heightAnchor.constraint(equalToConstant: 1),
 
             descriptionHeadLabel.topAnchor.constraint(equalTo: firstDivider.bottomAnchor, constant: 10),
-            descriptionHeadLabel.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor, constant: 20),
-            descriptionBodyLabel.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor, constant: -20),
+            descriptionHeadLabel.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
+            descriptionBodyLabel.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
             descriptionHeadLabel.heightAnchor.constraint(equalToConstant: 20),
 
             descriptionBodyLabel.topAnchor.constraint(equalTo: descriptionHeadLabel.bottomAnchor, constant: 10),
-            descriptionBodyLabel.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor, constant: 20),
-            descriptionBodyLabel.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor, constant: -20),
+            descriptionBodyLabel.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
+            descriptionBodyLabel.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
 
             secondDivider.topAnchor.constraint(equalTo: descriptionBodyLabel.bottomAnchor, constant: 10),
-            secondDivider.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor, constant: 20),
-            secondDivider.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor, constant: -20),
+            secondDivider.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
+            secondDivider.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
             secondDivider.heightAnchor.constraint(equalToConstant: 1),
 
             authorDescriptionHeadLabel.topAnchor.constraint(equalTo: secondDivider.bottomAnchor, constant: 10),
-            authorDescriptionHeadLabel.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor, constant: 20),
-            authorDescriptionHeadLabel.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor, constant: -20),
+            authorDescriptionHeadLabel.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
+            authorDescriptionHeadLabel.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
             authorDescriptionHeadLabel.heightAnchor.constraint(equalToConstant: 20),
 
             authorDescriptionBodyLabel.topAnchor.constraint(equalTo: authorDescriptionHeadLabel.bottomAnchor, constant: 10),
-            authorDescriptionBodyLabel.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor, constant: 20),
-            authorDescriptionBodyLabel.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor, constant: -20),
+            authorDescriptionBodyLabel.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
+            authorDescriptionBodyLabel.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
 
             thirdDivider.topAnchor.constraint(equalTo: authorDescriptionBodyLabel.bottomAnchor, constant: 10),
-            thirdDivider.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor, constant: 20),
-            thirdDivider.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor, constant: -20),
+            thirdDivider.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
+            thirdDivider.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
             thirdDivider.heightAnchor.constraint(equalToConstant: 1),
 
             memoTextView.topAnchor.constraint(equalTo: thirdDivider.bottomAnchor, constant: 10),
-            memoTextView.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor, constant: 20),
-            memoTextView.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor, constant: -20),
-            memoTextView.bottomAnchor.constraint(equalTo: entireInformationStack.bottomAnchor, constant: -37),
+            memoTextView.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
+            memoTextView.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
+            memoTextView.bottomAnchor.constraint(equalTo: entireInformationView.bottomAnchor, constant: -37),
             memoTextView.heightAnchor.constraint(equalToConstant: 116)
         ])
     }
