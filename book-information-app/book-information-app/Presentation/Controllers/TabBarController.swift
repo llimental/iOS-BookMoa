@@ -15,6 +15,7 @@ final class TabBarController: UITabBarController {
         let navigationBarAppearance = UINavigationBarAppearance()
 
         navigationBarAppearance.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+        navigationBarAppearance.shadowColor = .clear
 
         return navigationBarAppearance
     }()
@@ -29,6 +30,7 @@ final class TabBarController: UITabBarController {
 
         return navigationHome
     }()
+
     private lazy var navigationFavorite: UINavigationController = {
         let navigationFavorite = UINavigationController(rootViewController: favoriteViewController)
 
