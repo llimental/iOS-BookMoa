@@ -24,6 +24,8 @@ final class BookDetailViewController: UIViewController {
 
     // MARK: - Private Properties
 
+    private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+
     private let networkService = NetworkService()
 
     private let scrollView = UIScrollView()
@@ -107,6 +109,7 @@ extension BookDetailViewController {
         // MARK: - addSubview
 
         view.addSubview(scrollView)
+        view.addGestureRecognizer(tapGestureRecognizer)
         scrollView.addSubview(entireInformationStack)
 
         entireInformationStack.addSubview(bookTitleLabel)
@@ -250,6 +253,10 @@ extension BookDetailViewController {
             memoTextView.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor, constant: -20),
             memoTextView.heightAnchor.constraint(equalToConstant: 116)
         ])
+    }
+
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
