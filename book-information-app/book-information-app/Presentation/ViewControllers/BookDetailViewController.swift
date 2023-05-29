@@ -188,8 +188,7 @@ extension BookDetailViewController {
             entireInformationStack.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             entireInformationStack.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             entireInformationStack.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            entireInformationStack.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, multiplier: 1),
-            entireInformationStack.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor, multiplier: 1.5),
+            entireInformationStack.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
 
             bookTitleLabel.topAnchor.constraint(equalTo: entireInformationStack.topAnchor),
             bookTitleLabel.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor),
@@ -252,6 +251,7 @@ extension BookDetailViewController {
             memoTextView.topAnchor.constraint(equalTo: thirdDivider.bottomAnchor, constant: 10),
             memoTextView.leadingAnchor.constraint(equalTo: entireInformationStack.leadingAnchor, constant: 20),
             memoTextView.trailingAnchor.constraint(equalTo: entireInformationStack.trailingAnchor, constant: -20),
+            memoTextView.bottomAnchor.constraint(equalTo: entireInformationStack.bottomAnchor, constant: -37),
             memoTextView.heightAnchor.constraint(equalToConstant: 116)
         ])
     }
