@@ -73,6 +73,8 @@ final class HomeViewController: UIViewController {
 
         collectionView.backgroundColor = .white
         collectionView.layer.cornerRadius = 15
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
 
         return collectionView
     }()
