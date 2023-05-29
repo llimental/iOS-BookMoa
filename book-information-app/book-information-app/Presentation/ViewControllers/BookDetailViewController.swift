@@ -73,13 +73,7 @@ extension BookDetailViewController {
         bookAuthorLabel.text = individualBook.author
         bookCoverImageView.image = bookImage
         bookPublishLabel.text = "\(individualBook.publisher) / \(individualBook.pubDate)\n\(individualBook.categoryName)"
-
-        previewButton.setTitle("미리보기", for: .normal)
-
-        descriptionHeadLabel.text = "줄거리"
         descriptionBodyLabel.text = individualBook.description
-
-        authorDescriptionHeadLabel.text = "저자소개"
         authorDescriptionBodyLabel.text = "이건 저자소개임"
     }
 
@@ -163,6 +157,7 @@ extension BookDetailViewController {
         bookPublishLabel.numberOfLines = 0
         bookPublishLabel.textColor = UIColor(red: 0.53, green: 0.56, blue: 0.59, alpha: 1.00)
 
+        previewButton.setTitle(MagicLiteral.previewButtonTitle, for: .normal)
         previewButton.setTitleColor(.white, for: .normal)
         previewButton.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
         previewButton.layer.cornerRadius = 15
@@ -171,12 +166,14 @@ extension BookDetailViewController {
         secondDivider.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00)
         thirdDivider.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00)
 
+        descriptionHeadLabel.text = MagicLiteral.descriptionHeadLabelText
         descriptionHeadLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
 
         descriptionBodyLabel.textAlignment = .left
         descriptionBodyLabel.font = UIFont.systemFont(ofSize: 12)
         descriptionBodyLabel.numberOfLines = 0
 
+        authorDescriptionHeadLabel.text = MagicLiteral.authorDescriptionHeadLabelText
         authorDescriptionHeadLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
 
         authorDescriptionBodyLabel.textAlignment = .left

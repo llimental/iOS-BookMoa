@@ -13,4 +13,7 @@ enum MagicLiteral {
     static let categoryReuseIdentifier = "category-reuse-identifier"
     static let supplementaryReuseIdentifier = "title-supplementary-reuse-identifier"
     static let memoViewPlaceholder = "이 책에 대한 메모를 남겨주세요!"
+    static let previewButtonTitle = "미리보기"
+    static let descriptionHeadLabelText = "줄거리"
+    static let authorDescriptionHeadLabelText = "저자소개"
 }
