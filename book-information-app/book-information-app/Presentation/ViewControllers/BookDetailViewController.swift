@@ -11,7 +11,7 @@ final class BookDetailViewController: UIViewController {
 
     // MARK: - Public Properties
 
-    var selectedItem: String?
+    var selectedItem: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,12 @@ final class BookDetailViewController: UIViewController {
 
         configure()
         loadData()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        UserDefaults.standard.set(memoTextView.text, forKey: selectedItem)
     }
 
     // MARK: - Private Properties
@@ -57,9 +63,7 @@ final class BookDetailViewController: UIViewController {
 extension BookDetailViewController {
     private func loadData() {
         Task {
-            guard let selectedItemISBN = selectedItem else { return }
-
-            guard let networkResult = try await networkService.requestData(with: IndividualBookEndPoint(isbn: selectedItemISBN)).item.first else { return }
+            guard let networkResult = try await networkService.requestData(with: IndividualBookEndPoint(isbn: selectedItem)).item.first else { return }
 
             let bookImage = try await networkService.requestSingleImage(with: networkResult)
 
@@ -75,6 +79,10 @@ extension BookDetailViewController {
         bookPublishLabel.text = "\(individualBook.publisher) / \(individualBook.pubDate)\n\(individualBook.categoryName)"
         descriptionBodyLabel.text = individualBook.description
         authorDescriptionBodyLabel.text = "이건 저자소개임"
+
+        if UserDefaults.standard.string(forKey: selectedItem) != nil {
+            memoTextView.text = UserDefaults.standard.string(forKey: selectedItem)
+        }
     }
 
     private func configure() {
