@@ -139,6 +139,7 @@ extension BookDetailViewController {
         backgroundView.backgroundColor = .white
 
         backgroundImageView.image = UIImage(named: "EclipseIcon")
+        backgroundImageView.contentMode = .scaleAspectFit
 
         entireInformationStack.axis = .vertical
         entireInformationStack.alignment = .center
@@ -151,6 +152,8 @@ extension BookDetailViewController {
         bookAuthorLabel.textAlignment = .center
         bookAuthorLabel.font = UIFont.systemFont(ofSize: 17)
         bookAuthorLabel.textColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 0.60)
+
+        bookCoverImageView.contentMode = .scaleAspectFit
 
         bookPublishLabel.textAlignment = .center
         bookPublishLabel.font = UIFont.systemFont(ofSize: 14)
