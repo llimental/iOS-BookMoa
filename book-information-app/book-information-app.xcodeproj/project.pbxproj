@@ -44,6 +44,7 @@
 		D9E3FA9F2A260C0F005D0A35 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA9E2A260C0F005D0A35 /* PopupView.swift */; };
 		D9E3FAAC2A26262B005D0A35 /* CategoryEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FAAB2A26262B005D0A35 /* CategoryEndPoint.swift */; };
 		D9E3FAAF2A262730005D0A35 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FAAE2A262730005D0A35 /* Category.swift */; };
+		D9E3FAB12A264DD2005D0A35 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FAB02A264DD2005D0A35 /* CategoryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		D9E3FA9E2A260C0F005D0A35 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		D9E3FAAB2A26262B005D0A35 /* CategoryEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEndPoint.swift; sourceTree = "<group>"; };
 		D9E3FAAE2A262730005D0A35 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		D9E3FAB02A264DD2005D0A35 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			children = (
 				D9C4835C2A1F8544008F3F3B /* TabBarController.swift */,
 				D91121072A1A5F97004E5C45 /* HomeController.swift */,
+				D9E3FAB02A264DD2005D0A35 /* CategoryController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				D91120FE2A17442F004E5C45 /* HTTPErrorType.swift in Sources */,
 				D9E3FA952A25C2BC005D0A35 /* DynamicLabel.swift in Sources */,
 				D9C4835D2A1F8544008F3F3B /* TabBarController.swift in Sources */,
+				D9E3FAB12A264DD2005D0A35 /* CategoryController.swift in Sources */,
 				D9D98D2E2A1613A700A6CFE6 /* NetworkService.swift in Sources */,
 				D9C483592A1E280D008F3F3B /* CategoryCell.swift in Sources */,
 			);
