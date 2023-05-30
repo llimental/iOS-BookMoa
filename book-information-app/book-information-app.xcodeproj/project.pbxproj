@@ -45,6 +45,7 @@
 		D9E3FAAC2A26262B005D0A35 /* CategoryEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FAAB2A26262B005D0A35 /* CategoryEndPoint.swift */; };
 		D9E3FAAF2A262730005D0A35 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FAAE2A262730005D0A35 /* Category.swift */; };
 		D9E3FAB12A264DD2005D0A35 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FAB02A264DD2005D0A35 /* CategoryController.swift */; };
+		D9E3FAB52A2651D6005D0A35 /* CategoryBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FAB42A2651D6005D0A35 /* CategoryBookCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		D9E3FAAB2A26262B005D0A35 /* CategoryEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEndPoint.swift; sourceTree = "<group>"; };
 		D9E3FAAE2A262730005D0A35 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		D9E3FAB02A264DD2005D0A35 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
+		D9E3FAB42A2651D6005D0A35 /* CategoryBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBookCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +414,7 @@
 		D9E3FAB32A26518A005D0A35 /* CategoryComponents */ = {
 			isa = PBXGroup;
 			children = (
+				D9E3FAB42A2651D6005D0A35 /* CategoryBookCell.swift */,
 			);
 			path = CategoryComponents;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				D9E3FAAC2A26262B005D0A35 /* CategoryEndPoint.swift in Sources */,
 				D98DC34D2A15BFEB006660FA /* CategoryID.swift in Sources */,
 				D91120FE2A17442F004E5C45 /* HTTPErrorType.swift in Sources */,
+				D9E3FAB52A2651D6005D0A35 /* CategoryBookCell.swift in Sources */,
 				D9E3FA952A25C2BC005D0A35 /* DynamicLabel.swift in Sources */,
 				D9C4835D2A1F8544008F3F3B /* TabBarController.swift in Sources */,
 				D9E3FAB12A264DD2005D0A35 /* CategoryController.swift in Sources */,
