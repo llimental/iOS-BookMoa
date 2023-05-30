@@ -72,7 +72,7 @@ extension BookDetailViewController {
         Task {
             guard let networkResult = try await networkService.requestData(with: IndividualBookEndPoint(isbn: selectedItem)).item.first else { return }
 
-            let bookImage = try await networkService.requestSingleImage(with: networkResult)
+            let bookImage = try await networkService.requestIndividualBookImage(with: networkResult)
 
             configureData(with: networkResult, and: bookImage)
         }
