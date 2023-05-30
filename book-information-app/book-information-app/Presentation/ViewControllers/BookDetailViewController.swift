@@ -62,6 +62,7 @@ final class BookDetailViewController: UIViewController {
     private let memoTextView = UITextView()
 
     private let collaboratorLabel = UILabel()
+    private let popupView = PopupView()
 }
 
 // MARK: - Private Functions
@@ -95,6 +96,8 @@ extension BookDetailViewController {
         if UserDefaults.standard.string(forKey: selectedItem) != nil {
             memoTextView.text = UserDefaults.standard.string(forKey: selectedItem)
         }
+
+        popupView.imageLinks = individualBook.subInfo.previewImgList
     }
 
     private func configure() {
@@ -187,6 +190,7 @@ extension BookDetailViewController {
         previewButton.setTitleColor(.white, for: .normal)
         previewButton.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
         previewButton.layer.cornerRadius = 15
+        previewButton.addTarget(self, action: #selector(previewButtonTapped), for: .touchUpInside)
 
         firstDivider.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00)
         secondDivider.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00)
@@ -370,6 +374,18 @@ extension BookDetailViewController {
     @objc private func controlAuthorDescription() {
         authorDescriptionBodyLabel.isTruncated ? authorDescriptionBodyLabel.expand() : authorDescriptionBodyLabel.collapse()
         authorDescriptionBodyLabel.attributedText = setPartialColor(with: authorDescriptionBodyLabel.text ?? "")
+    }
+
+    @objc private func previewButtonTapped() {
+        popupView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(popupView)
+
+        NSLayoutConstraint.activate([
+            popupView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            popupView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            popupView.widthAnchor.constraint(equalToConstant: view.frame.size.width * 0.8),
+            popupView.heightAnchor.constraint(equalToConstant: view.frame.size.height * 0.7)
+        ])
     }
 }
 
