@@ -19,6 +19,7 @@ final class CategoryViewController: UIViewController {
 
         view.backgroundColor = .white
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
 
         configureHierarchy()
         loadData()

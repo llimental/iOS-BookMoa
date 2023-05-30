@@ -14,6 +14,7 @@ final class HomeViewController: UIViewController {
 
         view.backgroundColor = .white
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
 
         configureHierarchy()
         configureRefreshControl()
