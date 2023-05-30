@@ -52,10 +52,10 @@ final class BookDetailViewController: UIViewController {
     private let thirdDivider = UIView()
 
     private let descriptionHeadLabel = UILabel()
-    private let descriptionBodyLabel = UILabel()
+    private let descriptionBodyLabel = DynamicLabel()
 
     private let authorDescriptionHeadLabel = UILabel()
-    private let authorDescriptionBodyLabel = UILabel()
+    private let authorDescriptionBodyLabel = DynamicLabel()
 
     private let memoTextView = UITextView()
 }
@@ -79,8 +79,12 @@ extension BookDetailViewController {
         bookAuthorLabel.text = individualBook.author
         bookCoverImageView.image = bookImage
         bookPublishLabel.text = "\(individualBook.publisher) / \(individualBook.pubDate)\n\(individualBook.categoryName)"
-        descriptionBodyLabel.text = individualBook.fullDescription2.components(separatedBy: ["<", "B", "R", ">", "b", "/", "r"]).joined()
-        authorDescriptionBodyLabel.text = individualBook.subInfo.authors.first?.authorInfo
+
+        descriptionBodyLabel.fullText = individualBook.fullDescription2.components(separatedBy: ["<", "B", "R", ">", "b", "/", "r"]).joined()
+        descriptionBodyLabel.collapse()
+
+        authorDescriptionBodyLabel.fullText = individualBook.subInfo.authors.first?.authorInfo
+        authorDescriptionBodyLabel.collapse()
 
         if UserDefaults.standard.string(forKey: selectedItem) != nil {
             memoTextView.text = UserDefaults.standard.string(forKey: selectedItem)
@@ -180,9 +184,9 @@ extension BookDetailViewController {
         descriptionHeadLabel.font = UIFont.preferredFont(forTextStyle: .headline)
 
         descriptionBodyLabel.textAlignment = .left
-        descriptionBodyLabel.numberOfLines = 3
-
         descriptionBodyLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+        descriptionBodyLabel.numberOfLines = 0
+        descriptionBodyLabel.isUserInteractionEnabled = true
 
         authorDescriptionHeadLabel.text = MagicLiteral.authorDescriptionHeadLabelText
         authorDescriptionHeadLabel.font = UIFont.preferredFont(forTextStyle: .headline)
@@ -190,6 +194,7 @@ extension BookDetailViewController {
         authorDescriptionBodyLabel.textAlignment = .left
         authorDescriptionBodyLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
         authorDescriptionBodyLabel.numberOfLines = 0
+        authorDescriptionBodyLabel.isUserInteractionEnabled = true
 
         memoTextView.text = MagicLiteral.memoViewPlaceholder
         memoTextView.font = UIFont.preferredFont(forTextStyle: .caption1)
