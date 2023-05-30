@@ -10,12 +10,12 @@ import UIKit
 final class CategoryViewController: UIViewController {
 
     var categoryID: String = ""
+    private var startIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        navigationItem.title = categoryID
         navigationItem.searchController = searchController
 
         configureHierarchy()
@@ -27,32 +27,34 @@ final class CategoryViewController: UIViewController {
 
     private func loadData() {
         Task {
-            let networkResults = try await networkService.requestData(with: BestSellerEndPoint()).item
+            let networkResults = try await networkService.requestData(with: CategoryEndPoint(categoryID: categoryID, startIndex: String(startIndex)))
 
-            let bookImages = try await networkService.requestMultipleImage(with: networkResults)
+            let bookImages = try await networkService.requestCategoryImage(with: networkResults.item)
 
-            var bookList: [HomeController.Book] = []
+            var categoryBookList: [CategoryController.CategoryBook] = []
 
-            for (networkResult, bookImage) in zip(networkResults, bookImages) {
-                let book = HomeController.Book(title: networkResult.title, author: networkResult.author, cover: bookImage, isbn: networkResult.isbn13)
-                bookList.append(book)
+            navigationItem.title = networkResults.searchCategoryName
+
+            for (networkResult, bookImage) in zip(networkResults.item, bookImages) {
+                let book = CategoryController.CategoryBook(title: networkResult.title, author: networkResult.author, cover: bookImage, isbn: networkResult.isbn13)
+                categoryBookList.append(book)
             }
-            applySnapshot(with: bookList)
+            applySnapshot(with: categoryBookList)
         }
     }
 
-    private func applySnapshot(with bookList: [HomeController.Book]) {
-        var snapshot = NSDiffableDataSourceSnapshot<HomeController.Section, AnyHashable>()
-        snapshot.appendSections([HomeController.Section.bestSeller])
-        snapshot.appendItems(bookList, toSection: .bestSeller)
+    private func applySnapshot(with categoryBookList: [CategoryController.CategoryBook]) {
+        var snapshot = NSDiffableDataSourceSnapshot<CategoryController.Section, CategoryController.CategoryBook>()
+        snapshot.appendSections([CategoryController.Section.categoryBookList])
+        snapshot.appendItems(categoryBookList, toSection: .categoryBookList)
 
         self.dataSource.apply(snapshot, animatingDifferences: true)
     }
 
     // MARK: - Private Properties
 
-    private var dataSource: UICollectionViewDiffableDataSource<HomeController.Section, AnyHashable>!
-    private var snapshot = NSDiffableDataSourceSnapshot<HomeController.Section, AnyHashable>()
+    private var dataSource: UICollectionViewDiffableDataSource<CategoryController.Section, CategoryController.CategoryBook>!
+    private var snapshot = NSDiffableDataSourceSnapshot<CategoryController.Section, CategoryController.CategoryBook>()
     private let networkService = NetworkService()
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
@@ -82,7 +84,7 @@ final class CategoryViewController: UIViewController {
 extension CategoryViewController {
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout{ (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            return self.createBestSellerLayout()
+            return self.createCategoryLayout()
         }
 
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
@@ -92,7 +94,7 @@ extension CategoryViewController {
         return layout
     }
 
-    private func createBestSellerLayout() -> NSCollectionLayoutSection {
+    private func createCategoryLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3),
                                               heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -102,14 +104,7 @@ extension CategoryViewController {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         group.interItemSpacing = NSCollectionLayoutSpacing.fixed(17)
 
-        let titleSupplementarySize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                            heightDimension: .estimated(44))
-        let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSupplementarySize,
-                                                                             elementKind: UICollectionView.elementKindSectionHeader,
-                                                                             alignment: .top)
-
         let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [titleSupplementary]
         section.interGroupSpacing = 16
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
 
@@ -126,14 +121,13 @@ extension CategoryViewController {
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
 
-        collectionView.register(BestSellerCell.self, forCellWithReuseIdentifier: BestSellerCell.reuseIdentifier)
-        collectionView.register(TitleSupplementaryView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier)
+        collectionView.register(CategoryBookCell.self, forCellWithReuseIdentifier: CategoryBookCell.reuseIdentifier)
 
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
 
@@ -141,39 +135,19 @@ extension CategoryViewController {
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) {
             (collectionView, indexPath, item) -> UICollectionViewCell? in
 
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BestSellerCell.reuseIdentifier, for: indexPath) as? BestSellerCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryBookCell.reuseIdentifier, for: indexPath) as? CategoryBookCell else {
                 return UICollectionViewCell()
             }
 
-            if let bookItem = item as? HomeController.Book {
-                cell.booktitleLabel.text = bookItem.title
-                cell.bookAuthorLabel.text = bookItem.author
-                cell.bookImageView.image = bookItem.cover
-                cell.bookISBN = bookItem.isbn
-            }
+            cell.booktitleLabel.text = item.title
+            cell.bookAuthorLabel.text = item.author
+            cell.bookImageView.image = item.cover
+            cell.bookISBN = item.isbn
 
             return cell
         }
 
-        dataSource.supplementaryViewProvider = { (
-            collectionView: UICollectionView,
-            kind: String,
-            indexPath: IndexPath) -> UICollectionReusableView? in
-
-            guard let supplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                                          withReuseIdentifier: TitleSupplementaryView.reuseIdentifier,
-                                                                                          for: indexPath) as? TitleSupplementaryView else {
-                return UICollectionReusableView()
-            }
-
-            supplementaryView.titleLabel.text = HomeController.Section.bestSeller.rawValue
-            supplementaryView.titleDecorateImageView.image = UIImage(named: "StarIcon")
-            supplementaryView.disclosureImageView.tintColor = .black
-
-            return supplementaryView
-        }
-
-        snapshot.appendSections([HomeController.Section.bestSeller])
+        snapshot.appendSections([CategoryController.Section.categoryBookList])
         snapshot.appendItems([])
         dataSource.apply(snapshot)
     }
@@ -182,7 +156,7 @@ extension CategoryViewController {
 // MARK: - CollectionView Delegate
 extension CategoryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? BestSellerCell {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryBookCell {
             let bookDetailViewController = BookDetailViewController()
 
             bookDetailViewController.selectedItem = cell.bookISBN
