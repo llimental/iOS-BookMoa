@@ -16,6 +16,7 @@ final class BookDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.addKeyboardNotifications()
         view.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
 
         configure()
@@ -25,6 +26,7 @@ final class BookDetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
+        self.removeKeyboardNotifications()
         UserDefaults.standard.set(memoTextView.text, forKey: selectedItem)
     }
 
@@ -294,6 +296,36 @@ extension BookDetailViewController {
             memoTextView.bottomAnchor.constraint(equalTo: entireInformationView.bottomAnchor, constant: -37),
             memoTextView.heightAnchor.constraint(equalToConstant: 116)
         ])
+    }
+
+    private func addKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    private func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc private func keyboardWillShow(_ notification: NSNotification) {
+        guard let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+        let tabBarHeight: CGFloat = self.tabBarController?.tabBar.frame.size.height else {
+            return
+        }
+        let keyboardRectangle = keyboardFrame.cgRectValue
+        let keyboardHeight = keyboardRectangle.height
+        self.view.frame.origin.y -= keyboardHeight - tabBarHeight
+    }
+
+    @objc private func keyboardWillHide(_ notification: NSNotification) {
+        guard let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+        let tabBarHeight: CGFloat = self.tabBarController?.tabBar.frame.size.height else {
+            return
+        }
+        let keyboardRectangle = keyboardFrame.cgRectValue
+        let keyboardHeight = keyboardRectangle.height
+        self.view.frame.origin.y += keyboardHeight - tabBarHeight
     }
 
     @objc private func dismissKeyboard() {
