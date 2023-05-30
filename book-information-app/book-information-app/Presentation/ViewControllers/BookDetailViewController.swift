@@ -208,7 +208,7 @@ extension BookDetailViewController {
             backgroundView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            backgroundView.heightAnchor.constraint(equalTo: entireInformationView.heightAnchor, multiplier: 0.7),
+            backgroundView.topAnchor.constraint(equalTo: entireInformationView.topAnchor, constant: 250),
 
             backgroundImageView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
             backgroundImageView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: -157),
