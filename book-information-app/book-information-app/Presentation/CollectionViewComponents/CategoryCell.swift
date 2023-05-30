@@ -11,6 +11,7 @@ final class CategoryCell: UICollectionViewCell {
     static let reuseIdentifier = MagicLiteral.categoryReuseIdentifier
 
     let categoryLabel = UILabel()
+    var categoryID: String = ""
 
     override init(frame: CGRect) {
         super.init(frame: frame)

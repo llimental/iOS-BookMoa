@@ -27,8 +27,8 @@ final class HomeViewController: UIViewController {
     private func setCategory() {
         let sortedCategory = CategoryID.categoryIDList.sorted { $0.key < $1.key }
 
-        for (_, categoryId) in sortedCategory {
-            let category = HomeController.Category(title: categoryId)
+        for (_, categoryName) in sortedCategory {
+            let category = HomeController.Category(title: categoryName)
             categoryList.append(category)
         }
     }
@@ -220,9 +220,12 @@ extension HomeViewController {
                     return UICollectionViewCell()
                 }
 
-                if let categoryItem = item as? HomeController.Category {
-                    cell.categoryLabel.text = categoryItem.title
+                guard let categoryItem = item as? HomeController.Category,
+                      let categoryID = CategoryID.categoryIDList.first(where: { $0.value == categoryItem.title })?.key else {
+                    return UICollectionViewCell()
                 }
+                cell.categoryLabel.text = categoryItem.title
+                cell.categoryID = String(categoryID)
 
                 return cell
             }
@@ -281,6 +284,8 @@ extension HomeViewController: UICollectionViewDelegate {
             cell.categoryLabel.textColor = .white
 
             let categoryViewController = CategoryViewController()
+
+            categoryViewController.categoryID = cell.categoryID
 
             navigationController?.pushViewController(categoryViewController, animated: true)
 

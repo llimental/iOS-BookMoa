@@ -9,13 +9,13 @@ import UIKit
 
 final class CategoryViewController: UIViewController {
 
-    var categoryName: String = ""
+    var categoryID: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        navigationItem.title = categoryName
+        navigationItem.title = categoryID
         navigationItem.searchController = searchController
 
         configureHierarchy()
