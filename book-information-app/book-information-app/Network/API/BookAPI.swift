@@ -44,7 +44,7 @@ enum BookAPI {
         case .individualBook(let isbn):
             let itemIdTypeParameter = URLQueryItem(name: "itemIdType", value: "ISBN")
             let itemIdParameter = URLQueryItem(name: "ItemId", value: isbn)
-            let optionResultParameter = URLQueryItem(name: "OptResult", value: "authors,fulldescription,Toc,Story")
+            let optionResultParameter = URLQueryItem(name: "OptResult", value: "authors,fulldescription,Toc,Story,previewImgList")
             let coverParameter = URLQueryItem(name: "cover", value: "big")
             queryItems = [keyParameter, outputParameter, apiVersionParameter, itemIdTypeParameter, itemIdParameter, optionResultParameter, coverParameter]
         }
