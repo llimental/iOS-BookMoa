@@ -10,8 +10,9 @@ import UIKit
 final class DynamicLabel: UILabel{
 
     var fullText: String?
-    var truncatedLength = 100
     var isTruncated = true
+    let truncatedLength = 100
+    let attributedLength = 7
 
     func collapse() {
         if let fullText = fullText {
