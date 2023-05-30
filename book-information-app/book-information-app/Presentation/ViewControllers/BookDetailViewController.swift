@@ -60,6 +60,8 @@ final class BookDetailViewController: UIViewController {
     private let authorDescriptionBodyLabel = DynamicLabel()
 
     private let memoTextView = UITextView()
+
+    private let collaboratorLabel = UILabel()
 }
 
 // MARK: - Private Functions
@@ -120,6 +122,8 @@ extension BookDetailViewController {
 
         memoTextView.translatesAutoresizingMaskIntoConstraints = false
 
+        collaboratorLabel.translatesAutoresizingMaskIntoConstraints = false
+
         // MARK: - addSubview
 
         view.addSubview(scrollView)
@@ -149,6 +153,8 @@ extension BookDetailViewController {
         authorDescriptionBodyLabel.addGestureRecognizer(authorTapGestureRecognizer)
 
         entireInformationView.addSubview(memoTextView)
+
+        entireInformationView.addSubview(collaboratorLabel)
 
         // MARK: - Configure UI Components
 
@@ -205,6 +211,11 @@ extension BookDetailViewController {
         memoTextView.textColor = UIColor(red: 0.29, green: 0.31, blue: 0.34, alpha: 1.00)
         memoTextView.backgroundColor = UIColor(red: 0.91, green: 0.91, blue: 0.99, alpha: 1.00)
         memoTextView.delegate = self
+
+        collaboratorLabel.textAlignment = .center
+        collaboratorLabel.text = MagicLiteral.collaboratorLabelText
+        collaboratorLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
+        collaboratorLabel.textColor = .gray
 
         // MARK: - Custom Constraints
 
@@ -291,8 +302,12 @@ extension BookDetailViewController {
             memoTextView.topAnchor.constraint(equalTo: thirdDivider.bottomAnchor, constant: 10),
             memoTextView.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
             memoTextView.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
-            memoTextView.bottomAnchor.constraint(equalTo: entireInformationView.bottomAnchor, constant: -37),
-            memoTextView.heightAnchor.constraint(equalToConstant: 116)
+            memoTextView.heightAnchor.constraint(equalToConstant: 200),
+
+            collaboratorLabel.topAnchor.constraint(equalTo: memoTextView.bottomAnchor, constant: 10),
+            collaboratorLabel.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
+            collaboratorLabel.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
+            collaboratorLabel.bottomAnchor.constraint(equalTo: entireInformationView.bottomAnchor, constant: -37)
         ])
     }
 
