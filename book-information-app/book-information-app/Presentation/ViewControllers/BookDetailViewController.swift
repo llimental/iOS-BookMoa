@@ -152,18 +152,18 @@ extension BookDetailViewController {
         backgroundImageView.contentMode = .scaleAspectFit
 
         bookTitleLabel.textAlignment = .center
-        bookTitleLabel.font = UIFont.systemFont(ofSize: 28, weight: .medium)
+        bookTitleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
         bookTitleLabel.numberOfLines = 0
         bookTitleLabel.textColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00)
 
         bookAuthorLabel.textAlignment = .center
-        bookAuthorLabel.font = UIFont.systemFont(ofSize: 17)
+        bookAuthorLabel.font = UIFont.preferredFont(forTextStyle: .callout)
         bookAuthorLabel.textColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 0.60)
 
         bookCoverImageView.contentMode = .scaleAspectFit
 
         bookPublishLabel.textAlignment = .center
-        bookPublishLabel.font = UIFont.systemFont(ofSize: 14)
+        bookPublishLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         bookPublishLabel.numberOfLines = 0
         bookPublishLabel.textColor = UIColor(red: 0.53, green: 0.56, blue: 0.59, alpha: 1.00)
 
@@ -177,22 +177,22 @@ extension BookDetailViewController {
         thirdDivider.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00)
 
         descriptionHeadLabel.text = MagicLiteral.descriptionHeadLabelText
-        descriptionHeadLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        descriptionHeadLabel.font = UIFont.preferredFont(forTextStyle: .headline)
 
         descriptionBodyLabel.textAlignment = .left
-        descriptionBodyLabel.font = UIFont.systemFont(ofSize: 12)
         descriptionBodyLabel.numberOfLines = 3
 
+        descriptionBodyLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
 
         authorDescriptionHeadLabel.text = MagicLiteral.authorDescriptionHeadLabelText
-        authorDescriptionHeadLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        authorDescriptionHeadLabel.font = UIFont.preferredFont(forTextStyle: .headline)
 
         authorDescriptionBodyLabel.textAlignment = .left
-        authorDescriptionBodyLabel.font = UIFont.systemFont(ofSize: 12)
+        authorDescriptionBodyLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
         authorDescriptionBodyLabel.numberOfLines = 0
 
         memoTextView.text = MagicLiteral.memoViewPlaceholder
-        memoTextView.font = UIFont.systemFont(ofSize: 12)
+        memoTextView.font = UIFont.preferredFont(forTextStyle: .caption1)
         memoTextView.textColor = UIColor(red: 0.29, green: 0.31, blue: 0.34, alpha: 1.00)
         memoTextView.backgroundColor = UIColor(red: 0.91, green: 0.91, blue: 0.99, alpha: 1.00)
         memoTextView.delegate = self
