@@ -16,8 +16,8 @@ final class CategoryEndPoint: RequestableAndResponsable {
     var path: String
     var query: [URLQueryItem]
 
-    init(categoryId: String, startIndex: String) {
-        let api = BookAPI.category(categoryId: categoryId, startIndex: startIndex)
+    init(categoryID: String, startIndex: String) {
+        let api = BookAPI.category(categoryID: categoryID, startIndex: startIndex)
 
         self.methodType = .get
         self.scheme = BookAPI.scheme

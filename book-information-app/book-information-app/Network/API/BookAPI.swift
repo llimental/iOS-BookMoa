@@ -10,7 +10,7 @@ import Foundation
 enum BookAPI {
     case bestSeller
     case individualBook(isbn: String)
-    case category(categoryId: String, startIndex: String)
+    case category(categoryID: String, startIndex: String)
 
     static var scheme: String {
         return "https"
@@ -54,9 +54,9 @@ enum BookAPI {
 
             queryItems = [keyParameter, outputParameter, apiVersionParameter, itemIdTypeParameter, itemIdParameter, optionResultParameter, coverParameter]
 
-        case .category(let categoryId, let startIndex):
+        case .category(let categoryID, let startIndex):
             let queryTypeParameter = URLQueryItem(name: "QueryType", value: "ItemNewAll")
-            let categoryIdParameter = URLQueryItem(name: "CategoryId", value: categoryId)
+            let categoryIdParameter = URLQueryItem(name: "CategoryId", value: categoryID)
             let startParameter = URLQueryItem(name: "Start", value: startIndex)
 
             queryItems = [keyParameter, outputParameter, apiVersionParameter, queryTypeParameter, categoryIdParameter, startParameter]
