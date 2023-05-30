@@ -10,7 +10,7 @@ import UIKit
 final class CategoryViewController: UIViewController {
 
     var categoryID: String = ""
-    private var startIndex: Int = 0
+    private var startIndex: Int = 1
     private var totalResult: Int = 0
     private var itemsPerPage: Int = 0
 
