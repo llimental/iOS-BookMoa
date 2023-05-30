@@ -277,11 +277,11 @@ extension HomeViewController {
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCell {
-            cell.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+            cell.applyGradientBackground()
             cell.categoryLabel.textColor = .white
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                cell.backgroundColor = UIColor(red: 0.87, green: 0.89, blue: 0.90, alpha: 1.00)
+                cell.removeGradientBackground()
                 cell.categoryLabel.textColor = .black
             }
         }

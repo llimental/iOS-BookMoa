@@ -23,6 +23,22 @@ final class CategoryCell: UICollectionViewCell {
 }
 
 extension CategoryCell {
+    func applyGradientBackground() {
+        let gradientLayer = CAGradientLayer()
+
+        gradientLayer.frame = contentView.bounds
+        gradientLayer.colors = [UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00).cgColor, UIColor(red: 0.49, green: 0.31, blue: 0.91, alpha: 1.00).cgColor]
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.cornerRadius = 15
+
+        contentView.layer.insertSublayer(gradientLayer, at: 0)
+    }
+
+    func removeGradientBackground() {
+        contentView.layer.sublayers?.removeFirst()
+    }
+    
     private func configure() {
         categoryLabel.translatesAutoresizingMaskIntoConstraints = false
 
