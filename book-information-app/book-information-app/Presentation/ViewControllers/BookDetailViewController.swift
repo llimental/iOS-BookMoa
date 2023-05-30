@@ -85,13 +85,11 @@ extension BookDetailViewController {
         bookCoverImageView.image = bookImage
         bookPublishLabel.text = "\(individualBook.publisher) / \(individualBook.pubDate)\n\(individualBook.categoryName)"
 
-        descriptionBodyLabel.fullText = individualBook.fullDescription2.components(separatedBy: ["<", "B", "R", ">", "b", "/", "r"]).joined()
-        descriptionBodyLabel.collapse()
-        descriptionBodyLabel.attributedText = setPartialColor(with: descriptionBodyLabel.text ?? "")
+        descriptionBodyLabel.fullText = individualBook.fullDescription.components(separatedBy: ["<", "B", "R", ">", "b", "/", "r"]).joined()
+        checkLabelSafety(with: descriptionBodyLabel)
 
         authorDescriptionBodyLabel.fullText = individualBook.subInfo.authors.first?.authorInfo
-        authorDescriptionBodyLabel.collapse()
-        authorDescriptionBodyLabel.attributedText = setPartialColor(with: authorDescriptionBodyLabel.text ?? "")
+        checkLabelSafety(with: authorDescriptionBodyLabel)
 
         if UserDefaults.standard.string(forKey: selectedItem) != nil {
             memoTextView.text = UserDefaults.standard.string(forKey: selectedItem)
@@ -326,6 +324,16 @@ extension BookDetailViewController {
                                       range: range)
 
         return attributedString
+    }
+
+    private func checkLabelSafety(with label: DynamicLabel) {
+        guard let LabelText = label.fullText, LabelText.count > label.truncatedLength + label.attributedLength else {
+            label.text = label.fullText
+            return
+        }
+
+        label.collapse()
+        label.attributedText = setPartialColor(with: label.text ?? "")
     }
 
     private func addKeyboardNotifications() {
