@@ -80,8 +80,8 @@ extension BookDetailViewController {
         bookAuthorLabel.text = individualBook.author
         bookCoverImageView.image = bookImage
         bookPublishLabel.text = "\(individualBook.publisher) / \(individualBook.pubDate)\n\(individualBook.categoryName)"
-        descriptionBodyLabel.text = individualBook.description
-        authorDescriptionBodyLabel.text = "이건 저자소개임"
+        descriptionBodyLabel.text = individualBook.fullDescription2.components(separatedBy: ["<", "B", "R", ">", "b", "/", "r"]).joined()
+        authorDescriptionBodyLabel.text = individualBook.subInfo.authors.first?.authorInfo
 
         if UserDefaults.standard.string(forKey: selectedItem) != nil {
             memoTextView.text = UserDefaults.standard.string(forKey: selectedItem)
