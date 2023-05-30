@@ -33,6 +33,7 @@ struct IndividualBook: Decodable {
         let itemPage: Int
         let toc: String
         let story: String
+        let previewImgList: [String]
         let authors: [Author]
     }
 
