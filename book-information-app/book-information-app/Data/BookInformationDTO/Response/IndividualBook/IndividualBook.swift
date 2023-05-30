@@ -21,24 +21,23 @@ struct IndividualBook: Decodable {
         let cover: String
         let categoryName: String
         let publisher: String
+        let fullDescription: String
+        let fullDescription2: String
         let subInfo: SubInfo
-
-        enum CodingKeys: String, CodingKey {
-            case title
-            case link
-            case author
-            case pubDate
-            case description
-            case cover
-            case categoryName
-            case publisher
-            case subInfo
-        }
     }
 
     // MARK: - SubInfo
     struct SubInfo: Decodable {
-        let subTitle, originalTitle: String
+        let subTitle: String
+        let originalTitle: String
         let itemPage: Int
+        let toc: String
+        let story: String
+        let authors: [Author]
+    }
+
+    struct Author: Decodable {
+        let authorName: String
+        let authorInfo: String
     }
 }
