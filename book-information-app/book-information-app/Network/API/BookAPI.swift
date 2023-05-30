@@ -58,8 +58,9 @@ enum BookAPI {
             let queryTypeParameter = URLQueryItem(name: "QueryType", value: "ItemNewAll")
             let categoryIdParameter = URLQueryItem(name: "CategoryId", value: categoryID)
             let startParameter = URLQueryItem(name: "Start", value: startIndex)
+            let maxResultsParameter = URLQueryItem(name: "MaxResults", value: "12")
 
-            queryItems = [keyParameter, outputParameter, apiVersionParameter, queryTypeParameter, categoryIdParameter, startParameter]
+            queryItems = [keyParameter, outputParameter, apiVersionParameter, queryTypeParameter, categoryIdParameter, startParameter, maxResultsParameter]
         }
 
         return queryItems
