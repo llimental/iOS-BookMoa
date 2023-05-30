@@ -16,6 +16,7 @@ final class TabBarController: UITabBarController {
 
         navigationBarAppearance.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
         navigationBarAppearance.shadowColor = .clear
+        navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
 
         return navigationBarAppearance
     }()
@@ -24,6 +25,7 @@ final class TabBarController: UITabBarController {
         let navigationHome = UINavigationController(rootViewController: homeViewController)
 
         navigationHome.navigationBar.topItem?.backButtonTitle = ""
+        navigationHome.navigationBar.topItem?.title = MagicLiteral.homeViewControllerTitle
         navigationHome.navigationBar.tintColor = .white
         navigationHome.navigationBar.standardAppearance = navigationBarAppearance
         navigationHome.navigationBar.scrollEdgeAppearance = navigationBarAppearance
