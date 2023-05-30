@@ -11,6 +11,8 @@ final class CategoryViewController: UIViewController {
 
     var categoryID: String = ""
     private var startIndex: Int = 0
+    private var totalResult: Int = 0
+    private var itemsPerPage: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,24 @@ final class CategoryViewController: UIViewController {
             var categoryBookList: [CategoryController.CategoryBook] = []
 
             navigationItem.title = networkResults.searchCategoryName
+            totalResult = networkResults.totalResults
+            itemsPerPage = networkResults.itemsPerPage
+
+            for (networkResult, bookImage) in zip(networkResults.item, bookImages) {
+                let book = CategoryController.CategoryBook(title: networkResult.title, author: networkResult.author, cover: bookImage, isbn: networkResult.isbn13)
+                categoryBookList.append(book)
+            }
+            applySnapshot(with: categoryBookList)
+        }
+    }
+
+    private func loadMoreData() {
+        Task {
+            let networkResults = try await networkService.requestData(with: CategoryEndPoint(categoryID: categoryID, startIndex: String(startIndex)))
+
+            let bookImages = try await networkService.requestCategoryImage(with: networkResults.item)
+
+            var categoryBookList = dataSource.snapshot().itemIdentifiers
 
             for (networkResult, bookImage) in zip(networkResults.item, bookImages) {
                 let book = CategoryController.CategoryBook(title: networkResult.title, author: networkResult.author, cover: bookImage, isbn: networkResult.isbn13)
@@ -163,5 +183,13 @@ extension CategoryViewController: UICollectionViewDelegate {
 
             navigationController?.pushViewController(bookDetailViewController, animated: true)
         }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard indexPath.item == collectionView.numberOfItems(inSection: indexPath.section) - 1, startIndex * itemsPerPage < totalResult else {
+            return
+        }
+        startIndex += 1
+        loadMoreData()
     }
 }
