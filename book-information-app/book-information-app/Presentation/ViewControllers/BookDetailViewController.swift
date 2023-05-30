@@ -33,6 +33,8 @@ final class BookDetailViewController: UIViewController {
     // MARK: - Private Properties
 
     private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+    private lazy var descriptionTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(controlDescription))
+    private lazy var authorTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(controlAuthorDescription))
 
     private let networkService = NetworkService()
 
@@ -140,9 +142,11 @@ extension BookDetailViewController {
 
         entireInformationView.addSubview(descriptionHeadLabel)
         entireInformationView.addSubview(descriptionBodyLabel)
+        descriptionBodyLabel.addGestureRecognizer(descriptionTapGestureRecognizer)
 
         entireInformationView.addSubview(authorDescriptionHeadLabel)
         entireInformationView.addSubview(authorDescriptionBodyLabel)
+        authorDescriptionBodyLabel.addGestureRecognizer(authorTapGestureRecognizer)
 
         entireInformationView.addSubview(memoTextView)
 
@@ -326,6 +330,12 @@ extension BookDetailViewController {
         view.endEditing(true)
     }
 
+    @objc private func controlDescription() {
+        descriptionBodyLabel.isTruncated ? descriptionBodyLabel.expand() : descriptionBodyLabel.collapse()
+    }
+
+    @objc private func controlAuthorDescription() {
+        authorDescriptionBodyLabel.isTruncated ? authorDescriptionBodyLabel.expand() : authorDescriptionBodyLabel.collapse()
     }
 }
 
