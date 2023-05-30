@@ -41,6 +41,7 @@
 		D9E3FA8E2A23313A005D0A35 /* IndividualBookEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA8D2A23313A005D0A35 /* IndividualBookEndPoint.swift */; };
 		D9E3FA952A25C2BC005D0A35 /* DynamicLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA942A25C2BC005D0A35 /* DynamicLabel.swift */; };
 		D9E3FA972A25DC3E005D0A35 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA962A25DC3E005D0A35 /* CategoryViewController.swift */; };
+		D9E3FA9F2A260C0F005D0A35 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA9E2A260C0F005D0A35 /* PopupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		D9E3FA8D2A23313A005D0A35 /* IndividualBookEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualBookEndPoint.swift; sourceTree = "<group>"; };
 		D9E3FA942A25C2BC005D0A35 /* DynamicLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLabel.swift; sourceTree = "<group>"; };
 		D9E3FA962A25DC3E005D0A35 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		D9E3FA9E2A260C0F005D0A35 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				D9E3FA942A25C2BC005D0A35 /* DynamicLabel.swift */,
+				D9E3FA9E2A260C0F005D0A35 /* PopupView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				D9D98D3A2A161A9F00A6CFE6 /* Requestable.swift in Sources */,
 				D91121032A1A1349004E5C45 /* RequestableAndResponsable.swift in Sources */,
 				D91121082A1A5F97004E5C45 /* HomeController.swift in Sources */,
+				D9E3FA9F2A260C0F005D0A35 /* PopupView.swift in Sources */,
 				D98DC34D2A15BFEB006660FA /* Category.swift in Sources */,
 				D91120FE2A17442F004E5C45 /* HTTPErrorType.swift in Sources */,
 				D9E3FA952A25C2BC005D0A35 /* DynamicLabel.swift in Sources */,
