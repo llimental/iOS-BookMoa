@@ -42,6 +42,7 @@
 		D9E3FA952A25C2BC005D0A35 /* DynamicLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA942A25C2BC005D0A35 /* DynamicLabel.swift */; };
 		D9E3FA972A25DC3E005D0A35 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA962A25DC3E005D0A35 /* CategoryViewController.swift */; };
 		D9E3FA9F2A260C0F005D0A35 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA9E2A260C0F005D0A35 /* PopupView.swift */; };
+		D9E3FAAF2A262730005D0A35 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FAAE2A262730005D0A35 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		D9E3FA942A25C2BC005D0A35 /* DynamicLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLabel.swift; sourceTree = "<group>"; };
 		D9E3FA962A25DC3E005D0A35 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		D9E3FA9E2A260C0F005D0A35 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		D9E3FAAE2A262730005D0A35 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +293,7 @@
 			children = (
 				D98DC3472A14CCA4006660FA /* BestSeller */,
 				D9E3FA8A2A232F1E005D0A35 /* IndividualBook */,
+				D9E3FAAD2A262721005D0A35 /* Category */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -357,6 +360,14 @@
 				D9E3FA9E2A260C0F005D0A35 /* PopupView.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D9E3FAAD2A262721005D0A35 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				D9E3FAAE2A262730005D0A35 /* Category.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -502,6 +513,7 @@
 				D9C483572A1C87B0008F3F3B /* MagicLiteral.swift in Sources */,
 				D9D98D302A1613E700A6CFE6 /* BestSellerEndPoint.swift in Sources */,
 				D98DC3092A148C30006660FA /* HomeViewController.swift in Sources */,
+				D9E3FAAF2A262730005D0A35 /* Category.swift in Sources */,
 				D9A497E42A2109C50005C2B2 /* BookDetailViewController.swift in Sources */,
 				D9E3FA8C2A232F47005D0A35 /* IndividualBook.swift in Sources */,
 				D911210B2A1AF967004E5C45 /* BestSellerCell.swift in Sources */,
