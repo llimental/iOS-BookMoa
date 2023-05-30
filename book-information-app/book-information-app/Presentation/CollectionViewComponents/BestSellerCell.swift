@@ -30,16 +30,17 @@ final class BestSellerCell: UICollectionViewCell {
 extension BestSellerCell {
     private func configure() {
         bookStackView.translatesAutoresizingMaskIntoConstraints = false
-        bookImageView.translatesAutoresizingMaskIntoConstraints = false
-        booktitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        bookAuthorLabel.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(bookStackView)
-        bookStackView.addSubview(bookImageView)
-        bookStackView.addSubview(booktitleLabel)
-        bookStackView.addSubview(bookAuthorLabel)
+        bookStackView.addArrangedSubview(bookImageView)
+        bookStackView.addArrangedSubview(booktitleLabel)
+        bookStackView.addArrangedSubview(bookAuthorLabel)
 
         bookStackView.axis = .vertical
+        bookStackView.spacing = 3
+        bookStackView.alignment = .center
+
+        bookImageView.contentMode = .scaleAspectFill
 
         booktitleLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         booktitleLabel.adjustsFontForContentSizeCategory = true
@@ -55,21 +56,6 @@ extension BestSellerCell {
             bookStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             bookStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             bookStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-
-            bookImageView.topAnchor.constraint(equalTo: bookStackView.topAnchor),
-            bookImageView.leadingAnchor.constraint(equalTo: bookStackView.leadingAnchor),
-            bookImageView.trailingAnchor.constraint(equalTo: bookStackView.trailingAnchor),
-            bookImageView.heightAnchor.constraint(equalToConstant: 180),
-
-            booktitleLabel.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 4),
-            booktitleLabel.leadingAnchor.constraint(equalTo: bookStackView.leadingAnchor),
-            booktitleLabel.trailingAnchor.constraint(equalTo: bookStackView.trailingAnchor),
-            booktitleLabel.heightAnchor.constraint(equalToConstant: 15),
-
-            bookAuthorLabel.topAnchor.constraint(equalTo: booktitleLabel.bottomAnchor, constant: 2),
-            bookAuthorLabel.leadingAnchor.constraint(equalTo: bookStackView.leadingAnchor),
-            bookAuthorLabel.trailingAnchor.constraint(equalTo: bookStackView.trailingAnchor),
-            bookAuthorLabel.bottomAnchor.constraint(equalTo: bookStackView.bottomAnchor)
         ])
     }
 }
