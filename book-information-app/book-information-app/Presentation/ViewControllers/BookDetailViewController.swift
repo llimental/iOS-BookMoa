@@ -86,9 +86,11 @@ extension BookDetailViewController {
 
         descriptionBodyLabel.fullText = individualBook.fullDescription2.components(separatedBy: ["<", "B", "R", ">", "b", "/", "r"]).joined()
         descriptionBodyLabel.collapse()
+        descriptionBodyLabel.attributedText = setPartialColor(with: descriptionBodyLabel.text ?? "")
 
         authorDescriptionBodyLabel.fullText = individualBook.subInfo.authors.first?.authorInfo
         authorDescriptionBodyLabel.collapse()
+        authorDescriptionBodyLabel.attributedText = setPartialColor(with: authorDescriptionBodyLabel.text ?? "")
 
         if UserDefaults.standard.string(forKey: selectedItem) != nil {
             memoTextView.text = UserDefaults.standard.string(forKey: selectedItem)
@@ -311,6 +313,17 @@ extension BookDetailViewController {
         ])
     }
 
+    private func setPartialColor(with labelText: String) -> NSMutableAttributedString {
+        let fullString = labelText
+        let attributedString = NSMutableAttributedString(string: fullString)
+        let range = NSRange(location: fullString.count - 7, length: 7)
+        attributedString.addAttribute(.foregroundColor,
+                                      value: UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00),
+                                      range: range)
+
+        return attributedString
+    }
+
     private func addKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -351,10 +364,12 @@ extension BookDetailViewController {
 
     @objc private func controlDescription() {
         descriptionBodyLabel.isTruncated ? descriptionBodyLabel.expand() : descriptionBodyLabel.collapse()
+        descriptionBodyLabel.attributedText = setPartialColor(with: descriptionBodyLabel.text ?? "")
     }
 
     @objc private func controlAuthorDescription() {
         authorDescriptionBodyLabel.isTruncated ? authorDescriptionBodyLabel.expand() : authorDescriptionBodyLabel.collapse()
+        authorDescriptionBodyLabel.attributedText = setPartialColor(with: authorDescriptionBodyLabel.text ?? "")
     }
 }
 
