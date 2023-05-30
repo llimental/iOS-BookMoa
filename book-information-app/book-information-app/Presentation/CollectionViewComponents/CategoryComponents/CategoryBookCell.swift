@@ -40,7 +40,7 @@ extension CategoryBookCell {
         bookStackView.spacing = 3
         bookStackView.alignment = .center
 
-        bookImageView.contentMode = .scaleAspectFill
+        bookImageView.contentMode = .scaleAspectFit
 
         booktitleLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         booktitleLabel.adjustsFontForContentSizeCategory = true
