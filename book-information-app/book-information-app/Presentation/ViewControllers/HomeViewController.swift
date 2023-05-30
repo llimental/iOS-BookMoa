@@ -25,7 +25,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Private Functions
 
     private func setCategory() {
-        let sortedCategory = Category.categoryList.sorted { $0.key < $1.key }
+        let sortedCategory = CategoryID.categoryIDList.sorted { $0.key < $1.key }
 
         for (_, categoryId) in sortedCategory {
             let category = HomeController.Category(title: categoryId)

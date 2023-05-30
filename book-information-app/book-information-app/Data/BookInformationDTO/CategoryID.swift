@@ -1,5 +1,5 @@
 //
-//  Category.swift
+//  CategoryID.swift
 //  book-information-app
 //
 //  Created by 이상윤 on 2023/05/18.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Category {
-    static let categoryList: [Int: String] = [
+struct CategoryID {
+    static let categoryIDList: [Int: String] = [
         351: "컴퓨터/모바일",
         336: "자기계발",
         55889: "에세이",
