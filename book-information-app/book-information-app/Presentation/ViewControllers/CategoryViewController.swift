@@ -21,7 +21,6 @@ final class CategoryViewController: UIViewController {
         navigationItem.searchController = searchController
 
         configureHierarchy()
-        configureDataSource()
         loadData()
     }
 
@@ -73,9 +72,9 @@ final class CategoryViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private var dataSource: UICollectionViewDiffableDataSource<CategoryController.Section, CategoryController.CategoryBook>!
     private var snapshot = NSDiffableDataSourceSnapshot<CategoryController.Section, CategoryController.CategoryBook>()
     private let networkService = NetworkService()
+    private lazy var dataSource = configureDataSource()
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
 
@@ -151,8 +150,8 @@ extension CategoryViewController {
         ])
     }
 
-    private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) {
+    private func configureDataSource() -> UICollectionViewDiffableDataSource<CategoryController.Section, CategoryController.CategoryBook> {
+        let dataSource = UICollectionViewDiffableDataSource<CategoryController.Section, CategoryController.CategoryBook>(collectionView: collectionView) {
             (collectionView, indexPath, item) -> UICollectionViewCell? in
 
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryBookCell.reuseIdentifier, for: indexPath) as? CategoryBookCell else {
@@ -167,9 +166,7 @@ extension CategoryViewController {
             return cell
         }
 
-        snapshot.appendSections([CategoryController.Section.categoryBookList])
-        snapshot.appendItems([])
-        dataSource.apply(snapshot)
+        return dataSource
     }
 }
 
