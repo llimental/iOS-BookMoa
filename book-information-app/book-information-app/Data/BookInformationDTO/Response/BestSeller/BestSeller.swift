@@ -9,11 +9,5 @@ import Foundation
 
 // MARK: - BestSeller
 struct BestSeller: Decodable {
-    let publishDate: String
     let item: [Item]
-
-    enum CodingKeys: String, CodingKey {
-        case publishDate = "pubDate"
-        case item
-    }
 }
