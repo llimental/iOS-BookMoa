@@ -375,11 +375,19 @@ extension BookDetailViewController {
     }
 
     @objc private func controlDescription() {
+        guard let labelText = descriptionBodyLabel.fullText, labelText.count > descriptionBodyLabel.truncatedLength + descriptionBodyLabel.attributedLength else {
+            return
+        }
+
         descriptionBodyLabel.isTruncated ? descriptionBodyLabel.expand() : descriptionBodyLabel.collapse()
         descriptionBodyLabel.attributedText = setPartialColor(with: descriptionBodyLabel.text ?? "")
     }
 
     @objc private func controlAuthorDescription() {
+        guard let labelText = authorDescriptionBodyLabel.fullText, labelText.count > authorDescriptionBodyLabel.truncatedLength + authorDescriptionBodyLabel.attributedLength else {
+            return
+        }
+
         authorDescriptionBodyLabel.isTruncated ? authorDescriptionBodyLabel.expand() : authorDescriptionBodyLabel.collapse()
         authorDescriptionBodyLabel.attributedText = setPartialColor(with: authorDescriptionBodyLabel.text ?? "")
     }
