@@ -305,7 +305,11 @@ extension BookDetailViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+}
 
+// MARK: - @objc Functions
+
+extension BookDetailViewController {
     @objc private func keyboardWillShow(_ notification: NSNotification) {
         guard let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
         let tabBarHeight: CGFloat = self.tabBarController?.tabBar.frame.size.height else {
@@ -338,6 +342,8 @@ extension BookDetailViewController {
         authorDescriptionBodyLabel.isTruncated ? authorDescriptionBodyLabel.expand() : authorDescriptionBodyLabel.collapse()
     }
 }
+
+// MARK: - TextViewDelegate
 
 extension BookDetailViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
