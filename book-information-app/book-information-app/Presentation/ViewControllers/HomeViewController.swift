@@ -16,7 +16,6 @@ final class HomeViewController: UIViewController {
         navigationItem.searchController = searchController
 
         configureHierarchy()
-        configureDataSource()
         configureRefreshControl()
         setCategory()
         loadData()
@@ -64,8 +63,7 @@ final class HomeViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private var dataSource: UICollectionViewDiffableDataSource<HomeController.Section, AnyHashable>!
-    private var snapshot = NSDiffableDataSourceSnapshot<HomeController.Section, AnyHashable>()
+    private lazy var dataSource = configureDataSource()
     private var categoryList: [HomeController.Category] = []
     private let networkService = NetworkService()
     private lazy var collectionView: UICollectionView = {
@@ -196,8 +194,8 @@ extension HomeViewController {
         ])
     }
 
-    private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) {
+    private func configureDataSource() -> UICollectionViewDiffableDataSource<HomeController.Section, AnyHashable> {
+        let dataSource = UICollectionViewDiffableDataSource<HomeController.Section, AnyHashable>(collectionView: collectionView) {
             (collectionView, indexPath, item) -> UICollectionViewCell? in
 
             let sectionType = HomeController.Section.allCases[indexPath.section]
@@ -256,9 +254,7 @@ extension HomeViewController {
             return supplementaryView
         }
 
-        snapshot.appendSections([HomeController.Section.bestSeller, HomeController.Section.category])
-        snapshot.appendItems([])
-        dataSource.apply(snapshot)
+        return dataSource
     }
 
     private func configureRefreshControl() {
