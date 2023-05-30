@@ -280,6 +280,10 @@ extension HomeViewController: UICollectionViewDelegate {
             cell.applyGradientBackground()
             cell.categoryLabel.textColor = .white
 
+            let categoryViewController = CategoryViewController()
+
+            navigationController?.pushViewController(categoryViewController, animated: true)
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 cell.removeGradientBackground()
                 cell.categoryLabel.textColor = .black

@@ -40,6 +40,7 @@
 		D9E3FA8C2A232F47005D0A35 /* IndividualBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA8B2A232F47005D0A35 /* IndividualBook.swift */; };
 		D9E3FA8E2A23313A005D0A35 /* IndividualBookEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA8D2A23313A005D0A35 /* IndividualBookEndPoint.swift */; };
 		D9E3FA952A25C2BC005D0A35 /* DynamicLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA942A25C2BC005D0A35 /* DynamicLabel.swift */; };
+		D9E3FA972A25DC3E005D0A35 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E3FA962A25DC3E005D0A35 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		D9E3FA8B2A232F47005D0A35 /* IndividualBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualBook.swift; sourceTree = "<group>"; };
 		D9E3FA8D2A23313A005D0A35 /* IndividualBookEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualBookEndPoint.swift; sourceTree = "<group>"; };
 		D9E3FA942A25C2BC005D0A35 /* DynamicLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLabel.swift; sourceTree = "<group>"; };
+		D9E3FA962A25DC3E005D0A35 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				D98DC3082A148C30006660FA /* HomeViewController.swift */,
 				D9C4835E2A1F8C75008F3F3B /* FavoriteViewController.swift */,
 				D9A497E32A2109C50005C2B2 /* BookDetailViewController.swift */,
+				D9E3FA962A25DC3E005D0A35 /* CategoryViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				D911210B2A1AF967004E5C45 /* BestSellerCell.swift in Sources */,
 				D9D98D3C2A161AA500A6CFE6 /* Responsable.swift in Sources */,
 				D98DC3052A148C30006660FA /* AppDelegate.swift in Sources */,
+				D9E3FA972A25DC3E005D0A35 /* CategoryViewController.swift in Sources */,
 				D98DC3072A148C30006660FA /* SceneDelegate.swift in Sources */,
 				D9D98D3A2A161A9F00A6CFE6 /* Requestable.swift in Sources */,
 				D91121032A1A1349004E5C45 /* RequestableAndResponsable.swift in Sources */,
