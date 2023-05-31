@@ -18,6 +18,7 @@ struct IndividualBook: Decodable {
         let author: String
         let pubDate: String
         let description: String
+        let isbn13: String
         let cover: String
         let categoryName: String
         let publisher: String
