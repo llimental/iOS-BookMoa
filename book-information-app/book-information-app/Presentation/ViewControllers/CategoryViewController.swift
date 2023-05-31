@@ -16,6 +16,12 @@ final class CategoryViewController: UIViewController {
 
     // MARK: - View LifeCycle
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        loadData()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -70,7 +76,7 @@ final class CategoryViewController: UIViewController {
         snapshot.appendSections([CategoryController.Section.categoryBookList])
         snapshot.appendItems(categoryBookList, toSection: .categoryBookList)
 
-        self.dataSource.apply(snapshot, animatingDifferences: true)
+        self.dataSource.apply(snapshot, animatingDifferences: false)
     }
 
     // MARK: - Private Properties
@@ -157,10 +163,15 @@ extension CategoryViewController {
                 return UICollectionViewCell()
             }
 
+            guard let bookmarkedItems = UserDefaults.standard.stringArray(forKey: MagicLiteral.bookmarkTextForKey) else {
+                return UICollectionViewCell()
+            }
+
             cell.booktitleLabel.text = item.title
             cell.bookAuthorLabel.text = item.author
             cell.bookImageView.image = item.cover
             cell.bookISBN = item.isbn
+            cell.bookmarkImageView.backgroundColor = bookmarkedItems.contains(cell.bookISBN) ? UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00) : .white
 
             return cell
         }
