@@ -95,6 +95,28 @@ final class NetworkService {
         return imageSet
     }
 
+    func requestSearchResultImage(with items: [Search.Item]) async throws -> [UIImage] {
+        var imageSet: [UIImage] = []
+
+        for item in items{
+            guard let url = URL(string: item.cover) else {
+                throw URLComponentsError.invalidComponent
+            }
+
+            let urlRequest = URLRequest(url: url)
+
+            let (data, response) = try await session.data(for: urlRequest)
+
+            if let httpResponse = response as? HTTPURLResponse, !(200...299).contains(httpResponse.statusCode) {
+                try verifyResponse(with: httpResponse)
+            }
+
+            imageSet.append(UIImage(data: data) ?? UIImage())
+        }
+
+        return imageSet
+    }
+
     private func verifyResponse(with httpResponse: HTTPURLResponse) throws {
         switch httpResponse.statusCode {
         case (300...399):
