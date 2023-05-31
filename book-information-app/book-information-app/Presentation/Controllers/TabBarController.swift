@@ -45,6 +45,9 @@ final class TabBarController: UITabBarController {
         let navigationFavorite = UINavigationController(rootViewController: favoriteViewController)
 
         navigationFavorite.navigationBar.topItem?.backButtonTitle = ""
+        navigationFavorite.navigationBar.tintColor = .white
+        navigationFavorite.navigationBar.standardAppearance = navigationBarAppearance
+        navigationFavorite.navigationBar.scrollEdgeAppearance = navigationBarAppearance
 
         return navigationFavorite
     }()
