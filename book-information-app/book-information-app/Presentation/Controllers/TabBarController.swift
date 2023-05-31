@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 final class TabBarController: UITabBarController {
 
@@ -19,6 +20,13 @@ final class TabBarController: UITabBarController {
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
 
         return navigationBarAppearance
+    }()
+    private let animationView: LottieAnimationView = {
+        let lottieAnimationView = LottieAnimationView(name: "77792-book")
+
+        lottieAnimationView.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00).withAlphaComponent(1.0)
+
+        return lottieAnimationView
     }()
 
     private lazy var navigationHome: UINavigationController = {
@@ -44,6 +52,7 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureAnimationView()
         configureTabBar()
 
         setViewControllers([navigationHome, navigationFavorite], animated: false)
@@ -58,6 +67,23 @@ final class TabBarController: UITabBarController {
         tabBar.isTranslucent = false
         tabBar.tintColor = .white
         tabBar.unselectedItemTintColor = .systemGray2
+    }
+
+    private func configureAnimationView() {
+        view.addSubview(animationView)
+
+        animationView.frame = view.bounds
+        animationView.center = view.center
+        animationView.alpha = 1
+
+        animationView.play { _ in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.animationView.alpha = 0
+            }, completion: { _ in
+                self.animationView.isHidden = true
+                self.animationView.removeFromSuperview()
+            })
+        }
     }
 }
 
