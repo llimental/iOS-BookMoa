@@ -107,10 +107,6 @@ extension CategoryViewController {
             return self.createCategoryLayout()
         }
 
-        let configuration = UICollectionViewCompositionalLayoutConfiguration()
-        configuration.interSectionSpacing = 20
-        layout.configuration = configuration
-
         return layout
     }
 
