@@ -13,11 +13,20 @@ final class BookDetailViewController: UIViewController {
 
     var selectedItem: String = ""
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let bookmarks = UserDefaults.standard.stringArray(forKey: MagicLiteral.bookmarkTextForKey) ?? []
+        bookmarkButton.tintColor = bookmarks.contains(selectedItem) ? UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00) : .white
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.addKeyboardNotifications()
         view.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+
+        bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTouched), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: bookmarkButton)
 
         configure()
         loadData()
@@ -35,6 +44,13 @@ final class BookDetailViewController: UIViewController {
     private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     private lazy var descriptionTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(controlDescription))
     private lazy var authorTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(controlAuthorDescription))
+    private lazy var bookmarkButton: UIButton = {
+        let favoriteButton = UIButton()
+
+        favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+
+        return favoriteButton
+    }()
 
     private let networkService = NetworkService()
 
@@ -402,6 +418,20 @@ extension BookDetailViewController {
             popupView.widthAnchor.constraint(equalToConstant: view.frame.size.width * 0.8),
             popupView.heightAnchor.constraint(equalToConstant: view.frame.size.height * 0.7)
         ])
+    }
+
+    @objc private func bookmarkButtonTouched() {
+        var bookmarks = UserDefaults.standard.stringArray(forKey: MagicLiteral.bookmarkTextForKey) ?? []
+
+        if let index = bookmarks.firstIndex(of: selectedItem) {
+            bookmarkButton.tintColor = .white
+            bookmarks.remove(at: index)
+        } else {
+            bookmarkButton.tintColor = UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00)
+            bookmarks.append(selectedItem)
+        }
+
+        UserDefaults.standard.set(bookmarks, forKey: MagicLiteral.bookmarkTextForKey)
     }
 }
 
