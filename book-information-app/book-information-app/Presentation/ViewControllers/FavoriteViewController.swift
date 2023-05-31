@@ -11,6 +11,8 @@ final class FavoriteViewController: UIViewController {
 
     private var bookmarkedItems: [String] = []
 
+    // MARK: - View LifeCycle
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 

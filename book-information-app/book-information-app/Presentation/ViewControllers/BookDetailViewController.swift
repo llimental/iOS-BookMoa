@@ -13,6 +13,8 @@ final class BookDetailViewController: UIViewController {
 
     var selectedItem: String = ""
 
+    // MARK: - View LifeCycle
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let bookmarks = UserDefaults.standard.stringArray(forKey: MagicLiteral.bookmarkTextForKey) ?? []
@@ -368,7 +370,7 @@ extension BookDetailViewController {
 extension BookDetailViewController {
     @objc private func keyboardWillShow(_ notification: NSNotification) {
         guard let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
-        let tabBarHeight: CGFloat = self.tabBarController?.tabBar.frame.size.height else {
+              let tabBarHeight: CGFloat = self.tabBarController?.tabBar.frame.size.height else {
             return
         }
         let keyboardRectangle = keyboardFrame.cgRectValue
@@ -378,7 +380,7 @@ extension BookDetailViewController {
 
     @objc private func keyboardWillHide(_ notification: NSNotification) {
         guard let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
-        let tabBarHeight: CGFloat = self.tabBarController?.tabBar.frame.size.height else {
+              let tabBarHeight: CGFloat = self.tabBarController?.tabBar.frame.size.height else {
             return
         }
         let keyboardRectangle = keyboardFrame.cgRectValue

@@ -14,6 +14,8 @@ final class CategoryViewController: UIViewController {
     private var totalResult: Int = 0
     private var itemsPerPage: Int = 0
 
+    // MARK: - View LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
