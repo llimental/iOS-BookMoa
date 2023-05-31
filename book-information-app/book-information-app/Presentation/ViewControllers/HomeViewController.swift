@@ -17,6 +17,7 @@ final class HomeViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
 
         configureHierarchy()
         configureRefreshControl()
@@ -302,6 +303,18 @@ extension HomeViewController: UICollectionViewDelegate {
             bookDetailViewController.selectedItem = cell.bookISBN
 
             navigationController?.pushViewController(bookDetailViewController, animated: true)
+        }
+    }
+}
+
+extension HomeViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchText = searchBar.text {
+            let searchViewController = SearchViewController()
+
+            searchViewController.queryString = searchText
+
+            navigationController?.pushViewController(searchViewController, animated: true)
         }
     }
 }
