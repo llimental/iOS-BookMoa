@@ -15,6 +15,8 @@ final class CategoryBookCell: UICollectionViewCell {
     let bookAuthorLabel = UILabel()
     var bookISBN: String = ""
 
+    let bookmarkImageView = UIImageView()
+
     private let bookStackView = UIStackView()
 
     override init(frame: CGRect) {
@@ -30,8 +32,10 @@ final class CategoryBookCell: UICollectionViewCell {
 extension CategoryBookCell {
     private func configure() {
         bookStackView.translatesAutoresizingMaskIntoConstraints = false
+        bookmarkImageView.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(bookStackView)
+        contentView.addSubview(bookmarkImageView)
         bookStackView.addArrangedSubview(bookImageView)
         bookStackView.addArrangedSubview(booktitleLabel)
         bookStackView.addArrangedSubview(bookAuthorLabel)
@@ -41,6 +45,10 @@ extension CategoryBookCell {
         bookStackView.alignment = .center
 
         bookImageView.contentMode = .scaleAspectFit
+
+        bookmarkImageView.image = UIImage(systemName: "heart.square.fill")
+        bookmarkImageView.tintColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+        bookmarkImageView.backgroundColor = .white
 
         booktitleLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         booktitleLabel.adjustsFontForContentSizeCategory = true
@@ -56,6 +64,11 @@ extension CategoryBookCell {
             bookStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             bookStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             bookStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+
+            bookmarkImageView.topAnchor.constraint(equalTo: bookImageView.topAnchor),
+            bookmarkImageView.trailingAnchor.constraint(equalTo: bookImageView.trailingAnchor),
+            bookmarkImageView.widthAnchor.constraint(equalTo: bookImageView.widthAnchor, multiplier: 0.2),
+            bookmarkImageView.heightAnchor.constraint(equalTo: bookImageView.heightAnchor, multiplier: 1.0 / 7.0)
         ])
     }
 }
