@@ -9,6 +9,7 @@ import Foundation
 
 enum MagicLiteral {
     static let homeViewControllerTitle = "경계 없이 비추는 문화의 빛"
+    static let searchViewControllerTitle = "검색어: "
     static let refreshControlTitle = "데이터를 로딩중입니다. 잠시만 기다려 주세요."
     static let bestSellerReuseIdentifier = "bestseller-reuse-identifier"
     static let categoryReuseIdentifier = "category-reuse-identifier"
