@@ -28,6 +28,7 @@ final class CategoryViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
 
         configureHierarchy()
         loadData()
@@ -198,5 +199,17 @@ extension CategoryViewController: UICollectionViewDelegate {
         }
         startIndex += 1
         loadMoreData()
+    }
+}
+
+extension CategoryViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchText = searchBar.text {
+            let searchViewController = SearchViewController()
+
+            searchViewController.queryString = searchText
+
+            navigationController?.pushViewController(searchViewController, animated: true)
+        }
     }
 }
