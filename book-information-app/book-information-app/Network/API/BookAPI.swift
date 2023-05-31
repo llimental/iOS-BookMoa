@@ -11,6 +11,7 @@ enum BookAPI {
     case bestSeller
     case individualBook(isbn: String)
     case category(categoryID: String, startIndex: String)
+    case search(query: String, startIndex: String)
 
     static var scheme: String {
         return "https"
@@ -22,14 +23,14 @@ enum BookAPI {
 
     var path: String {
         switch self {
-        case .bestSeller:
+        case .bestSeller, .category:
             return "/ttb/api/ItemList.aspx"
 
         case .individualBook:
             return "/ttb/api/ItemLookUp.aspx"
 
-        case .category:
-            return "/ttb/api/ItemList.aspx"
+        case .search:
+            return "/ttb/api/ItemSearch.aspx"
         }
     }
 
@@ -61,6 +62,14 @@ enum BookAPI {
             let maxResultsParameter = URLQueryItem(name: "MaxResults", value: "12")
 
             queryItems = [keyParameter, outputParameter, apiVersionParameter, queryTypeParameter, categoryIdParameter, startParameter, maxResultsParameter]
+
+        case .search(let query, let startIndex):
+            let queryParameter = URLQueryItem(name: "Query", value: query)
+            let queryTypeParameter = URLQueryItem(name: "QueryType", value: "Keyword")
+            let startParameter = URLQueryItem(name: "Start", value: startIndex)
+            let maxResultsParameter = URLQueryItem(name: "MaxResults", value: "12")
+
+            queryItems = [keyParameter, outputParameter, apiVersionParameter, queryParameter, queryTypeParameter, startParameter, maxResultsParameter]
         }
 
         return queryItems
