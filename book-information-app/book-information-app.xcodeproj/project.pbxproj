@@ -20,6 +20,7 @@
 		D931FBDB2A27E07F00ED0B9A /* SearchEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D931FBDA2A27E07F00ED0B9A /* SearchEndPoint.swift */; };
 		D94E59A22A26E4A500310518 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D94E59A12A26E4A500310518 /* Lottie */; };
 		D94E59A42A26E55A00310518 /* 77792-book.json in Resources */ = {isa = PBXBuildFile; fileRef = D94E59A32A26E55A00310518 /* 77792-book.json */; };
+		D966EA2D2A307861005EA01A /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966EA2C2A307861005EA01A /* PreviewViewController.swift */; };
 		D98DC3052A148C30006660FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC3042A148C30006660FA /* AppDelegate.swift */; };
 		D98DC3072A148C30006660FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC3062A148C30006660FA /* SceneDelegate.swift */; };
 		D98DC3092A148C30006660FA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DC3082A148C30006660FA /* HomeViewController.swift */; };
@@ -84,6 +85,7 @@
 		D931FBD72A27DF7200ED0B9A /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		D931FBDA2A27E07F00ED0B9A /* SearchEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEndPoint.swift; sourceTree = "<group>"; };
 		D94E59A32A26E55A00310518 /* 77792-book.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "77792-book.json"; sourceTree = "<group>"; };
+		D966EA2C2A307861005EA01A /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		D98DC3012A148C30006660FA /* book-information-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "book-information-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D98DC3042A148C30006660FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D98DC3062A148C30006660FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				D9A497E32A2109C50005C2B2 /* BookDetailViewController.swift */,
 				D9E3FA962A25DC3E005D0A35 /* CategoryViewController.swift */,
 				D931FBD42A27DBD200ED0B9A /* SearchViewController.swift */,
+				D966EA2C2A307861005EA01A /* PreviewViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				D9E3FAB12A264DD2005D0A35 /* CategoryController.swift in Sources */,
 				D9D98D2E2A1613A700A6CFE6 /* NetworkService.swift in Sources */,
 				D9C483592A1E280D008F3F3B /* CategoryCell.swift in Sources */,
+				D966EA2D2A307861005EA01A /* PreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
