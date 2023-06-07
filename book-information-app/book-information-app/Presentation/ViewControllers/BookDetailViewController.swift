@@ -43,6 +43,7 @@ final class BookDetailViewController: UIViewController {
 
     // MARK: - Private Properties
 
+    private var imageLinks: [String] = []
     private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     private lazy var descriptionTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(controlDescription))
     private lazy var authorTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(controlAuthorDescription))
@@ -80,7 +81,6 @@ final class BookDetailViewController: UIViewController {
     private let memoTextView = UITextView()
 
     private let collaboratorLabel = UILabel()
-    private let popupView = PopupView()
 }
 
 // MARK: - Private Functions
@@ -113,7 +113,7 @@ extension BookDetailViewController {
             memoTextView.text = UserDefaults.standard.string(forKey: selectedItem)
         }
 
-        popupView.imageLinks = individualBook.subInfo.previewImgList
+        imageLinks = individualBook.subInfo.previewImgList
     }
 
     private func configure() {
@@ -411,15 +411,12 @@ extension BookDetailViewController {
     }
 
     @objc private func previewButtonTapped() {
-        popupView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(popupView)
+        let previewViewController = PreviewViewController()
 
-        NSLayoutConstraint.activate([
-            popupView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            popupView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            popupView.widthAnchor.constraint(equalToConstant: view.frame.size.width * 0.8),
-            popupView.heightAnchor.constraint(equalToConstant: view.frame.size.height * 0.7)
-        ])
+        previewViewController.modalPresentationStyle = .overFullScreen
+        previewViewController.imageLinks = imageLinks
+
+        present(previewViewController, animated: true)
     }
 
     @objc private func bookmarkButtonTouched() {
