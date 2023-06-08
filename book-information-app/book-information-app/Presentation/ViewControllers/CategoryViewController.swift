@@ -19,7 +19,7 @@ final class CategoryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        loadData()
+        applySnapshot()
     }
 
     override func viewDidLoad() {
@@ -35,14 +35,11 @@ final class CategoryViewController: UIViewController {
     }
 
     // MARK: - Private Functions
-
     private func loadData() {
         Task {
             let networkResults = try await networkService.requestData(with: CategoryEndPoint(categoryID: categoryID, startIndex: String(startIndex)))
 
             let bookImages = try await networkService.requestCategoryImage(with: networkResults.item)
-
-            var categoryBookList: [CategoryController.CategoryBook] = []
 
             navigationItem.title = networkResults.searchCategoryName
             totalResult = networkResults.totalResults
@@ -52,7 +49,7 @@ final class CategoryViewController: UIViewController {
                 let book = CategoryController.CategoryBook(title: networkResult.title, author: networkResult.author, cover: bookImage, isbn: networkResult.isbn13)
                 categoryBookList.append(book)
             }
-            applySnapshot(with: categoryBookList)
+            applySnapshot()
         }
     }
 
@@ -62,17 +59,18 @@ final class CategoryViewController: UIViewController {
 
             let bookImages = try await networkService.requestCategoryImage(with: networkResults.item)
 
-            var categoryBookList = dataSource.snapshot().itemIdentifiers
+            var currentCategoryBookList = dataSource.snapshot().itemIdentifiers
 
             for (networkResult, bookImage) in zip(networkResults.item, bookImages) {
                 let book = CategoryController.CategoryBook(title: networkResult.title, author: networkResult.author, cover: bookImage, isbn: networkResult.isbn13)
-                categoryBookList.append(book)
+                currentCategoryBookList.append(book)
             }
-            applySnapshot(with: categoryBookList)
+            categoryBookList = currentCategoryBookList
+            applySnapshot()
         }
     }
 
-    private func applySnapshot(with categoryBookList: [CategoryController.CategoryBook]) {
+    private func applySnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<CategoryController.Section, CategoryController.CategoryBook>()
         snapshot.appendSections([CategoryController.Section.categoryBookList])
         snapshot.appendItems(categoryBookList, toSection: .categoryBookList)
@@ -83,6 +81,7 @@ final class CategoryViewController: UIViewController {
     // MARK: - Private Properties
 
     private var snapshot = NSDiffableDataSourceSnapshot<CategoryController.Section, CategoryController.CategoryBook>()
+    private var categoryBookList: [CategoryController.CategoryBook] = []
     private let networkService = NetworkService()
     private lazy var dataSource = configureDataSource()
     private lazy var collectionView: UICollectionView = {
