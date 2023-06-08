@@ -115,7 +115,7 @@ extension HomeViewController {
 
             let sectionLayoutKind = HomeController.Section.allCases[sectionIndex]
             switch sectionLayoutKind {
-            case .bestSeller: return self.createBestSellerLayout()
+            case .bestSeller: return self.createBestSellerLayout(with: layoutEnvironment)
             case .category: return self.createCategoryLayout()
             }
         }
@@ -127,13 +127,21 @@ extension HomeViewController {
         return layout
     }
 
-    private func createBestSellerLayout() -> NSCollectionLayoutSection {
+    private func createBestSellerLayout(with layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(128),
-                                               heightDimension: .estimated(215))
+        var groupSize: NSCollectionLayoutSize
+
+        if layoutEnvironment.traitCollection.horizontalSizeClass == .compact {
+            groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3),
+                                               heightDimension: .fractionalWidth(0.5))
+        } else {
+            groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2),
+                                               heightDimension: .fractionalWidth(0.3))
+        }
+
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
         let titleSupplementarySize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
