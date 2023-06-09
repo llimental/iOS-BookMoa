@@ -35,6 +35,7 @@ final class CategoryViewController: UIViewController {
     }
 
     // MARK: - Private Functions
+
     private func loadData() {
         Task {
             let networkResults = try await networkService.requestData(with: CategoryEndPoint(categoryID: categoryID, startIndex: String(startIndex)))
@@ -181,6 +182,7 @@ extension CategoryViewController {
 }
 
 // MARK: - CollectionView Delegate
+
 extension CategoryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryBookCell {

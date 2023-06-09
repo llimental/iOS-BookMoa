@@ -18,6 +18,7 @@ final class SearchViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         loadData()
     }
 
@@ -180,6 +181,7 @@ extension SearchViewController {
 }
 
 // MARK: - CollectionView Delegate
+
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? CategoryBookCell {
