@@ -19,7 +19,7 @@ final class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        loadData()
+        applySnapshot()
     }
 
     override func viewDidLoad() {
@@ -41,8 +41,6 @@ final class SearchViewController: UIViewController {
 
             let bookImages = try await networkService.requestSearchResultImage(with: networkResults.item)
 
-            var searchBookList: [CategoryController.CategoryBook] = []
-
             navigationItem.title = MagicLiteral.searchViewControllerTitle + networkResults.query
             totalResult = networkResults.totalResults
             itemsPerPage = networkResults.itemsPerPage
@@ -51,7 +49,7 @@ final class SearchViewController: UIViewController {
                 let book = CategoryController.CategoryBook(title: networkResult.title, author: networkResult.author, cover: bookImage, isbn: networkResult.isbn13)
                 searchBookList.append(book)
             }
-            applySnapshot(with: searchBookList)
+            applySnapshot()
         }
     }
 
@@ -61,20 +59,21 @@ final class SearchViewController: UIViewController {
 
             let bookImages = try await networkService.requestSearchResultImage(with: networkResults.item)
 
-            var searchBookList = dataSource.snapshot().itemIdentifiers
+            var currentSearchBookList = dataSource.snapshot().itemIdentifiers
 
             for (networkResult, bookImage) in zip(networkResults.item, bookImages) {
                 let book = CategoryController.CategoryBook(title: networkResult.title, author: networkResult.author, cover: bookImage, isbn: networkResult.isbn13)
-                searchBookList.append(book)
+                currentSearchBookList.append(book)
             }
-            applySnapshot(with: searchBookList)
+            searchBookList = currentSearchBookList
+            applySnapshot()
         }
     }
 
-    private func applySnapshot(with categoryBookList: [CategoryController.CategoryBook]) {
+    private func applySnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<CategoryController.Section, CategoryController.CategoryBook>()
         snapshot.appendSections([CategoryController.Section.categoryBookList])
-        snapshot.appendItems(categoryBookList, toSection: .categoryBookList)
+        snapshot.appendItems(searchBookList, toSection: .categoryBookList)
 
         self.dataSource.apply(snapshot, animatingDifferences: false)
     }
@@ -82,6 +81,7 @@ final class SearchViewController: UIViewController {
     // MARK: - Private Properties
 
     private var snapshot = NSDiffableDataSourceSnapshot<CategoryController.Section, CategoryController.CategoryBook>()
+    private var searchBookList: [CategoryController.CategoryBook] = []
     private let networkService = NetworkService()
     private lazy var dataSource = configureDataSource()
     private lazy var collectionView: UICollectionView = {
