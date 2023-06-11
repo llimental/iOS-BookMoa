@@ -11,11 +11,7 @@ final class PreviewViewController: UIViewController {
 
     // MARK: - Public Properties
 
-    var imageIndex: Int = 0 {
-        didSet {
-            setPreviewImage()
-        }
-    }
+    var imageIndex: Int = 0
     var imageLinks: [String] = [] {
         didSet {
             setPreviewImage()
@@ -27,6 +23,7 @@ final class PreviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureGestures()
         configure()
     }
 
@@ -36,9 +33,6 @@ final class PreviewViewController: UIViewController {
     private let blurEffect = UIBlurEffect(style: .light)
     private let previewContainerView = UIView()
     private let imageView = UIImageView()
-    private let buttonStackView = UIStackView()
-    private let previousButton = UIButton()
-    private let nextButton = UIButton()
     private let closeButton = UIButton()
 }
 
@@ -46,56 +40,60 @@ extension PreviewViewController {
 
     // MARK: - Private Functions
 
+    private func configureGestures() {
+        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGestureAction))
+        swipeLeftGesture.direction = .left
+
+        let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGestureAction))
+        swipeRightGesture.direction = .right
+
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGestureAction))
+        swipeDownGesture.direction = .down
+
+        view.addGestureRecognizer(swipeLeftGesture)
+        view.addGestureRecognizer(swipeRightGesture)
+        view.addGestureRecognizer(swipeDownGesture)
+    }
+
     private func configure() {
         view.addSubview(blurView)
         view.addSubview(previewContainerView)
 
         previewContainerView.addSubview(imageView)
-        previewContainerView.addSubview(buttonStackView)
-
-        buttonStackView.addArrangedSubview(previousButton)
-        buttonStackView.addArrangedSubview(closeButton)
-        buttonStackView.addArrangedSubview(nextButton)
-
-        blurView.frame = view.bounds
+        previewContainerView.addSubview(closeButton)
 
         imageView.contentMode = .scaleAspectFit
 
-        previousButton.setTitle("이전", for: .normal)
-        previousButton.setTitleColor(.purple, for: .normal)
-        previousButton.addTarget(self, action: #selector(previousButtonTapped), for: .touchUpInside)
-
-        nextButton.setTitle("다음", for: .normal)
-        nextButton.setTitleColor(.purple, for: .normal)
-        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
-
-        closeButton.setTitle("닫기", for: .normal)
-        closeButton.setTitleColor(.black, for: .normal)
+        closeButton.setBackgroundImage(UIImage(systemName: "xmark.circle"), for: .normal)
+        closeButton.tintColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+        closeButton.contentMode = .center
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
 
-        buttonStackView.axis = .horizontal
-        buttonStackView.spacing = 10
-        buttonStackView.distribution = .fillEqually
-
+        blurView.translatesAutoresizingMaskIntoConstraints = false
         previewContainerView.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: view.topAnchor),
+            blurView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            blurView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
             previewContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             previewContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            previewContainerView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.9),
-            previewContainerView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.9),
+            previewContainerView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
+            previewContainerView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor),
 
-            imageView.topAnchor.constraint(equalTo: previewContainerView.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: previewContainerView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: previewContainerView.trailingAnchor),
+            imageView.widthAnchor.constraint(equalTo: previewContainerView.widthAnchor),
             imageView.heightAnchor.constraint(equalTo: previewContainerView.heightAnchor, multiplier: 0.8),
+            imageView.centerXAnchor.constraint(equalTo: previewContainerView.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: previewContainerView.centerYAnchor),
 
-            buttonStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-            buttonStackView.leadingAnchor.constraint(equalTo: previewContainerView.leadingAnchor),
-            buttonStackView.trailingAnchor.constraint(equalTo: previewContainerView.trailingAnchor),
-            buttonStackView.bottomAnchor.constraint(equalTo: previewContainerView.bottomAnchor)
+            closeButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+            closeButton.widthAnchor.constraint(equalTo: previewContainerView.heightAnchor, multiplier: 0.05),
+            closeButton.heightAnchor.constraint(equalTo: closeButton.widthAnchor),
+            closeButton.centerXAnchor.constraint(equalTo: previewContainerView.centerXAnchor)
         ])
     }
 
@@ -119,19 +117,27 @@ extension PreviewViewController {
         }
     }
 
-    @objc private func previousButtonTapped() {
-        if imageIndex > 0 {
-            imageIndex -= 1
+    @objc private func swipeGestureAction(_ gesture: UISwipeGestureRecognizer) {
+
+        switch gesture.direction {
+        case .left:
+            if imageIndex < imageLinks.count - 1 {
+                imageIndex += 1
+                UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve, animations: { self.setPreviewImage() }, completion: nil)
+            }
+        case .right:
+            if imageIndex > 0 {
+                imageIndex -= 1
+                UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve, animations: { self.setPreviewImage() }, completion: nil)
+            }
+        case .down:
+            dismiss(animated: true)
+        default:
+            break
         }
     }
 
     @objc private func closeButtonTapped() {
         self.dismiss(animated: true)
-    }
-
-    @objc private func nextButtonTapped() {
-        if imageIndex < imageLinks.count - 1 {
-            imageIndex += 1
-        }
     }
 }
