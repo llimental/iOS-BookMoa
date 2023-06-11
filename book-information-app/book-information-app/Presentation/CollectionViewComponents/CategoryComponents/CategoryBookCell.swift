@@ -47,7 +47,7 @@ extension CategoryBookCell {
         bookImageView.contentMode = .scaleAspectFit
 
         bookmarkImageView.image = UIImage(systemName: "heart.square.fill")
-        bookmarkImageView.tintColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+        bookmarkImageView.tintColor = Constants.kMainColor
         bookmarkImageView.backgroundColor = .white
 
         booktitleLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
