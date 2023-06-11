@@ -8,5 +8,5 @@
 import UIKit
 
 enum Constants {
-    static let kMainTintColor: UIColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+    static let kMainColor: UIColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
 }
