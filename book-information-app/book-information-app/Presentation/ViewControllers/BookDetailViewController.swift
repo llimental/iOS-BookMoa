@@ -25,7 +25,7 @@ final class BookDetailViewController: UIViewController {
         super.viewDidLoad()
 
         self.addKeyboardNotifications()
-        view.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+        view.backgroundColor = Constants.kMainColor
 
         bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTouched), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: bookmarkButton)
@@ -204,13 +204,13 @@ extension BookDetailViewController {
 
         previewButton.setTitle(MagicLiteral.previewButtonTitle, for: .normal)
         previewButton.setTitleColor(.white, for: .normal)
-        previewButton.backgroundColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
+        previewButton.backgroundColor = Constants.kMainColor
         previewButton.layer.cornerRadius = 15
         previewButton.addTarget(self, action: #selector(previewButtonTapped), for: .touchUpInside)
 
-        firstDivider.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00)
-        secondDivider.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00)
-        thirdDivider.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00)
+        firstDivider.backgroundColor = Constants.kDividerColor
+        secondDivider.backgroundColor = Constants.kDividerColor
+        thirdDivider.backgroundColor = Constants.kDividerColor
 
         descriptionHeadLabel.text = MagicLiteral.descriptionHeadLabelText
         descriptionHeadLabel.font = UIFont.preferredFont(forTextStyle: .headline)
@@ -338,7 +338,7 @@ extension BookDetailViewController {
         let attributedString = NSMutableAttributedString(string: fullString)
         let range = NSRange(location: fullString.count - 7, length: 7)
         attributedString.addAttribute(.foregroundColor,
-                                      value: UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00),
+                                      value: Constants.kMainColor,
                                       range: range)
 
         return attributedString
