@@ -51,3 +51,7 @@ enum ConstantsBookDetailInformation {
     static let kMemoTextColor: UIColor = UIColor(red: 0.29, green: 0.31, blue: 0.34, alpha: 1.00)
     static let kMemoBackgroundColor: UIColor = UIColor(red: 0.91, green: 0.91, blue: 0.99, alpha: 1.00)
 }
+
+enum ConstantsCloseButton {
+    static let kImageName: String = "xmark.circle"
+}
