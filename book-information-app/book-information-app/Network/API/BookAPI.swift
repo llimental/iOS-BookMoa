@@ -76,7 +76,7 @@ enum BookAPI {
     }
 
     private func getAPIKey() -> String {
-        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "BookAPIKey") as? String else { return "" }
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "BookAPIKey") as? String else { return ConstantsString.kBlank }
 
         return apiKey
     }

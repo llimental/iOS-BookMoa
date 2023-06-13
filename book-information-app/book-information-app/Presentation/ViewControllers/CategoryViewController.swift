@@ -9,7 +9,7 @@ import UIKit
 
 final class CategoryViewController: UIViewController {
 
-    var categoryID: String = ""
+    var categoryID: String = ConstantsString.kBlank
     private var startIndex: Int = 1
     private var totalResult: Int = 0
     private var itemsPerPage: Int = 0
@@ -98,7 +98,7 @@ final class CategoryViewController: UIViewController {
         let searchController = UISearchController()
 
         searchController.searchBar.layer.cornerRadius = 20
-        searchController.searchBar.placeholder = ""
+        searchController.searchBar.placeholder = ConstantsString.kBlank
         searchController.searchBar.searchTextField.backgroundColor = .white
         searchController.searchBar.setImage(UIImage(named: "SearchBarIcon"), for: .search, state: .normal)
 

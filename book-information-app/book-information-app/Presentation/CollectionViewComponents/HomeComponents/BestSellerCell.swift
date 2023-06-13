@@ -13,7 +13,7 @@ final class BestSellerCell: UICollectionViewCell {
     let bookImageView = UIImageView()
     let booktitleLabel = UILabel()
     let bookAuthorLabel = UILabel()
-    var bookISBN: String = ""
+    var bookISBN: String = ConstantsString.kBlank
 
     private let bookStackView = UIStackView()
 

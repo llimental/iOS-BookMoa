@@ -32,7 +32,7 @@ final class TabBarController: UITabBarController {
     private lazy var navigationHome: UINavigationController = {
         let navigationHome = UINavigationController(rootViewController: homeViewController)
 
-        navigationHome.navigationBar.topItem?.backButtonTitle = ""
+        navigationHome.navigationBar.topItem?.backButtonTitle = ConstantsString.kBlank
         navigationHome.navigationBar.topItem?.title = MagicLiteral.homeViewControllerTitle
         navigationHome.navigationBar.tintColor = .white
         navigationHome.navigationBar.standardAppearance = navigationBarAppearance
@@ -44,7 +44,7 @@ final class TabBarController: UITabBarController {
     private lazy var navigationFavorite: UINavigationController = {
         let navigationFavorite = UINavigationController(rootViewController: favoriteViewController)
 
-        navigationFavorite.navigationBar.topItem?.backButtonTitle = ""
+        navigationFavorite.navigationBar.topItem?.backButtonTitle = ConstantsString.kBlank
         navigationFavorite.navigationBar.tintColor = .white
         navigationFavorite.navigationBar.standardAppearance = navigationBarAppearance
         navigationFavorite.navigationBar.scrollEdgeAppearance = navigationBarAppearance

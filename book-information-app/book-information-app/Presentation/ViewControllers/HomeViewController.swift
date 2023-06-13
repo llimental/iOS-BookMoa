@@ -97,7 +97,7 @@ final class HomeViewController: UIViewController {
         let searchController = UISearchController()
 
         searchController.searchBar.layer.cornerRadius = 20
-        searchController.searchBar.placeholder = ""
+        searchController.searchBar.placeholder = ConstantsString.kBlank
         searchController.searchBar.searchTextField.backgroundColor = .white
         searchController.searchBar.setImage(UIImage(named: "SearchBarIcon"), for: .search, state: .normal)
 

@@ -11,7 +11,7 @@ final class BookDetailViewController: UIViewController {
 
     // MARK: - Public Properties
 
-    var selectedItem: String = ""
+    var selectedItem: String = ConstantsString.kBlank
 
     // MARK: - View LifeCycle
     
@@ -351,7 +351,7 @@ extension BookDetailViewController {
         }
 
         label.collapse()
-        label.attributedText = setPartialColor(with: label.text ?? "")
+        label.attributedText = setPartialColor(with: label.text ?? ConstantsString.kBlank)
     }
 
     private func addKeyboardNotifications() {
@@ -398,7 +398,7 @@ extension BookDetailViewController {
         }
 
         descriptionBodyLabel.isTruncated ? descriptionBodyLabel.expand() : descriptionBodyLabel.collapse()
-        descriptionBodyLabel.attributedText = setPartialColor(with: descriptionBodyLabel.text ?? "")
+        descriptionBodyLabel.attributedText = setPartialColor(with: descriptionBodyLabel.text ?? ConstantsString.kBlank)
     }
 
     @objc private func controlAuthorDescription() {
@@ -407,7 +407,7 @@ extension BookDetailViewController {
         }
 
         authorDescriptionBodyLabel.isTruncated ? authorDescriptionBodyLabel.expand() : authorDescriptionBodyLabel.collapse()
-        authorDescriptionBodyLabel.attributedText = setPartialColor(with: authorDescriptionBodyLabel.text ?? "")
+        authorDescriptionBodyLabel.attributedText = setPartialColor(with: authorDescriptionBodyLabel.text ?? ConstantsString.kBlank)
     }
 
     @objc private func previewButtonTapped() {
