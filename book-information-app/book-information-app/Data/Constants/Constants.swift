@@ -10,6 +10,7 @@ import UIKit
 enum ConstantsColor {
     static let kMainColor: UIColor = UIColor(red: 0.38, green: 0.13, blue: 0.93, alpha: 1.00)
     static let kDividerColor: UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.00)
+    static let kGrayTextColor: UIColor = UIColor(red: 0.29, green: 0.31, blue: 0.34, alpha: 1.00)
 }
 
 enum ConstantsString {
@@ -48,7 +49,6 @@ enum ConstantsBookDetailInformation {
     static let kTitleColor: UIColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00)
     static let kAuthorColor: UIColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 0.60)
     static let kPublishColor: UIColor = UIColor(red: 0.53, green: 0.56, blue: 0.59, alpha: 1.00)
-    static let kMemoTextColor: UIColor = UIColor(red: 0.29, green: 0.31, blue: 0.34, alpha: 1.00)
     static let kMemoBackgroundColor: UIColor = UIColor(red: 0.91, green: 0.91, blue: 0.99, alpha: 1.00)
 }
 
