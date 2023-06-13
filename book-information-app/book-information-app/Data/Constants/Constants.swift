@@ -20,6 +20,7 @@ enum ConstantsString {
 
 enum ConstantsNumber {
     static let kZeroNumber: Int = 0
+    static let kNumberOne: Int = 1
 }
 
 enum ConstantsTabBarItem {
