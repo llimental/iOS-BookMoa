@@ -26,3 +26,8 @@ enum ConstantsTabBarItem {
 enum ConstantsSearchController {
     static let kSearchControllerImageName: String = "SearchBarIcon"
 }
+
+enum ConstantsSupplementaryView {
+    static let kBestSellerSectionImageName: String = "StarIcon"
+    static let kCategorySectionImageName: String = "SearchRefractionIcon"
+}
