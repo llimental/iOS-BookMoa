@@ -230,7 +230,7 @@ extension BookDetailViewController {
 
         memoTextView.text = MagicLiteral.memoViewPlaceholder
         memoTextView.font = UIFont.preferredFont(forTextStyle: .caption1)
-        memoTextView.textColor = ConstantsBookDetailInformation.kMemoTextColor
+        memoTextView.textColor = ConstantsColor.kGrayTextColor
         memoTextView.backgroundColor = ConstantsBookDetailInformation.kMemoBackgroundColor
         memoTextView.delegate = self
 
@@ -444,7 +444,7 @@ extension BookDetailViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             textView.text = MagicLiteral.memoViewPlaceholder
-            textView.textColor = ConstantsBookDetailInformation.kMemoTextColor
+            textView.textColor = ConstantsColor.kGrayTextColor
         }
     }
 }

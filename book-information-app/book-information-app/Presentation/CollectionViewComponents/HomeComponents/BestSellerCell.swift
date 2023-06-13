@@ -47,7 +47,7 @@ extension BestSellerCell {
 
         bookAuthorLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         bookAuthorLabel.adjustsFontForContentSizeCategory = true
-        bookAuthorLabel.textColor = UIColor(red: 0.29, green: 0.31, blue: 0.34, alpha: 1.00)
+        bookAuthorLabel.textColor = ConstantsColor.kGrayTextColor
 
         NSLayoutConstraint.activate([
             bookStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
