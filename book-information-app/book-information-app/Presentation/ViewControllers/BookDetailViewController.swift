@@ -189,18 +189,18 @@ extension BookDetailViewController {
         bookTitleLabel.textAlignment = .center
         bookTitleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
         bookTitleLabel.numberOfLines = ConstantsNumber.kZeroNumber
-        bookTitleLabel.textColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00)
+        bookTitleLabel.textColor = ConstantsBookDetailInformation.kTitleColor
 
         bookAuthorLabel.textAlignment = .center
         bookAuthorLabel.font = UIFont.preferredFont(forTextStyle: .callout)
-        bookAuthorLabel.textColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 0.60)
+        bookAuthorLabel.textColor = ConstantsBookDetailInformation.kAuthorColor
 
         bookCoverImageView.contentMode = .scaleAspectFit
 
         bookPublishLabel.textAlignment = .center
         bookPublishLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         bookPublishLabel.numberOfLines = ConstantsNumber.kZeroNumber
-        bookPublishLabel.textColor = UIColor(red: 0.53, green: 0.56, blue: 0.59, alpha: 1.00)
+        bookPublishLabel.textColor = ConstantsBookDetailInformation.kPublishColor
 
         previewButton.setTitle(MagicLiteral.previewButtonTitle, for: .normal)
         previewButton.setTitleColor(.white, for: .normal)
@@ -230,8 +230,8 @@ extension BookDetailViewController {
 
         memoTextView.text = MagicLiteral.memoViewPlaceholder
         memoTextView.font = UIFont.preferredFont(forTextStyle: .caption1)
-        memoTextView.textColor = UIColor(red: 0.29, green: 0.31, blue: 0.34, alpha: 1.00)
-        memoTextView.backgroundColor = UIColor(red: 0.91, green: 0.91, blue: 0.99, alpha: 1.00)
+        memoTextView.textColor = ConstantsBookDetailInformation.kMemoTextColor
+        memoTextView.backgroundColor = ConstantsBookDetailInformation.kMemoBackgroundColor
         memoTextView.delegate = self
 
         collaboratorLabel.textAlignment = .center
@@ -447,7 +447,7 @@ extension BookDetailViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             textView.text = MagicLiteral.memoViewPlaceholder
-            textView.textColor = UIColor(red: 0.29, green: 0.31, blue: 0.34, alpha: 1.00)
+            textView.textColor = ConstantsBookDetailInformation.kMemoTextColor
         }
     }
 }
