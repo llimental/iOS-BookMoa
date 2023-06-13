@@ -15,3 +15,10 @@ enum ConstantsColor {
 enum ConstantsString {
     static let kBlank: String = ""
 }
+
+enum ConstantsTabBarItem {
+    static let kTabBarHomeTitle: String = "홈"
+    static let kTabBarHomeImageName: String = "HomeIcon"
+    static let kTabBarFavoriteTitle: String = "즐겨찾기"
+    static let kTabBarFavoriteImageName: String = "FavoriteIcon"
+}
