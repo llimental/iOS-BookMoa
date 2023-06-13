@@ -18,7 +18,7 @@ final class BookDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let favoritesItems = UserDefaults.standard.stringArray(forKey: MagicLiteral.favoritesTextForKey) ?? []
-        favoritesButton.tintColor = favoritesItems.contains(selectedItem) ? ConstantsFavoritesButton.kColor : .white
+        favoritesButton.tintColor = favoritesItems.contains(selectedItem) ? ConstantsFavorites.kColor : .white
     }
 
     override func viewDidLoad() {
@@ -50,7 +50,7 @@ final class BookDetailViewController: UIViewController {
     private lazy var favoritesButton: UIButton = {
         let favoriteButton = UIButton()
 
-        favoriteButton.setImage(UIImage(systemName: ConstantsFavoritesButton.kImageName), for: .normal)
+        favoriteButton.setImage(UIImage(systemName: ConstantsFavorites.kButtonImageName), for: .normal)
 
         return favoriteButton
     }()
@@ -423,7 +423,7 @@ extension BookDetailViewController {
             favoritesButton.tintColor = .white
             favoritesItems.remove(at: index)
         } else {
-            favoritesButton.tintColor = ConstantsFavoritesButton.kColor
+            favoritesButton.tintColor = ConstantsFavorites.kColor
             favoritesItems.append(selectedItem)
         }
 

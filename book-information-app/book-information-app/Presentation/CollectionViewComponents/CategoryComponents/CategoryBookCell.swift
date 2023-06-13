@@ -41,11 +41,11 @@ extension CategoryBookCell {
         bookImageView.contentMode = .scaleAspectFit
         bookImageView.image = item.cover
 
-        favoritesImageView.image = UIImage(systemName: "heart.square.fill")
+        favoritesImageView.image = UIImage(systemName: ConstantsFavorites.kCellImageName)
         favoritesImageView.tintColor = ConstantsColor.kMainColor
 
         if let favoritesItems = UserDefaults.standard.stringArray(forKey: MagicLiteral.favoritesTextForKey), favoritesItems.contains(bookISBN) {
-            favoritesImageView.backgroundColor = UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00)
+            favoritesImageView.backgroundColor = ConstantsFavorites.kColor
         } else {
             favoritesImageView.backgroundColor = .white
         }
@@ -58,7 +58,7 @@ extension CategoryBookCell {
         bookAuthorLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         bookAuthorLabel.text = item.author
         bookAuthorLabel.adjustsFontForContentSizeCategory = true
-        bookAuthorLabel.textColor = UIColor(red: 0.29, green: 0.31, blue: 0.34, alpha: 1.00)
+        bookAuthorLabel.textColor = ConstantsColor.kGrayTextColor
         bookAuthorLabel.textAlignment = .center
 
         NSLayoutConstraint.activate([

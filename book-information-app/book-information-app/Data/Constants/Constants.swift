@@ -41,9 +41,10 @@ enum ConstantsSupplementaryView {
     static let kCategorySectionImageName: String = "SearchRefractionIcon"
 }
 
-enum ConstantsFavoritesButton {
+enum ConstantsFavorites {
     static let kColor: UIColor = UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00)
-    static let kImageName: String = "heart.fill"
+    static let kButtonImageName: String = "heart.fill"
+    static let kCellImageName: String = "heart.square.fill"
 }
 
 enum ConstantsBookDetailInformation {
