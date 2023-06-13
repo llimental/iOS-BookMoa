@@ -14,6 +14,7 @@ enum ConstantsColor {
 
 enum ConstantsString {
     static let kBlank: String = ""
+    static let kLaunchAnimationName: String = "77792-book"
 }
 
 enum ConstantsTabBarItem {
