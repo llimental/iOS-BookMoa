@@ -18,7 +18,7 @@ final class BookDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let bookmarks = UserDefaults.standard.stringArray(forKey: MagicLiteral.bookmarkTextForKey) ?? []
-        bookmarkButton.tintColor = bookmarks.contains(selectedItem) ? UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00) : .white
+        bookmarkButton.tintColor = bookmarks.contains(selectedItem) ? ConstantsFavoritesButton.kColor : .white
     }
 
     override func viewDidLoad() {
@@ -50,7 +50,7 @@ final class BookDetailViewController: UIViewController {
     private lazy var bookmarkButton: UIButton = {
         let favoriteButton = UIButton()
 
-        favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        favoriteButton.setImage(UIImage(systemName: ConstantsFavoritesButton.kImageName), for: .normal)
 
         return favoriteButton
     }()
