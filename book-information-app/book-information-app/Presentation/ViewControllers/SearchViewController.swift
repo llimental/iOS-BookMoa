@@ -10,9 +10,9 @@ import UIKit
 final class SearchViewController: UIViewController {
 
     var queryString: String = ConstantsString.kBlank
-    private var startIndex: Int = 1
     private var totalResult: Int = ConstantsNumber.kZeroNumber
     private var itemsPerPage: Int = ConstantsNumber.kZeroNumber
+    private var startIndex: Int = ConstantsNumber.kNumberOne
 
     // MARK: - View LifeCycle
 
@@ -186,10 +186,10 @@ extension SearchViewController: UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard indexPath.item == collectionView.numberOfItems(inSection: indexPath.section) - 1, startIndex * itemsPerPage < totalResult else {
+        guard indexPath.item == collectionView.numberOfItems(inSection: indexPath.section) - ConstantsNumber.kNumberOne, startIndex * itemsPerPage < totalResult else {
             return
         }
-        startIndex += 1
+        startIndex += ConstantsNumber.kNumberOne
         loadMoreData()
     }
 }
