@@ -62,8 +62,8 @@ final class TabBarController: UITabBarController {
     }
 
     private func configureTabBar() {
-        homeViewController.tabBarItem = UITabBarItem(title: ConstantsTabBarItem.kTabBarHomeTitle, image: UIImage(named: ConstantsTabBarItem.kTabBarHomeImageName), selectedImage: UIImage(named: ConstantsTabBarItem.kTabBarHomeImageName))
-        favoriteViewController.tabBarItem = UITabBarItem(title: ConstantsTabBarItem.kTabBarFavoriteTitle, image: UIImage(named: ConstantsTabBarItem.kTabBarFavoriteImageName), selectedImage: UIImage(named: ConstantsTabBarItem.kTabBarFavoriteImageName))
+        homeViewController.tabBarItem = UITabBarItem(title: ConstantsTabBarItem.kHomeTitle, image: UIImage(named: ConstantsTabBarItem.kHomeImageName), selectedImage: UIImage(named: ConstantsTabBarItem.kHomeImageName))
+        favoriteViewController.tabBarItem = UITabBarItem(title: ConstantsTabBarItem.kFavoriteTitle, image: UIImage(named: ConstantsTabBarItem.kFavoriteImageName), selectedImage: UIImage(named: ConstantsTabBarItem.kFavoriteImageName))
 
         tabBar.backgroundColor = ConstantsColor.kMainColor
         tabBar.barTintColor = ConstantsColor.kMainColor
@@ -81,7 +81,7 @@ final class TabBarController: UITabBarController {
 
         animationView.play { _ in
             UIView.animate(withDuration: 0.3, animations: {
-                self.animationView.alpha = CGFloat(ConstantsNumber.kNumberZero)
+                self.animationView.alpha = CGFloat(ConstantsNumber.kZero)
             }, completion: { _ in
                 self.animationView.isHidden = true
                 self.animationView.removeFromSuperview()

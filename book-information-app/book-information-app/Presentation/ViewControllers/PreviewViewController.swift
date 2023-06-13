@@ -11,7 +11,7 @@ final class PreviewViewController: UIViewController {
 
     // MARK: - Public Properties
 
-    var imageIndex: Int = ConstantsNumber.kNumberZero
+    var imageIndex: Int = ConstantsNumber.kZero
     var imageLinks: [String] = [] {
         didSet {
             setPreviewImage()
@@ -121,13 +121,13 @@ extension PreviewViewController {
 
         switch gesture.direction {
         case .left:
-            if imageIndex < imageLinks.count - ConstantsNumber.kNumberOne {
-                imageIndex += ConstantsNumber.kNumberOne
+            if imageIndex < imageLinks.count - ConstantsNumber.kOne {
+                imageIndex += ConstantsNumber.kOne
                 UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve, animations: { self.setPreviewImage() }, completion: nil)
             }
         case .right:
-            if imageIndex > ConstantsNumber.kNumberZero {
-                imageIndex -= ConstantsNumber.kNumberOne
+            if imageIndex > ConstantsNumber.kZero {
+                imageIndex -= ConstantsNumber.kOne
                 UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve, animations: { self.setPreviewImage() }, completion: nil)
             }
         case .down:

@@ -80,7 +80,7 @@ final class FavoriteViewController: UIViewController {
         searchController.searchBar.layer.cornerRadius = 20
         searchController.searchBar.placeholder = ConstantsString.kBlank
         searchController.searchBar.searchTextField.backgroundColor = .white
-        searchController.searchBar.setImage(UIImage(named: ConstantsSearchController.kSearchControllerImageName), for: .search, state: .normal)
+        searchController.searchBar.setImage(UIImage(named: ConstantsSearchController.kImageName), for: .search, state: .normal)
 
         searchController.obscuresBackgroundDuringPresentation = true
 

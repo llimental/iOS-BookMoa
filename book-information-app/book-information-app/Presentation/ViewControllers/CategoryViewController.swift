@@ -10,9 +10,9 @@ import UIKit
 final class CategoryViewController: UIViewController {
 
     var categoryID: String = ConstantsString.kBlank
-    private var startIndex: Int = ConstantsNumber.kNumberOne
-    private var totalResult: Int = ConstantsNumber.kNumberZero
-    private var itemsPerPage: Int = ConstantsNumber.kNumberZero
+    private var startIndex: Int = ConstantsNumber.kOne
+    private var totalResult: Int = ConstantsNumber.kZero
+    private var itemsPerPage: Int = ConstantsNumber.kZero
 
     // MARK: - View LifeCycle
 
@@ -100,7 +100,7 @@ final class CategoryViewController: UIViewController {
         searchController.searchBar.layer.cornerRadius = 20
         searchController.searchBar.placeholder = ConstantsString.kBlank
         searchController.searchBar.searchTextField.backgroundColor = .white
-        searchController.searchBar.setImage(UIImage(named: ConstantsSearchController.kSearchControllerImageName), for: .search, state: .normal)
+        searchController.searchBar.setImage(UIImage(named: ConstantsSearchController.kImageName), for: .search, state: .normal)
 
         searchController.obscuresBackgroundDuringPresentation = true
 
@@ -187,10 +187,10 @@ extension CategoryViewController: UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard indexPath.item == collectionView.numberOfItems(inSection: indexPath.section) - ConstantsNumber.kNumberOne, startIndex * itemsPerPage < totalResult else {
+        guard indexPath.item == collectionView.numberOfItems(inSection: indexPath.section) - ConstantsNumber.kOne, startIndex * itemsPerPage < totalResult else {
             return
         }
-        startIndex += ConstantsNumber.kNumberOne
+        startIndex += ConstantsNumber.kOne
         loadMoreData()
     }
 }

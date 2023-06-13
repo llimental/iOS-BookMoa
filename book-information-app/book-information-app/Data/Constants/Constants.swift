@@ -20,19 +20,19 @@ enum ConstantsString {
 }
 
 enum ConstantsNumber {
-    static let kNumberZero: Int = 0
-    static let kNumberOne: Int = 1
+    static let kZero: Int = 0
+    static let kOne: Int = 1
 }
 
 enum ConstantsTabBarItem {
-    static let kTabBarHomeTitle: String = "홈"
-    static let kTabBarHomeImageName: String = "HomeIcon"
-    static let kTabBarFavoriteTitle: String = "즐겨찾기"
-    static let kTabBarFavoriteImageName: String = "FavoriteIcon"
+    static let kHomeTitle: String = "홈"
+    static let kHomeImageName: String = "HomeIcon"
+    static let kFavoriteTitle: String = "즐겨찾기"
+    static let kFavoriteImageName: String = "FavoriteIcon"
 }
 
 enum ConstantsSearchController {
-    static let kSearchControllerImageName: String = "SearchBarIcon"
+    static let kImageName: String = "SearchBarIcon"
 }
 
 enum ConstantsSupplementaryView {

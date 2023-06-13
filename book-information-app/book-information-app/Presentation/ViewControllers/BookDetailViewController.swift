@@ -188,7 +188,7 @@ extension BookDetailViewController {
 
         bookTitleLabel.textAlignment = .center
         bookTitleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
-        bookTitleLabel.numberOfLines = ConstantsNumber.kNumberZero
+        bookTitleLabel.numberOfLines = ConstantsNumber.kZero
         bookTitleLabel.textColor = ConstantsBookDetailInformation.kTitleColor
 
         bookAuthorLabel.textAlignment = .center
@@ -199,7 +199,7 @@ extension BookDetailViewController {
 
         bookPublishLabel.textAlignment = .center
         bookPublishLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
-        bookPublishLabel.numberOfLines = ConstantsNumber.kNumberZero
+        bookPublishLabel.numberOfLines = ConstantsNumber.kZero
         bookPublishLabel.textColor = ConstantsBookDetailInformation.kPublishColor
 
         previewButton.setTitle(MagicLiteral.previewButtonTitle, for: .normal)
@@ -217,7 +217,7 @@ extension BookDetailViewController {
 
         descriptionBodyLabel.textAlignment = .left
         descriptionBodyLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
-        descriptionBodyLabel.numberOfLines = ConstantsNumber.kNumberZero
+        descriptionBodyLabel.numberOfLines = ConstantsNumber.kZero
         descriptionBodyLabel.isUserInteractionEnabled = true
 
         authorDescriptionHeadLabel.text = MagicLiteral.authorDescriptionHeadLabelText
@@ -225,7 +225,7 @@ extension BookDetailViewController {
 
         authorDescriptionBodyLabel.textAlignment = .left
         authorDescriptionBodyLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
-        authorDescriptionBodyLabel.numberOfLines = ConstantsNumber.kNumberZero
+        authorDescriptionBodyLabel.numberOfLines = ConstantsNumber.kZero
         authorDescriptionBodyLabel.isUserInteractionEnabled = true
 
         memoTextView.text = MagicLiteral.memoViewPlaceholder
@@ -374,14 +374,14 @@ extension BookDetailViewController {
             return
         }
 
-        if self.view.frame.origin.y == CGFloat(ConstantsNumber.kNumberZero) {
+        if self.view.frame.origin.y == CGFloat(ConstantsNumber.kZero) {
             self.view.frame.origin.y -= (keyboardRect.height - tabBarHeight)
         }
     }
 
     @objc private func keyboardWillHide(_ notification: NSNotification) {
-        if self.view.frame.origin.y != CGFloat(ConstantsNumber.kNumberZero) {
-            self.view.frame.origin.y = CGFloat(ConstantsNumber.kNumberZero)
+        if self.view.frame.origin.y != CGFloat(ConstantsNumber.kZero) {
+            self.view.frame.origin.y = CGFloat(ConstantsNumber.kZero)
         }
     }
 
