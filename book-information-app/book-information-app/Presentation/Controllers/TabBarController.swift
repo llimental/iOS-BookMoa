@@ -22,7 +22,7 @@ final class TabBarController: UITabBarController {
         return navigationBarAppearance
     }()
     private let animationView: LottieAnimationView = {
-        let lottieAnimationView = LottieAnimationView(name: "77792-book")
+        let lottieAnimationView = LottieAnimationView(name: ConstantsString.kLaunchAnimationName)
 
         lottieAnimationView.backgroundColor = ConstantsColor.kMainColor.withAlphaComponent(1.0)
 
