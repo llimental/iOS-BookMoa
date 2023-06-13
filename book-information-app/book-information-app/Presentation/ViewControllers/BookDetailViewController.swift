@@ -426,7 +426,7 @@ extension BookDetailViewController {
             favoritesButton.tintColor = .white
             favoritesItems.remove(at: index)
         } else {
-            favoritesButton.tintColor = UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00)
+            favoritesButton.tintColor = ConstantsFavoritesButton.kColor
             favoritesItems.append(selectedItem)
         }
 
