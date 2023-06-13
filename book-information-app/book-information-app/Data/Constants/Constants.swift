@@ -37,6 +37,7 @@ enum ConstantsSearchController {
 
 enum ConstantsSupplementaryView {
     static let kBestSellerSectionImageName: String = "StarIcon"
+    static let kBestSellerSectionDisclosureName: String = "chevron.right"
     static let kCategorySectionImageName: String = "SearchRefractionIcon"
 }
 

@@ -46,7 +46,7 @@ extension TitleSupplementaryView {
 
         titleDecorateImageView.contentMode = .scaleAspectFit
 
-        disclosureImageView.image = UIImage(systemName: "chevron.right")
+        disclosureImageView.image = UIImage(systemName: ConstantsSupplementaryView.kBestSellerSectionDisclosureName)
         disclosureImageView.contentMode = .scaleAspectFit
 
         NSLayoutConstraint.activate([
