@@ -183,7 +183,7 @@ extension BookDetailViewController {
 
         backgroundView.backgroundColor = .white
 
-        backgroundImageView.image = UIImage(named: "EclipseIcon")
+        backgroundImageView.image = UIImage(named: ConstantsString.kDetailViewBackgroundImageName)
         backgroundImageView.contentMode = .scaleAspectFit
 
         bookTitleLabel.textAlignment = .center
