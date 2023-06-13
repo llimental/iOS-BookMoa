@@ -164,15 +164,7 @@ extension CategoryViewController {
                 return UICollectionViewCell()
             }
 
-            guard let bookmarkedItems = UserDefaults.standard.stringArray(forKey: MagicLiteral.bookmarkTextForKey) else {
-                return UICollectionViewCell()
-            }
-
-            cell.booktitleLabel.text = item.title
-            cell.bookAuthorLabel.text = item.author
-            cell.bookImageView.image = item.cover
-            cell.bookISBN = item.isbn
-            cell.bookmarkImageView.backgroundColor = bookmarkedItems.contains(cell.bookISBN) ? UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00) : .white
+            cell.configure(with: item)
 
             return cell
         }

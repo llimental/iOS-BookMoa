@@ -12,11 +12,9 @@ final class FavoriteViewController: UIViewController {
     private var bookmarkedItems: [String] = []
 
     // MARK: - View LifeCycle
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        configureHierarchy()
 
         if let userDefaultsData = UserDefaults.standard.stringArray(forKey: MagicLiteral.bookmarkTextForKey) {
             bookmarkedItems = userDefaultsData
@@ -31,6 +29,8 @@ final class FavoriteViewController: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self
+
+        configureHierarchy()
     }
 
     // MARK: - Private Functions
@@ -144,15 +144,7 @@ extension FavoriteViewController {
                 return UICollectionViewCell()
             }
 
-            guard let bookmarkedItems = UserDefaults.standard.stringArray(forKey: MagicLiteral.bookmarkTextForKey) else {
-                return UICollectionViewCell()
-            }
-
-            cell.booktitleLabel.text = item.title
-            cell.bookAuthorLabel.text = item.author
-            cell.bookImageView.image = item.cover
-            cell.bookISBN = item.isbn
-            cell.bookmarkImageView.backgroundColor = bookmarkedItems.contains(cell.bookISBN) ? UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00) : .white
+            cell.configure(with: item)
 
             return cell
         }
