@@ -369,23 +369,20 @@ extension BookDetailViewController {
 
 extension BookDetailViewController {
     @objc private func keyboardWillShow(_ notification: NSNotification) {
-        guard let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+        guard let keyboardRect: CGRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
               let tabBarHeight: CGFloat = self.tabBarController?.tabBar.frame.size.height else {
             return
         }
-        let keyboardRectangle = keyboardFrame.cgRectValue
-        let keyboardHeight = keyboardRectangle.height
-        self.view.frame.origin.y -= keyboardHeight - tabBarHeight
+
+        if self.view.frame.origin.y == CGFloat(ConstantsNumber.kZeroNumber) {
+            self.view.frame.origin.y -= (keyboardRect.height - tabBarHeight)
+        }
     }
 
     @objc private func keyboardWillHide(_ notification: NSNotification) {
-        guard let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
-              let tabBarHeight: CGFloat = self.tabBarController?.tabBar.frame.size.height else {
-            return
+        if self.view.frame.origin.y != CGFloat(ConstantsNumber.kZeroNumber) {
+            self.view.frame.origin.y = CGFloat(ConstantsNumber.kZeroNumber)
         }
-        let keyboardRectangle = keyboardFrame.cgRectValue
-        let keyboardHeight = keyboardRectangle.height
-        self.view.frame.origin.y += keyboardHeight - tabBarHeight
     }
 
     @objc private func dismissKeyboard() {
