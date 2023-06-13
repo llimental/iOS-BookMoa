@@ -18,6 +18,10 @@ enum ConstantsString {
     static let kDetailViewBackgroundImageName: String = "EclipseIcon"
 }
 
+enum ConstantsNumber {
+    static let kZeroNumber: Int = 0
+}
+
 enum ConstantsTabBarItem {
     static let kTabBarHomeTitle: String = "홈"
     static let kTabBarHomeImageName: String = "HomeIcon"
