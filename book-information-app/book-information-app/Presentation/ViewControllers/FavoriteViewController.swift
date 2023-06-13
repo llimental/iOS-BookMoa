@@ -9,15 +9,15 @@ import UIKit
 
 final class FavoriteViewController: UIViewController {
 
-    private var bookmarkedItems: [String] = []
+    private var favoritesItems: [String] = []
 
     // MARK: - View LifeCycle
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let userDefaultsData = UserDefaults.standard.stringArray(forKey: MagicLiteral.bookmarkTextForKey) {
-            bookmarkedItems = userDefaultsData
+        if let userDefaultsData = UserDefaults.standard.stringArray(forKey: MagicLiteral.favoritesTextForKey) {
+            favoritesItems = userDefaultsData
         }
         loadData()
     }
@@ -37,25 +37,25 @@ final class FavoriteViewController: UIViewController {
 
     private func loadData() {
         Task {
-            var bookmarkedItemList: [CategoryController.CategoryBook] = []
+            var favoritesItemList: [CategoryController.CategoryBook] = []
 
-            for item in bookmarkedItems {
+            for item in favoritesItems {
                 guard let networkResult = try await networkService.requestData(with: IndividualBookEndPoint(isbn: item)).item.first else { return }
 
                 let bookImage = try await networkService.requestIndividualBookImage(with: networkResult)
 
-                let bookmarkedItem = CategoryController.CategoryBook(title: networkResult.title, author: networkResult.author, cover: bookImage, isbn: networkResult.isbn13)
+                let favoritesItem = CategoryController.CategoryBook(title: networkResult.title, author: networkResult.author, cover: bookImage, isbn: networkResult.isbn13)
 
-                bookmarkedItemList.append(bookmarkedItem)
+                favoritesItemList.append(favoritesItem)
             }
-            applySnapshot(with: bookmarkedItemList)
+            applySnapshot(with: favoritesItemList)
         }
     }
 
-    private func applySnapshot(with bookmarkedItemList: [CategoryController.CategoryBook]) {
+    private func applySnapshot(with favoritesItemList: [CategoryController.CategoryBook]) {
         var snapshot = NSDiffableDataSourceSnapshot<CategoryController.Section, CategoryController.CategoryBook>()
         snapshot.appendSections([CategoryController.Section.categoryBookList])
-        snapshot.appendItems(bookmarkedItemList, toSection: .categoryBookList)
+        snapshot.appendItems(favoritesItemList, toSection: .categoryBookList)
 
         self.dataSource.apply(snapshot, animatingDifferences: false)
     }
@@ -93,13 +93,13 @@ final class FavoriteViewController: UIViewController {
 extension FavoriteViewController {
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout{ (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            return self.createBookmarkLayout()
+            return self.createFavoritesLayout()
         }
 
         return layout
     }
 
-    private func createBookmarkLayout() -> NSCollectionLayoutSection {
+    private func createFavoritesLayout() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3),
                                               heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)

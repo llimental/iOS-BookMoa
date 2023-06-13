@@ -17,8 +17,8 @@ final class BookDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let bookmarks = UserDefaults.standard.stringArray(forKey: MagicLiteral.bookmarkTextForKey) ?? []
-        bookmarkButton.tintColor = bookmarks.contains(selectedItem) ? ConstantsFavoritesButton.kColor : .white
+        let favoritesItems = UserDefaults.standard.stringArray(forKey: MagicLiteral.favoritesTextForKey) ?? []
+        favoritesButton.tintColor = favoritesItems.contains(selectedItem) ? ConstantsFavoritesButton.kColor : .white
     }
 
     override func viewDidLoad() {
@@ -27,8 +27,8 @@ final class BookDetailViewController: UIViewController {
         self.addKeyboardNotifications()
         view.backgroundColor = ConstantsColor.kMainColor
 
-        bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTouched), for: .touchUpInside)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: bookmarkButton)
+        favoritesButton.addTarget(self, action: #selector(favoritesButtonTouched), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: favoritesButton)
 
         configure()
         loadData()
@@ -47,7 +47,7 @@ final class BookDetailViewController: UIViewController {
     private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     private lazy var descriptionTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(controlDescription))
     private lazy var authorTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(controlAuthorDescription))
-    private lazy var bookmarkButton: UIButton = {
+    private lazy var favoritesButton: UIButton = {
         let favoriteButton = UIButton()
 
         favoriteButton.setImage(UIImage(systemName: ConstantsFavoritesButton.kImageName), for: .normal)
@@ -419,18 +419,18 @@ extension BookDetailViewController {
         present(previewViewController, animated: true)
     }
 
-    @objc private func bookmarkButtonTouched() {
-        var bookmarks = UserDefaults.standard.stringArray(forKey: MagicLiteral.bookmarkTextForKey) ?? []
+    @objc private func favoritesButtonTouched() {
+        var favoritesItems = UserDefaults.standard.stringArray(forKey: MagicLiteral.favoritesTextForKey) ?? []
 
-        if let index = bookmarks.firstIndex(of: selectedItem) {
-            bookmarkButton.tintColor = .white
-            bookmarks.remove(at: index)
+        if let index = favoritesItems.firstIndex(of: selectedItem) {
+            favoritesButton.tintColor = .white
+            favoritesItems.remove(at: index)
         } else {
-            bookmarkButton.tintColor = UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00)
-            bookmarks.append(selectedItem)
+            favoritesButton.tintColor = UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00)
+            favoritesItems.append(selectedItem)
         }
 
-        UserDefaults.standard.set(bookmarks, forKey: MagicLiteral.bookmarkTextForKey)
+        UserDefaults.standard.set(favoritesItems, forKey: MagicLiteral.favoritesTextForKey)
     }
 }
 

@@ -15,7 +15,7 @@ final class CategoryBookCell: UICollectionViewCell {
     let bookAuthorLabel = UILabel()
     var bookISBN: String = ConstantsString.kBlank
 
-    let bookmarkImageView = UIImageView()
+    let favoritesImageView = UIImageView()
 
     private let bookStackView = UIStackView()
 }
@@ -23,10 +23,10 @@ final class CategoryBookCell: UICollectionViewCell {
 extension CategoryBookCell {
     func configure(with item: CategoryController.CategoryBook) {
         bookStackView.translatesAutoresizingMaskIntoConstraints = false
-        bookmarkImageView.translatesAutoresizingMaskIntoConstraints = false
+        favoritesImageView.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(bookStackView)
-        contentView.addSubview(bookmarkImageView)
+        contentView.addSubview(favoritesImageView)
         bookStackView.addArrangedSubview(bookImageView)
         bookStackView.addArrangedSubview(booktitleLabel)
         bookStackView.addArrangedSubview(bookAuthorLabel)
@@ -41,13 +41,13 @@ extension CategoryBookCell {
         bookImageView.contentMode = .scaleAspectFit
         bookImageView.image = item.cover
 
-        bookmarkImageView.image = UIImage(systemName: "heart.square.fill")
-        bookmarkImageView.tintColor = ConstantsColor.kMainColor
+        favoritesImageView.image = UIImage(systemName: "heart.square.fill")
+        favoritesImageView.tintColor = ConstantsColor.kMainColor
 
-        if let bookmarkedItems = UserDefaults.standard.stringArray(forKey: MagicLiteral.bookmarkTextForKey), bookmarkedItems.contains(bookISBN) {
-            bookmarkImageView.backgroundColor = UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00)
+        if let favoritesItems = UserDefaults.standard.stringArray(forKey: MagicLiteral.favoritesTextForKey), favoritesItems.contains(bookISBN) {
+            favoritesImageView.backgroundColor = UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00)
         } else {
-            bookmarkImageView.backgroundColor = .white
+            favoritesImageView.backgroundColor = .white
         }
 
         booktitleLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
@@ -67,10 +67,10 @@ extension CategoryBookCell {
             bookStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             bookStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            bookmarkImageView.topAnchor.constraint(equalTo: bookImageView.topAnchor),
-            bookmarkImageView.trailingAnchor.constraint(equalTo: bookImageView.trailingAnchor),
-            bookmarkImageView.widthAnchor.constraint(equalTo: bookImageView.widthAnchor, multiplier: 0.2),
-            bookmarkImageView.heightAnchor.constraint(equalTo: bookImageView.heightAnchor, multiplier: 1.0 / 7.0)
+            favoritesImageView.topAnchor.constraint(equalTo: bookImageView.topAnchor),
+            favoritesImageView.trailingAnchor.constraint(equalTo: bookImageView.trailingAnchor),
+            favoritesImageView.widthAnchor.constraint(equalTo: bookImageView.widthAnchor, multiplier: 0.2),
+            favoritesImageView.heightAnchor.constraint(equalTo: bookImageView.heightAnchor, multiplier: 1.0 / 7.0)
         ])
     }
 }
