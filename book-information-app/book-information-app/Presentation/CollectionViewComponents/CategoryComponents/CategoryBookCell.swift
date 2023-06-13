@@ -18,19 +18,10 @@ final class CategoryBookCell: UICollectionViewCell {
     let bookmarkImageView = UIImageView()
 
     private let bookStackView = UIStackView()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configure()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
 }
 
 extension CategoryBookCell {
-    private func configure() {
+    func configure(with item: CategoryController.CategoryBook) {
         bookStackView.translatesAutoresizingMaskIntoConstraints = false
         bookmarkImageView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -43,18 +34,29 @@ extension CategoryBookCell {
         bookStackView.axis = .vertical
         bookStackView.spacing = 3
         bookStackView.alignment = .center
+        bookStackView.distribution = .equalSpacing
+
+        bookISBN = item.isbn
 
         bookImageView.contentMode = .scaleAspectFit
+        bookImageView.image = item.cover
 
         bookmarkImageView.image = UIImage(systemName: "heart.square.fill")
         bookmarkImageView.tintColor = ConstantsColor.kMainColor
-        bookmarkImageView.backgroundColor = .white
+
+        if let bookmarkedItems = UserDefaults.standard.stringArray(forKey: MagicLiteral.bookmarkTextForKey), bookmarkedItems.contains(bookISBN) {
+            bookmarkImageView.backgroundColor = UIColor(red: 0.88, green: 0.04, blue: 0.55, alpha: 1.00)
+        } else {
+            bookmarkImageView.backgroundColor = .white
+        }
 
         booktitleLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        booktitleLabel.text = item.title
         booktitleLabel.adjustsFontForContentSizeCategory = true
         booktitleLabel.textAlignment = .center
 
         bookAuthorLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
+        bookAuthorLabel.text = item.author
         bookAuthorLabel.adjustsFontForContentSizeCategory = true
         bookAuthorLabel.textColor = UIColor(red: 0.29, green: 0.31, blue: 0.34, alpha: 1.00)
         bookAuthorLabel.textAlignment = .center
