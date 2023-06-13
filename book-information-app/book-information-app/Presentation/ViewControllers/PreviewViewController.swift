@@ -121,13 +121,13 @@ extension PreviewViewController {
 
         switch gesture.direction {
         case .left:
-            if imageIndex < imageLinks.count - 1 {
-                imageIndex += 1
+            if imageIndex < imageLinks.count - ConstantsNumber.kNumberOne {
+                imageIndex += ConstantsNumber.kNumberOne
                 UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve, animations: { self.setPreviewImage() }, completion: nil)
             }
         case .right:
-            if imageIndex > 0 {
-                imageIndex -= 1
+            if imageIndex > ConstantsNumber.kNumberZero {
+                imageIndex -= ConstantsNumber.kNumberOne
                 UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve, animations: { self.setPreviewImage() }, completion: nil)
             }
         case .down:
