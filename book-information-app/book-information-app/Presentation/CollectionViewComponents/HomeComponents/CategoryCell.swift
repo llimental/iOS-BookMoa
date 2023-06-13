@@ -28,7 +28,7 @@ extension CategoryCell {
         let gradientLayer = CAGradientLayer()
 
         gradientLayer.frame = contentView.bounds
-        gradientLayer.colors = [ConstantsColor.kMainColor.cgColor, UIColor(red: 0.49, green: 0.31, blue: 0.91, alpha: 1.00).cgColor]
+        gradientLayer.colors = [ConstantsColor.kMainColor.cgColor, ConstantsCategoryCell.kGradientSubColor.cgColor]
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
         gradientLayer.cornerRadius = 15
@@ -48,7 +48,7 @@ extension CategoryCell {
         categoryLabel.textAlignment = .center
         categoryLabel.textColor = .black
 
-        self.backgroundColor = UIColor(red: 0.87, green: 0.89, blue: 0.90, alpha: 1.00)
+        self.backgroundColor = ConstantsCategoryCell.kBackgroundColor
         self.layer.cornerRadius = 15
 
         NSLayoutConstraint.activate([
