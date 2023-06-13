@@ -256,10 +256,10 @@ extension HomeViewController {
 
             switch indexPath.section {
             case 0:
-                supplementaryView.titleDecorateImageView.image = UIImage(named: "StarIcon")
+                supplementaryView.titleDecorateImageView.image = UIImage(named: ConstantsSupplementaryView.kBestSellerSectionImageName)
                 supplementaryView.disclosureImageView.tintColor = .black
             default:
-                supplementaryView.titleDecorateImageView.image = UIImage(named: "SearchRefractionIcon")
+                supplementaryView.titleDecorateImageView.image = UIImage(named: ConstantsSupplementaryView.kCategorySectionImageName)
                 supplementaryView.disclosureImageView.tintColor = .white
             }
 
