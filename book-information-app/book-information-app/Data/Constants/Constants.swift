@@ -22,3 +22,7 @@ enum ConstantsTabBarItem {
     static let kTabBarFavoriteTitle: String = "즐겨찾기"
     static let kTabBarFavoriteImageName: String = "FavoriteIcon"
 }
+
+enum ConstantsSearchController {
+    static let kSearchControllerImageName: String = "SearchBarIcon"
+}
