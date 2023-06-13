@@ -11,7 +11,7 @@ final class PreviewViewController: UIViewController {
 
     // MARK: - Public Properties
 
-    var imageIndex: Int = 0
+    var imageIndex: Int = ConstantsNumber.kZeroNumber
     var imageLinks: [String] = [] {
         didSet {
             setPreviewImage()

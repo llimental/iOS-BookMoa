@@ -188,7 +188,7 @@ extension BookDetailViewController {
 
         bookTitleLabel.textAlignment = .center
         bookTitleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
-        bookTitleLabel.numberOfLines = 0
+        bookTitleLabel.numberOfLines = ConstantsNumber.kZeroNumber
         bookTitleLabel.textColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00)
 
         bookAuthorLabel.textAlignment = .center
@@ -199,7 +199,7 @@ extension BookDetailViewController {
 
         bookPublishLabel.textAlignment = .center
         bookPublishLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
-        bookPublishLabel.numberOfLines = 0
+        bookPublishLabel.numberOfLines = ConstantsNumber.kZeroNumber
         bookPublishLabel.textColor = UIColor(red: 0.53, green: 0.56, blue: 0.59, alpha: 1.00)
 
         previewButton.setTitle(MagicLiteral.previewButtonTitle, for: .normal)
@@ -217,7 +217,7 @@ extension BookDetailViewController {
 
         descriptionBodyLabel.textAlignment = .left
         descriptionBodyLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
-        descriptionBodyLabel.numberOfLines = 0
+        descriptionBodyLabel.numberOfLines = ConstantsNumber.kZeroNumber
         descriptionBodyLabel.isUserInteractionEnabled = true
 
         authorDescriptionHeadLabel.text = MagicLiteral.authorDescriptionHeadLabelText
@@ -225,7 +225,7 @@ extension BookDetailViewController {
 
         authorDescriptionBodyLabel.textAlignment = .left
         authorDescriptionBodyLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
-        authorDescriptionBodyLabel.numberOfLines = 0
+        authorDescriptionBodyLabel.numberOfLines = ConstantsNumber.kZeroNumber
         authorDescriptionBodyLabel.isUserInteractionEnabled = true
 
         memoTextView.text = MagicLiteral.memoViewPlaceholder

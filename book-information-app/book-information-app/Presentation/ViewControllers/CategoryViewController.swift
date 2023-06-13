@@ -11,8 +11,8 @@ final class CategoryViewController: UIViewController {
 
     var categoryID: String = ConstantsString.kBlank
     private var startIndex: Int = 1
-    private var totalResult: Int = 0
-    private var itemsPerPage: Int = 0
+    private var totalResult: Int = ConstantsNumber.kZeroNumber
+    private var itemsPerPage: Int = ConstantsNumber.kZeroNumber
 
     // MARK: - View LifeCycle
 
