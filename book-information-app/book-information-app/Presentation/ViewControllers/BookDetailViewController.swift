@@ -25,7 +25,7 @@ final class BookDetailViewController: UIViewController {
         super.viewDidLoad()
 
         self.addKeyboardNotifications()
-        view.backgroundColor = Constants.kMainColor
+        view.backgroundColor = ConstantsColor.kMainColor
 
         bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTouched), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: bookmarkButton)
@@ -204,13 +204,13 @@ extension BookDetailViewController {
 
         previewButton.setTitle(MagicLiteral.previewButtonTitle, for: .normal)
         previewButton.setTitleColor(.white, for: .normal)
-        previewButton.backgroundColor = Constants.kMainColor
+        previewButton.backgroundColor = ConstantsColor.kMainColor
         previewButton.layer.cornerRadius = 15
         previewButton.addTarget(self, action: #selector(previewButtonTapped), for: .touchUpInside)
 
-        firstDivider.backgroundColor = Constants.kDividerColor
-        secondDivider.backgroundColor = Constants.kDividerColor
-        thirdDivider.backgroundColor = Constants.kDividerColor
+        firstDivider.backgroundColor = ConstantsColor.kDividerColor
+        secondDivider.backgroundColor = ConstantsColor.kDividerColor
+        thirdDivider.backgroundColor = ConstantsColor.kDividerColor
 
         descriptionHeadLabel.text = MagicLiteral.descriptionHeadLabelText
         descriptionHeadLabel.font = UIFont.preferredFont(forTextStyle: .headline)
@@ -338,7 +338,7 @@ extension BookDetailViewController {
         let attributedString = NSMutableAttributedString(string: fullString)
         let range = NSRange(location: fullString.count - 7, length: 7)
         attributedString.addAttribute(.foregroundColor,
-                                      value: Constants.kMainColor,
+                                      value: ConstantsColor.kMainColor,
                                       range: range)
 
         return attributedString

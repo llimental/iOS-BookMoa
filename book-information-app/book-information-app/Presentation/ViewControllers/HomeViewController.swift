@@ -85,7 +85,7 @@ final class HomeViewController: UIViewController {
 
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         activityIndicator.center = self.view.center
-        activityIndicator.color = Constants.kMainColor
+        activityIndicator.color = ConstantsColor.kMainColor
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .medium
 

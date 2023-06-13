@@ -15,7 +15,7 @@ final class TabBarController: UITabBarController {
     private let navigationBarAppearance: UINavigationBarAppearance = {
         let navigationBarAppearance = UINavigationBarAppearance()
 
-        navigationBarAppearance.backgroundColor = Constants.kMainColor
+        navigationBarAppearance.backgroundColor = ConstantsColor.kMainColor
         navigationBarAppearance.shadowColor = .clear
         navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
 
@@ -24,7 +24,7 @@ final class TabBarController: UITabBarController {
     private let animationView: LottieAnimationView = {
         let lottieAnimationView = LottieAnimationView(name: "77792-book")
 
-        lottieAnimationView.backgroundColor = Constants.kMainColor.withAlphaComponent(1.0)
+        lottieAnimationView.backgroundColor = ConstantsColor.kMainColor.withAlphaComponent(1.0)
 
         return lottieAnimationView
     }()
@@ -65,8 +65,8 @@ final class TabBarController: UITabBarController {
         homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "HomeIcon"), selectedImage: UIImage(named: "HomeIcon"))
         favoriteViewController.tabBarItem = UITabBarItem(title: "즐겨찾기", image: UIImage(named: "FavoriteIcon"), selectedImage: UIImage(named: "FavoriteIcon"))
 
-        tabBar.backgroundColor = Constants.kMainColor
-        tabBar.barTintColor = Constants.kMainColor
+        tabBar.backgroundColor = ConstantsColor.kMainColor
+        tabBar.barTintColor = ConstantsColor.kMainColor
         tabBar.isTranslucent = false
         tabBar.tintColor = .white
         tabBar.unselectedItemTintColor = .systemGray2
