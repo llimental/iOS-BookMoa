@@ -62,8 +62,8 @@ final class TabBarController: UITabBarController {
     }
 
     private func configureTabBar() {
-        homeViewController.tabBarItem = UITabBarItem(title: "홈", image: UIImage(named: "HomeIcon"), selectedImage: UIImage(named: "HomeIcon"))
-        favoriteViewController.tabBarItem = UITabBarItem(title: "즐겨찾기", image: UIImage(named: "FavoriteIcon"), selectedImage: UIImage(named: "FavoriteIcon"))
+        homeViewController.tabBarItem = UITabBarItem(title: ConstantsTabBarItem.kTabBarHomeTitle, image: UIImage(named: ConstantsTabBarItem.kTabBarHomeImageName), selectedImage: UIImage(named: ConstantsTabBarItem.kTabBarHomeImageName))
+        favoriteViewController.tabBarItem = UITabBarItem(title: ConstantsTabBarItem.kTabBarFavoriteTitle, image: UIImage(named: ConstantsTabBarItem.kTabBarFavoriteImageName), selectedImage: UIImage(named: ConstantsTabBarItem.kTabBarFavoriteImageName))
 
         tabBar.backgroundColor = ConstantsColor.kMainColor
         tabBar.barTintColor = ConstantsColor.kMainColor
