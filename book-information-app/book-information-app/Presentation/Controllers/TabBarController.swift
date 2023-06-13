@@ -81,7 +81,7 @@ final class TabBarController: UITabBarController {
 
         animationView.play { _ in
             UIView.animate(withDuration: 0.3, animations: {
-                self.animationView.alpha = CGFloat(ConstantsNumber.kZeroNumber)
+                self.animationView.alpha = CGFloat(ConstantsNumber.kNumberZero)
             }, completion: { _ in
                 self.animationView.isHidden = true
                 self.animationView.removeFromSuperview()

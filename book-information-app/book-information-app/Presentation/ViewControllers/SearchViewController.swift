@@ -10,9 +10,9 @@ import UIKit
 final class SearchViewController: UIViewController {
 
     var queryString: String = ConstantsString.kBlank
-    private var totalResult: Int = ConstantsNumber.kZeroNumber
-    private var itemsPerPage: Int = ConstantsNumber.kZeroNumber
     private var startIndex: Int = ConstantsNumber.kNumberOne
+    private var totalResult: Int = ConstantsNumber.kNumberZero
+    private var itemsPerPage: Int = ConstantsNumber.kNumberZero
 
     // MARK: - View LifeCycle
 
