@@ -17,14 +17,14 @@ final class DynamicLabel: UILabel{
     func collapse() {
         if let fullText = fullText {
             let index = fullText.index(fullText.startIndex, offsetBy: truncatedLength)
-            self.text = fullText[...index].description + MagicLiteral.moreDescriptionText
+            self.text = fullText[...index].description + ConstantsBookDetailText.kMoreDescription
             isTruncated = true
         }
     }
 
     func expand() {
         if let fullText = fullText {
-            self.text = fullText + MagicLiteral.lessDescriptionText
+            self.text = fullText + ConstantsBookDetailText.kLessDescription
             isTruncated = false
         }
     }

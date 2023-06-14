@@ -189,20 +189,20 @@ extension BookDetailViewController {
         bookTitleLabel.textAlignment = .center
         bookTitleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
         bookTitleLabel.numberOfLines = ConstantsNumber.kZero
-        bookTitleLabel.textColor = ConstantsBookDetailInformation.kTitleColor
+        bookTitleLabel.textColor = ConstantsBookDetailColor.kTitle
 
         bookAuthorLabel.textAlignment = .center
         bookAuthorLabel.font = UIFont.preferredFont(forTextStyle: .callout)
-        bookAuthorLabel.textColor = ConstantsBookDetailInformation.kAuthorColor
+        bookAuthorLabel.textColor = ConstantsBookDetailColor.kAuthor
 
         bookCoverImageView.contentMode = .scaleAspectFit
 
         bookPublishLabel.textAlignment = .center
         bookPublishLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         bookPublishLabel.numberOfLines = ConstantsNumber.kZero
-        bookPublishLabel.textColor = ConstantsBookDetailInformation.kPublishColor
+        bookPublishLabel.textColor = ConstantsBookDetailColor.kPublish
 
-        previewButton.setTitle(MagicLiteral.previewButtonTitle, for: .normal)
+        previewButton.setTitle(ConstantsBookDetailText.kPreviewButtonTitle, for: .normal)
         previewButton.setTitleColor(.white, for: .normal)
         previewButton.backgroundColor = ConstantsColor.kMainColor
         previewButton.layer.cornerRadius = 15
@@ -212,7 +212,7 @@ extension BookDetailViewController {
         secondDivider.backgroundColor = ConstantsColor.kDividerColor
         thirdDivider.backgroundColor = ConstantsColor.kDividerColor
 
-        descriptionHeadLabel.text = MagicLiteral.descriptionHeadLabelText
+        descriptionHeadLabel.text = ConstantsBookDetailText.kBookDescriptionHead
         descriptionHeadLabel.font = UIFont.preferredFont(forTextStyle: .headline)
 
         descriptionBodyLabel.textAlignment = .left
@@ -220,7 +220,7 @@ extension BookDetailViewController {
         descriptionBodyLabel.numberOfLines = ConstantsNumber.kZero
         descriptionBodyLabel.isUserInteractionEnabled = true
 
-        authorDescriptionHeadLabel.text = MagicLiteral.authorDescriptionHeadLabelText
+        authorDescriptionHeadLabel.text = ConstantsBookDetailText.kAuthorDescriptionHead
         authorDescriptionHeadLabel.font = UIFont.preferredFont(forTextStyle: .headline)
 
         authorDescriptionBodyLabel.textAlignment = .left
@@ -228,10 +228,10 @@ extension BookDetailViewController {
         authorDescriptionBodyLabel.numberOfLines = ConstantsNumber.kZero
         authorDescriptionBodyLabel.isUserInteractionEnabled = true
 
-        memoTextView.text = MagicLiteral.memoViewPlaceholder
+        memoTextView.text = ConstantsBookDetailText.kMemoPlaceholder
         memoTextView.font = UIFont.preferredFont(forTextStyle: .caption1)
         memoTextView.textColor = ConstantsColor.kGrayTextColor
-        memoTextView.backgroundColor = ConstantsBookDetailInformation.kMemoBackgroundColor
+        memoTextView.backgroundColor = ConstantsBookDetailColor.kMemoBackground
         memoTextView.delegate = self
 
         collaboratorLabel.textAlignment = .center
@@ -435,7 +435,7 @@ extension BookDetailViewController {
 
 extension BookDetailViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == MagicLiteral.memoViewPlaceholder {
+        if textView.text == ConstantsBookDetailText.kMemoPlaceholder {
             textView.text = nil
             textView.textColor = .black
         }
@@ -443,7 +443,7 @@ extension BookDetailViewController: UITextViewDelegate {
 
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            textView.text = MagicLiteral.memoViewPlaceholder
+            textView.text = ConstantsBookDetailText.kMemoPlaceholder
             textView.textColor = ConstantsColor.kGrayTextColor
         }
     }

@@ -41,7 +41,7 @@ final class SearchViewController: UIViewController {
 
             let bookImages = try await networkService.requestSearchResultImage(with: networkResults.item)
 
-            navigationItem.title = MagicLiteral.searchViewControllerTitle + networkResults.query
+            navigationItem.title = ConstantsSearchController.kTitle + networkResults.query
             totalResult = networkResults.totalResults
             itemsPerPage = networkResults.itemsPerPage
 

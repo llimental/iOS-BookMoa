@@ -271,7 +271,7 @@ extension HomeViewController {
 
     private func configureRefreshControl() {
         collectionView.refreshControl = UIRefreshControl()
-        collectionView.refreshControl?.attributedTitle = NSAttributedString(string: MagicLiteral.refreshControlTitle)
+        collectionView.refreshControl?.attributedTitle = NSAttributedString(string: ConstantsString.kRefreshControlTitle)
         collectionView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
     }
 
