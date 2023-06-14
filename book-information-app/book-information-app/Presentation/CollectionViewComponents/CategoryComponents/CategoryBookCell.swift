@@ -44,7 +44,7 @@ extension CategoryBookCell {
         favoritesImageView.image = UIImage(systemName: ConstantsFavorites.kCellImageName)
         favoritesImageView.tintColor = ConstantsColor.kMainColor
 
-        if let favoritesItems = UserDefaults.standard.stringArray(forKey: MagicLiteral.favoritesTextForKey), favoritesItems.contains(bookISBN) {
+        if let favoritesItems = UserDefaults.standard.stringArray(forKey: ConstantsFavorites.favoritesTextForKey), favoritesItems.contains(bookISBN) {
             favoritesImageView.backgroundColor = ConstantsFavorites.kColor
         } else {
             favoritesImageView.backgroundColor = .white

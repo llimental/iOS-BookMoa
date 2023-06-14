@@ -18,6 +18,5 @@ enum MagicLiteral {
     static let authorDescriptionHeadLabelText = "저자소개"
     static let moreDescriptionText = "... 더보기"
     static let lessDescriptionText = "... 줄이기"
-    static let favoritesTextForKey = "favorites"
     static let collaboratorLabelText = "도서 DB 제공 : 알라딘 인터넷서점(www.aladin.co.kr)"
 }

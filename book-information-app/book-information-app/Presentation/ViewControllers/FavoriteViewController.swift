@@ -16,7 +16,7 @@ final class FavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let userDefaultsData = UserDefaults.standard.stringArray(forKey: MagicLiteral.favoritesTextForKey) {
+        if let userDefaultsData = UserDefaults.standard.stringArray(forKey: ConstantsFavorites.favoritesTextForKey) {
             favoritesItems = userDefaultsData
         }
         loadData()
