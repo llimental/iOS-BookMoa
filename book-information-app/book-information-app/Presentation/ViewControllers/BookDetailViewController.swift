@@ -336,7 +336,7 @@ extension BookDetailViewController {
     private func setPartialColor(with labelText: String) -> NSMutableAttributedString {
         let fullString = labelText
         let attributedString = NSMutableAttributedString(string: fullString)
-        let range = NSRange(location: fullString.count - 7, length: 7)
+        let range = NSRange(location: fullString.count - ConstantsNumber.kAttributeLength, length: ConstantsNumber.kAttributeLength)
         attributedString.addAttribute(.foregroundColor,
                                       value: ConstantsColor.kMainColor,
                                       range: range)
