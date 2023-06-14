@@ -62,3 +62,10 @@ enum ConstantsCategoryCell {
     static let kGradientSubColor: UIColor = UIColor(red: 0.49, green: 0.31, blue: 0.91, alpha: 1.00)
     static let kBackgroundColor: UIColor = UIColor(red: 0.87, green: 0.89, blue: 0.90, alpha: 1.00)
 }
+
+enum ConstantsReuseIdentifier {
+    static let kBestSeller: String = "bestseller-reuse-identifier"
+    static let kCategory: String = "category-reuse-identifier"
+    static let kCategoryBook: String = "category-book-reuse-identifier"
+    static let kSupplementary: String = "title-supplementary-reuse-identifier"
+}
