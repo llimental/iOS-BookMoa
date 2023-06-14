@@ -8,7 +8,7 @@
 import UIKit
 
 final class BestSellerCell: UICollectionViewCell {
-    static let reuseIdentifier = MagicLiteral.bestSellerReuseIdentifier
+    static let reuseIdentifier = ConstantsReuseIdentifier.kBestSeller
 
     let bookImageView = UIImageView()
     let booktitleLabel = UILabel()

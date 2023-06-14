@@ -8,7 +8,7 @@
 import UIKit
 
 final class CategoryBookCell: UICollectionViewCell {
-    static let reuseIdentifier = MagicLiteral.categoryBookReuseIdentifier
+    static let reuseIdentifier = ConstantsReuseIdentifier.kCategoryBook
 
     let bookImageView = UIImageView()
     let booktitleLabel = UILabel()

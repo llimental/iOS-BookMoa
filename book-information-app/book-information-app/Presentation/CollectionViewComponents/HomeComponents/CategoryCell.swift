@@ -8,7 +8,7 @@
 import UIKit
 
 final class CategoryCell: UICollectionViewCell {
-    static let reuseIdentifier = MagicLiteral.categoryReuseIdentifier
+    static let reuseIdentifier = ConstantsReuseIdentifier.kCategory
 
     let categoryLabel = UILabel()
     var categoryID: String = ConstantsString.kBlank

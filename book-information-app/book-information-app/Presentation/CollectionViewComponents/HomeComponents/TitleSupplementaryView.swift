@@ -8,7 +8,7 @@
 import UIKit
 
 final class TitleSupplementaryView: UICollectionReusableView {
-    static let reuseIdentifier = MagicLiteral.supplementaryReuseIdentifier
+    static let reuseIdentifier = ConstantsReuseIdentifier.kSupplementary
 
     let titleLabel = UILabel()
     let titleDecorateImageView = UIImageView()
