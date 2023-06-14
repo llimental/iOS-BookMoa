@@ -235,7 +235,7 @@ extension BookDetailViewController {
         memoTextView.delegate = self
 
         collaboratorLabel.textAlignment = .center
-        collaboratorLabel.text = MagicLiteral.collaboratorLabelText
+        collaboratorLabel.text = ConstantsString.kInformationProviderText
         collaboratorLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         collaboratorLabel.textColor = .gray
 

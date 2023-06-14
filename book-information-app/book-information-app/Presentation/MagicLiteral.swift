@@ -14,9 +14,9 @@ enum MagicLiteral {
 
     static let memoViewPlaceholder = "이 책에 대한 메모를 남겨주세요!"
     static let previewButtonTitle = "미리보기"
+
     static let descriptionHeadLabelText = "줄거리"
     static let authorDescriptionHeadLabelText = "저자소개"
     static let moreDescriptionText = "... 더보기"
     static let lessDescriptionText = "... 줄이기"
-    static let collaboratorLabelText = "도서 DB 제공 : 알라딘 인터넷서점(www.aladin.co.kr)"
 }

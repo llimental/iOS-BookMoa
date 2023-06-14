@@ -17,6 +17,7 @@ enum ConstantsString {
     static let kBlank: String = ""
     static let kLaunchAnimationName: String = "77792-book"
     static let kDetailViewBackgroundImageName: String = "EclipseIcon"
+    static let kInformationProviderText: String = "도서 DB 제공 : 알라딘 인터넷서점(www.aladin.co.kr)"
 }
 
 enum ConstantsNumber {
