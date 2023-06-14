@@ -24,6 +24,8 @@ enum ConstantsString {
 enum ConstantsNumber {
     static let kZero: Int = 0
     static let kOne: Int = 1
+    static let kTruncateLength: Int = 100
+    static let kAttributeLength: Int = 7
 }
 
 enum ConstantsTabBarItem {

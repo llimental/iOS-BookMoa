@@ -11,21 +11,21 @@ final class DynamicLabel: UILabel{
 
     var fullText: String?
     var isTruncated = true
-    let truncatedLength = 100
-    let attributedLength = 7
+    let truncatedLength = ConstantsNumber.kTruncateLength
+    let attributedLength = ConstantsNumber.kAttributeLength
 
     func collapse() {
         if let fullText = fullText {
             let index = fullText.index(fullText.startIndex, offsetBy: truncatedLength)
             self.text = fullText[...index].description + ConstantsBookDetailText.kMoreDescription
-            isTruncated = true
+            isTruncated.toggle()
         }
     }
 
     func expand() {
         if let fullText = fullText {
             self.text = fullText + ConstantsBookDetailText.kLessDescription
-            isTruncated = false
+            isTruncated.toggle()
         }
     }
 }
