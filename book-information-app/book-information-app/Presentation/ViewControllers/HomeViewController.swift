@@ -218,10 +218,7 @@ extension HomeViewController {
                 }
 
                 if let bookItem = item as? HomeController.Book {
-                    cell.booktitleLabel.text = bookItem.title
-                    cell.bookAuthorLabel.text = bookItem.author
-                    cell.bookImageView.image = bookItem.cover
-                    cell.bookISBN = bookItem.isbn
+                    cell.configure(with: bookItem)
                 }
 
                 return cell
@@ -230,12 +227,9 @@ extension HomeViewController {
                     return UICollectionViewCell()
                 }
 
-                guard let categoryItem = item as? HomeController.Category,
-                      let categoryID = CategoryID.categoryIDList.first(where: { $0.value == categoryItem.title })?.key else {
-                    return UICollectionViewCell()
+                if let categoryItem = item as? HomeController.Category {
+                    cell.configure(with: categoryItem)
                 }
-                cell.categoryLabel.text = categoryItem.title
-                cell.categoryID = String(categoryID)
 
                 return cell
             }

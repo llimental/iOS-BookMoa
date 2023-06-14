@@ -16,19 +16,10 @@ final class BestSellerCell: UICollectionViewCell {
     var bookISBN: String = ConstantsString.kBlank
 
     private let bookStackView = UIStackView()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configure()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
 }
 
 extension BestSellerCell {
-    private func configure() {
+    func configure(with bookItem: HomeController.Book) {
         bookStackView.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(bookStackView)
@@ -40,12 +31,17 @@ extension BestSellerCell {
         bookStackView.alignment = .center
         bookStackView.distribution = .equalSpacing
 
+        bookISBN = bookItem.isbn
+
         bookImageView.contentMode = .scaleAspectFit
+        bookImageView.image = bookItem.cover
 
         booktitleLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        booktitleLabel.text = bookItem.title
         booktitleLabel.adjustsFontForContentSizeCategory = true
 
         bookAuthorLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
+        bookAuthorLabel.text = bookItem.author
         bookAuthorLabel.adjustsFontForContentSizeCategory = true
         bookAuthorLabel.textColor = ConstantsColor.kGrayTextColor
 

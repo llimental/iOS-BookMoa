@@ -12,15 +12,6 @@ final class CategoryCell: UICollectionViewCell {
 
     let categoryLabel = UILabel()
     var categoryID: String = ConstantsString.kBlank
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configure()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
 }
 
 extension CategoryCell {
@@ -40,13 +31,18 @@ extension CategoryCell {
         contentView.layer.sublayers?.removeFirst()
     }
     
-    private func configure() {
+    func configure(with categoryItem: HomeController.Category) {
         categoryLabel.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(categoryLabel)
 
+        categoryLabel.text = categoryItem.title
         categoryLabel.textAlignment = .center
         categoryLabel.textColor = .black
+
+        if let categoryID = CategoryID.categoryIDList.first(where: {$0.value == categoryItem.title })?.key {
+            self.categoryID = String(categoryID)
+        }
 
         self.backgroundColor = ConstantsCategoryCell.kBackgroundColor
         self.layer.cornerRadius = 15
