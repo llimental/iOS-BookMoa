@@ -291,7 +291,7 @@ extension BookDetailViewController {
             firstDivider.topAnchor.constraint(equalTo: previewButton.bottomAnchor, constant: 24),
             firstDivider.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
             firstDivider.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
-            firstDivider.heightAnchor.constraint(equalToConstant: 1),
+            firstDivider.heightAnchor.constraint(equalToConstant: CGFloat(ConstantsNumber.kOne)),
 
             descriptionHeadLabel.topAnchor.constraint(equalTo: firstDivider.bottomAnchor, constant: 10),
             descriptionHeadLabel.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
@@ -305,7 +305,7 @@ extension BookDetailViewController {
             secondDivider.topAnchor.constraint(equalTo: descriptionBodyLabel.bottomAnchor, constant: 10),
             secondDivider.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
             secondDivider.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
-            secondDivider.heightAnchor.constraint(equalToConstant: 1),
+            secondDivider.heightAnchor.constraint(equalToConstant: CGFloat(ConstantsNumber.kOne)),
 
             authorDescriptionHeadLabel.topAnchor.constraint(equalTo: secondDivider.bottomAnchor, constant: 10),
             authorDescriptionHeadLabel.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
@@ -319,7 +319,7 @@ extension BookDetailViewController {
             thirdDivider.topAnchor.constraint(equalTo: authorDescriptionBodyLabel.bottomAnchor, constant: 10),
             thirdDivider.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
             thirdDivider.trailingAnchor.constraint(equalTo: entireInformationView.trailingAnchor, constant: -20),
-            thirdDivider.heightAnchor.constraint(equalToConstant: 1),
+            thirdDivider.heightAnchor.constraint(equalToConstant: CGFloat(ConstantsNumber.kOne)),
 
             memoTextView.topAnchor.constraint(equalTo: thirdDivider.bottomAnchor, constant: 10),
             memoTextView.leadingAnchor.constraint(equalTo: entireInformationView.leadingAnchor, constant: 20),
