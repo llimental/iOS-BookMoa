@@ -64,7 +64,7 @@ extension PreviewViewController {
 
         imageView.contentMode = .scaleAspectFit
 
-        closeButton.setBackgroundImage(UIImage(systemName: ConstantsCloseButton.kImageName), for: .normal)
+        closeButton.setBackgroundImage(UIImage(systemName: ConstantsString.kCloseButtonImageName), for: .normal)
         closeButton.tintColor = ConstantsColor.kMainColor
         closeButton.contentMode = .center
         closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
