@@ -76,7 +76,7 @@ final class TabBarController: UITabBarController {
 
         animationView.frame = view.bounds
         animationView.center = view.center
-        animationView.alpha = 1
+        animationView.alpha = CGFloat(ConstantsNumber.kOne)
 
         animationView.play { _ in
             UIView.animate(withDuration: 0.3, animations: {
