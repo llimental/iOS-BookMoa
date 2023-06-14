@@ -67,9 +67,20 @@ final class HomeViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    private lazy var dataSource = configureDataSource()
     private var categoryList: [HomeController.Category] = []
-    private let networkService = NetworkService()
+    private var searchController: UISearchController = {
+        let searchController = UISearchController()
+
+        searchController.searchBar.layer.cornerRadius = 20
+        searchController.searchBar.placeholder = ConstantsString.kBlank
+        searchController.searchBar.searchTextField.backgroundColor = .white
+        searchController.searchBar.setImage(UIImage(named: ConstantsSearchController.kImageName), for: .search, state: .normal)
+
+        searchController.obscuresBackgroundDuringPresentation = true
+
+        return searchController
+    }()
+    private lazy var dataSource = configureDataSource()
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
 
@@ -93,18 +104,7 @@ final class HomeViewController: UIViewController {
 
         return activityIndicator
     }()
-    private var searchController: UISearchController = {
-        let searchController = UISearchController()
-
-        searchController.searchBar.layer.cornerRadius = 20
-        searchController.searchBar.placeholder = ConstantsString.kBlank
-        searchController.searchBar.searchTextField.backgroundColor = .white
-        searchController.searchBar.setImage(UIImage(named: ConstantsSearchController.kImageName), for: .search, state: .normal)
-
-        searchController.obscuresBackgroundDuringPresentation = true
-
-        return searchController
-    }()
+    private let networkService = NetworkService()
 }
 
 // MARK: - CollectionView Layout
