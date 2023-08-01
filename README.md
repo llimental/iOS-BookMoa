@@ -66,8 +66,7 @@
 
 ### STEP 1 모델 타입 구현
 - Open API 데이터 형식을 고려하여 모델 타입을 구현
-- 구현한 모델 타입으로 Parsing할 수 있는지에 대한 `단위 테스트![image](https://github.com/llimental/iOS-BookMoa/assets/45708630/1016e058-b4ed-4e46-93e8-95b3921bcceb)
-(Unit Test)`를 진행
+- 구현한 모델 타입으로 Parsing할 수 있는지에 대한 `단위 테스트(Unit Test)`를 진행
 
 ### STEP 2 네트워킹 타입 구현
 - 네트워크 통신을 담당할 타입을 설계하고 구현
