@@ -89,7 +89,6 @@ final class CategoryViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
 
         collectionView.backgroundColor = .white
-        collectionView.layer.cornerRadius = 15
         collectionView.showsVerticalScrollIndicator = false
 
         return collectionView
@@ -127,11 +126,10 @@ extension CategoryViewController {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .estimated(180))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(17)
+        group.interItemSpacing = NSCollectionLayoutSpacing.flexible(16)
 
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 16
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
 
         return section
     }
