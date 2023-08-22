@@ -54,13 +54,11 @@ extension CategoryBookCell {
         booktitleLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         booktitleLabel.text = item.title
         booktitleLabel.adjustsFontForContentSizeCategory = true
-        booktitleLabel.textAlignment = .center
 
         bookAuthorLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         bookAuthorLabel.text = item.author
         bookAuthorLabel.adjustsFontForContentSizeCategory = true
         bookAuthorLabel.textColor = ConstantsColor.kGrayTextColor
-        bookAuthorLabel.textAlignment = .center
 
         NSLayoutConstraint.activate([
             bookStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
