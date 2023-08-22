@@ -33,8 +33,9 @@ extension CategoryBookCell {
 
         bookStackView.axis = .vertical
         bookStackView.spacing = 3
+        bookStackView.setCustomSpacing(15, after: bookImageView)
         bookStackView.alignment = .center
-        bookStackView.distribution = .equalSpacing
+        bookStackView.distribution = .fillProportionally
 
         bookISBN = item.isbn
 
@@ -66,6 +67,9 @@ extension CategoryBookCell {
             bookStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             bookStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             bookStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+
+            bookImageView.heightAnchor.constraint(equalTo: bookStackView.heightAnchor, multiplier: 0.7),
+            bookAuthorLabel.heightAnchor.constraint(equalTo: bookStackView.heightAnchor, multiplier: 0.1),
 
             favoritesImageView.topAnchor.constraint(equalTo: bookImageView.topAnchor),
             favoritesImageView.trailingAnchor.constraint(equalTo: bookImageView.trailingAnchor),
